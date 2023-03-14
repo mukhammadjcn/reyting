@@ -4,7 +4,17 @@ import {
   Navigate,
   BrowserRouter as Router,
 } from "react-router-dom";
-import { Login, Status, NotFound, Home, Members, News, NewsID } from "./pages";
+import {
+  Login,
+  Status,
+  NotFound,
+  Home,
+  Members,
+  News,
+  NewsID,
+  Offers,
+  OfferID,
+} from "./pages";
 import "src/styles/App.scss";
 import { isAdmin } from "./server/Host";
 import React from "react";
@@ -19,6 +29,10 @@ const App: React.FC = () => {
           <Route path="news">
             <Route index element={<News />} />
             <Route path=":newsID" element={<NewsID />} />
+          </Route>
+          <Route path="offers">
+            <Route index element={<Offers />} />
+            <Route path=":offerID" element={<OfferID />} />
           </Route>
           <Route path="members" element={<Members />} />
         </Route>

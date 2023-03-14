@@ -8,8 +8,9 @@ import {
   GetNewsConfig,
 } from "src/server/config/Urls";
 import { Button, Form, Input, message, Modal, Upload, UploadFile } from "antd";
-import ReactQuill from "react-quill";
-import { ArrowLeftOutlined, PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined } from "@ant-design/icons";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 function News() {
   const [form] = Form.useForm();
@@ -101,7 +102,6 @@ function News() {
           padding: 8,
           borderRadius: 8,
           marginBottom: 16,
-          background: "white",
           justifyContent: "end",
         }}
       >
@@ -136,7 +136,11 @@ function News() {
             </div>
             <div className="right">
               <h2>{item?.titleUZ}</h2>
-              <div dangerouslySetInnerHTML={{ __html: item.textUZ }}></div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: item.textUZ.split("</p>").slice(0, 3).join("</p>"),
+                }}
+              ></div>
             </div>
           </Link>
         </div>
@@ -179,61 +183,40 @@ function News() {
 
           <div style={{ marginBottom: 16 }}>
             <p style={{ marginBottom: 8 }}>Yangilikni o'zbekcha matni</p>
-            <ReactQuill
-              value={textUZ}
-              theme="snow"
-              onChange={setTextUZ}
-              modules={{
-                toolbar: [
-                  [{ header: "1" }],
-                  [{ size: [] }],
-                  ["bold", "italic", "underline", "blockquote"],
-                  [{ list: "ordered" }, { list: "bullet" }],
-                  ["link"],
-                  ["clean"],
-                ],
+            <CKEditor
+              editor={ClassicEditor}
+              data={textUZ}
+              onChange={(event: any, editor: any) => {
+                const data = editor.getData();
+                setTextUZ(data);
               }}
             />
           </div>
           <div style={{ marginBottom: 16 }}>
             <p style={{ marginBottom: 8 }}>Yangilikni ruscha matni</p>
-            <ReactQuill
-              value={textRU}
-              theme="snow"
-              onChange={setTextRU}
-              modules={{
-                toolbar: [
-                  [{ header: "1" }],
-                  [{ size: [] }],
-                  ["bold", "italic", "underline", "blockquote"],
-                  [{ list: "ordered" }, { list: "bullet" }],
-                  ["link"],
-                  ["clean"],
-                ],
+            <CKEditor
+              editor={ClassicEditor}
+              data={textRU}
+              onChange={(event: any, editor: any) => {
+                const data = editor.getData();
+                setTextRU(data);
               }}
             />
           </div>
           <div style={{ marginBottom: 16 }}>
             <p style={{ marginBottom: 8 }}>Yangilikni inglizcha matni</p>
-            <ReactQuill
-              value={textEN}
-              theme="snow"
-              onChange={setTextEN}
-              modules={{
-                toolbar: [
-                  [{ header: "1" }],
-                  [{ size: [] }],
-                  ["bold", "italic", "underline", "blockquote"],
-                  [{ list: "ordered" }, { list: "bullet" }],
-                  ["link"],
-                  ["clean"],
-                ],
+            <CKEditor
+              editor={ClassicEditor}
+              data={textRU}
+              onChange={(event: any, editor: any) => {
+                const data = editor.getData();
+                setTextEN(data);
               }}
             />
           </div>
 
           <Upload
-            maxCount={1}
+            maxCount={2}
             listType="picture-card"
             onRemove={deletePicture}
             onPreview={handlePreview}

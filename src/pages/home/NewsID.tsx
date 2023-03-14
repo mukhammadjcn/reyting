@@ -1,17 +1,31 @@
-import { Button, Form, Input, message, Modal, Upload, UploadFile } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  message,
+  Modal,
+  Upload,
+  UploadFile,
+  Image,
+} from "antd";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { GetNewsIdConfig, UpdateNewsConfig } from "src/server/config/Urls";
+import {
+  CreateImageConfig,
+  DelNewsIdConfig,
+  GetNewsIdConfig,
+  UpdateNewsConfig,
+} from "src/server/config/Urls";
 import { CatchError } from "src/utils/index";
 import { ArrowLeftOutlined, PlusOutlined } from "@ant-design/icons";
-import ReactQuill from "react-quill";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 function NewsID() {
   const location = useLocation();
   const navigate = useNavigate();
   const [data, setData] = useState<any>();
   const [form] = Form.useForm();
-  const [news, setNews] = useState([]);
   const [open, setOpen] = useState(false);
   const [textUZ, setTextUZ] = useState<string>("");
   const [textRU, setTextRU] = useState<string>("");
@@ -30,8 +44,8 @@ function NewsID() {
       CatchError(error);
     }
   };
-  const submitNews = async (val: any) => {
-    if (textEN && textRU && textUZ && fileList) {
+  const updateNews = async (val: any) => {
+    if (textEN && textRU && textUZ) {
       try {
         const { data } = await UpdateNewsConfig(
           location.pathname.replaceAll("/home/news/", ""),
@@ -42,18 +56,25 @@ function NewsID() {
             textUZ,
           }
         );
-        message.success(data?.message);
 
         let images = new FormData();
         fileList.forEach((item: any) => {
           images.append("files", item);
         });
 
+        await CreateImageConfig(
+          location.pathname.replaceAll("/home/news/", ""),
+          images
+        );
+
+        message.success(data?.message);
+
         form.resetFields();
         setTextEN("");
         setTextRU("");
         setTextUZ("");
         setOpen(false);
+        NewsID();
       } catch (error) {
         CatchError(error);
       }
@@ -87,6 +108,17 @@ function NewsID() {
     newFileList.splice(index, 1);
     setFileList(newFileList);
   };
+  const deleteNews = async () => {
+    try {
+      const { data } = await DelNewsIdConfig(
+        location.pathname.replaceAll("/home/news/", "")
+      );
+      message.success(data?.message);
+      navigate("/home/news");
+    } catch (error) {
+      CatchError(error);
+    }
+  };
   const handleCancel = () => setPreviewVisible(false);
 
   useEffect(() => {
@@ -111,7 +143,15 @@ function NewsID() {
           >
             Orqaga
           </Button>
-          <Button type="primary" onClick={() => setOpen(true)}>
+          <Button
+            type="primary"
+            onClick={() => {
+              setTextEN(data?.textEN);
+              setTextRU(data?.textRU);
+              setTextUZ(data?.textUZ);
+              setOpen(true);
+            }}
+          >
             Yangilikni tahrirlash
           </Button>
         </div>
@@ -126,12 +166,21 @@ function NewsID() {
         <div dangerouslySetInnerHTML={{ __html: data?.textUZ }}></div>
       </div>
 
-      <Modal title="" open={open} footer={null} onCancel={closeModal}>
+      <Modal
+        title=""
+        width={800}
+        open={open}
+        footer={null}
+        onCancel={closeModal}
+      >
         <Form
           form={form}
-          onFinish={submitNews}
+          onFinish={updateNews}
           layout="vertical"
           autoComplete="off"
+          initialValues={{
+            ...data,
+          }}
         >
           <Form.Item
             label="Yangilikni o'zbekcha sarlovhasi"
@@ -163,61 +212,40 @@ function NewsID() {
 
           <div style={{ marginBottom: 16 }}>
             <p style={{ marginBottom: 8 }}>Yangilikni o'zbekcha matni</p>
-            <ReactQuill
-              value={textUZ}
-              theme="snow"
-              onChange={setTextUZ}
-              modules={{
-                toolbar: [
-                  [{ header: "1" }],
-                  [{ size: [] }],
-                  ["bold", "italic", "underline", "blockquote"],
-                  [{ list: "ordered" }, { list: "bullet" }],
-                  ["link"],
-                  ["clean"],
-                ],
+            <CKEditor
+              editor={ClassicEditor}
+              data={textUZ}
+              onChange={(event: any, editor: any) => {
+                const data = editor.getData();
+                setTextUZ(data);
               }}
             />
           </div>
           <div style={{ marginBottom: 16 }}>
             <p style={{ marginBottom: 8 }}>Yangilikni ruscha matni</p>
-            <ReactQuill
-              value={textRU}
-              theme="snow"
-              onChange={setTextRU}
-              modules={{
-                toolbar: [
-                  [{ header: "1" }],
-                  [{ size: [] }],
-                  ["bold", "italic", "underline", "blockquote"],
-                  [{ list: "ordered" }, { list: "bullet" }],
-                  ["link"],
-                  ["clean"],
-                ],
+            <CKEditor
+              editor={ClassicEditor}
+              data={textRU}
+              onChange={(event: any, editor: any) => {
+                const data = editor.getData();
+                setTextRU(data);
               }}
             />
           </div>
           <div style={{ marginBottom: 16 }}>
             <p style={{ marginBottom: 8 }}>Yangilikni inglizcha matni</p>
-            <ReactQuill
-              value={textEN}
-              theme="snow"
-              onChange={setTextEN}
-              modules={{
-                toolbar: [
-                  [{ header: "1" }],
-                  [{ size: [] }],
-                  ["bold", "italic", "underline", "blockquote"],
-                  [{ list: "ordered" }, { list: "bullet" }],
-                  ["link"],
-                  ["clean"],
-                ],
+            <CKEditor
+              editor={ClassicEditor}
+              data={textEN}
+              onChange={(event: any, editor: any) => {
+                const data = editor.getData();
+                setTextEN(data);
               }}
             />
           </div>
 
           <Upload
-            maxCount={1}
+            maxCount={2}
             listType="picture-card"
             onRemove={deletePicture}
             onPreview={handlePreview}
@@ -232,6 +260,9 @@ function NewsID() {
           <Form.Item style={{ marginBottom: 0, marginTop: 16 }}>
             <div className="flex" style={{ justifyContent: "end" }}>
               <Button onClick={closeModal}>Bekor qilish</Button>
+              <Button onClick={deleteNews} danger>
+                O'chirish
+              </Button>
               <Button type="primary" htmlType="submit">
                 Yuborish
               </Button>

@@ -75,3 +75,13 @@ export interface IApplication {
   user: IUser;
   subjects: ISubject[];
 }
+
+export interface IOffer {
+  id: number;
+  key: number;
+  phoneNumber: string;
+  email: string;
+  fullName: string;
+  text: string;
+  answer: string;
+}

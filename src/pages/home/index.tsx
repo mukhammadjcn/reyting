@@ -76,6 +76,12 @@ const App = () => {
       label: "A'zolar",
       onClick: () => navigate("/home/members"),
     },
+    {
+      key: "offers",
+      label: "Murojatlar",
+      icon: <FileProtectOutlined />,
+      onClick: () => navigate("/home/offers?status=Yangi"),
+    },
   ];
   const LogoutMenu = [
     {

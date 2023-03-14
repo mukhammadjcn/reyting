@@ -29,3 +29,11 @@ export const GetNewsConfig = (url, data) => {
 export const GetNewsIdConfig = (id, data) => {
   return GetFunc(`admin/${id}`, data);
 };
+export const DelNewsIdConfig = (id) => {
+  return DeleteFunc(`admin/${id}`);
+};
+
+// Get offers page
+export const GetOffersConfig = (param = "") => {
+  return GetFunc(`admin/offers?size=20${param}`);
+};
