@@ -1,3 +1,4 @@
+import { axiosInstanceImage } from "../Host";
 import { GetFunc, EditFunc, CreateFunc, DeleteFunc } from "./Requests";
 
 // Login Configs ----------------------------------------------------------
@@ -13,13 +14,18 @@ export const UpdateNewsConfig = (id, data) => {
   return CreateFunc(`admin/updateNews/${id}`, data);
 };
 export const CreateImageConfig = (id, data) => {
-  return CreateFunc(`admin/createDocument?newsId=${id}`, data);
+  const config = {
+    data,
+    method: "POST",
+    url: `admin/createDocument?newsId=${id}`,
+  };
+  return axiosInstanceImage(config);
 };
 
 // Get news
 export const GetNewsConfig = (url, data) => {
-  return CreateFunc(`admin/${url ?? ""}`, data);
+  return GetFunc(`admin/news${url ?? ""}`, data);
 };
 export const GetNewsIdConfig = (id, data) => {
-  return CreateFunc(`admin/${id}`, data);
+  return GetFunc(`admin/${id}`, data);
 };

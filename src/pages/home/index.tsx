@@ -26,61 +26,56 @@ const App = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   const SidebarMenu = [
+    // {
+    //   key: "addnews",
+    //   icon: <ContainerOutlined />,
+    //   label: "Yangiliklar qo'shish",
+    //   onClick: () => navigate("/home/addnews"),
+    //   // children: [
+    //   //   {
+    //   //     key: "created",
+    //   //     icon: <FileSearchOutlined />,
+    //   //     label: "Yangi arizalar",
+    //   //     onClick: () => navigate("/home/created"),
+    //   //   },
+    //   //   {
+    //   //     key: "applied",
+    //   //     icon: <FileSyncOutlined />,
+    //   //     label: "Qabul qilingan arizalar",
+    //   //     onClick: () => navigate("/home/applied"),
+    //   //   },
+    //   //   {
+    //   //     key: "rejected",
+    //   //     icon: <FileExcelOutlined />,
+    //   //     label: "Rad etilgan arizalar",
+    //   //     onClick: () => navigate("/home/rejected"),
+    //   //   },
+    //   //   {
+    //   //     key: "confirmed",
+    //   //     icon: <FileProtectOutlined />,
+    //   //     label: "Shartnomalar",
+    //   //     onClick: () => navigate("/home/confirmed"),
+    //   //   },
+    //   //   {
+    //   //     key: "askingdelete",
+    //   //     icon: <DeleteOutlined />,
+    //   //     label: "Bekor qilishga so'rov",
+    //   //     onClick: () => navigate("/home/askingdelete"),
+    //   //   },
+    //   // ],
+    // },
     {
-      key: "applications",
-      icon: <ContainerOutlined />,
-      label: "Arizalar",
-      // children: [
-      //   {
-      //     key: "created",
-      //     icon: <FileSearchOutlined />,
-      //     label: "Yangi arizalar",
-      //     onClick: () => navigate("/home/created"),
-      //   },
-      //   {
-      //     key: "applied",
-      //     icon: <FileSyncOutlined />,
-      //     label: "Qabul qilingan arizalar",
-      //     onClick: () => navigate("/home/applied"),
-      //   },
-      //   {
-      //     key: "rejected",
-      //     icon: <FileExcelOutlined />,
-      //     label: "Rad etilgan arizalar",
-      //     onClick: () => navigate("/home/rejected"),
-      //   },
-      //   {
-      //     key: "confirmed",
-      //     icon: <FileProtectOutlined />,
-      //     label: "Shartnomalar",
-      //     onClick: () => navigate("/home/confirmed"),
-      //   },
-      //   {
-      //     key: "askingdelete",
-      //     icon: <DeleteOutlined />,
-      //     label: "Bekor qilishga so'rov",
-      //     onClick: () => navigate("/home/askingdelete"),
-      //   },
-      // ],
+      key: "news",
+      icon: <FileTextOutlined />,
+      label: "Yangiliklar",
+      onClick: () => navigate("/home/news"),
     },
-    // {
-    //   key: "directions",
-    //   icon: <FileTextOutlined />,
-    //   label: "Yo'nalishlar",
-    //   // onClick: () => navigate("/home/directions"),
-    // },
-    // {
-    //   key: "search",
-    //   icon: <SearchOutlined />,
-    //   label: "Qidiruv",
-    //   // onClick: () => navigate("/home/search"),
-    // },
-    // {
-    //   key: "settings",
-    //   icon: <SettingOutlined />,
-    //   label: "Sozlamalar",
-    //   // onClick: () => navigate("/home/settings"),
-    // },
+    {
+      key: "members",
+      icon: <SearchOutlined />,
+      label: "A'zolar",
+      onClick: () => navigate("/home/members"),
+    },
   ];
   const LogoutMenu = [
     {
@@ -93,7 +88,7 @@ const App = () => {
 
   const redirect = () => {
     if (url.pathname === "/home" || url.pathname === "/home/") {
-      window.location.href = "/home/addnews";
+      window.location.href = "/home/news";
     }
   };
 
@@ -148,23 +143,20 @@ const App = () => {
           {/* Collapse button */}
           {collapsed ? (
             <MenuUnfoldOutlined
-              height={24}
-              color="#ffffff"
-              style={{ background: "white" }}
               className="trigger"
+              style={{ fontSize: 20 }}
               onClick={() => setCollapsed(!collapsed)}
             />
           ) : (
             <MenuFoldOutlined
               className="trigger"
+              style={{ fontSize: 20 }}
               onClick={() => setCollapsed(!collapsed)}
             />
           )}
 
-          <h2>{data?.name}</h2>
-          <h4 onClick={Logout} style={{ cursor: "pointer" }}>
-            {data?.get_admin?.first_name} {data?.get_admin?.last_name}
-          </h4>
+          <h2>Ai.edu.uz</h2>
+          <p></p>
         </Header>
         <Content className="home__content">
           <Outlet />

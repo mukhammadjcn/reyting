@@ -5,6 +5,8 @@ import NotFound from "./NotFound";
 import Status from "./Status";
 
 import Home from "./home";
-import AddNews from "./home/AddNews";
+import News from "./home/News";
+import NewsID from "./home/NewsID";
+import Members from "./home/Members";
 
-export { Login, Status, NotFound, Home, AddNews };
+export { Login, Status, NotFound, Home, News, Members, NewsID };

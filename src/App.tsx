@@ -4,7 +4,7 @@ import {
   Navigate,
   BrowserRouter as Router,
 } from "react-router-dom";
-import { Login, Status, NotFound, Home, AddNews } from "./pages";
+import { Login, Status, NotFound, Home, Members, News, NewsID } from "./pages";
 import "src/styles/App.scss";
 import { isAdmin } from "./server/Host";
 import React from "react";
@@ -15,11 +15,12 @@ const App: React.FC = () => {
       {/* All pages rendered here */}
       <Routes>
         {/* Login page for admins*/}
-        <Route
-          path="home"
-          element={!isAdmin() ? <Home /> : <Navigate to="/login" />}
-        >
-          <Route path="addnews" element={<AddNews />} />
+        <Route path="home" element={isAdmin() ? <Home /> : <Navigate to="/" />}>
+          <Route path="news">
+            <Route index element={<News />} />
+            <Route path=":newsID" element={<NewsID />} />
+          </Route>
+          <Route path="members" element={<Members />} />
         </Route>
 
         <Route

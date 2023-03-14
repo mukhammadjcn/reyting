@@ -23,7 +23,7 @@ const Status: React.FC = () => {
         // SET TOKEN
         setLocal(ACCESS, data?.object?.jwtToken);
 
-        window.location.href = "/home/addnews";
+        window.location.href = "/home/news";
       } catch (error) {
         navigate("/");
         CatchError(error);

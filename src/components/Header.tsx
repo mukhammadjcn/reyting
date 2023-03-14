@@ -6,7 +6,7 @@ import {
   DashboardOutlined,
   ExclamationCircleFilled,
 } from "@ant-design/icons";
-import { isMinistry, role } from "src/server/Host";
+import { role } from "src/server/Host";
 import { Modal } from "antd";
 
 const Header: React.FC = () => {
@@ -16,11 +16,8 @@ const Header: React.FC = () => {
       icon: <ExclamationCircleFilled />,
       async onOk() {
         localStorage.clear();
-        if (isMinistry()) {
-          window.location.href = "/super";
-        } else {
-          window.location.href = "/login";
-        }
+
+        window.location.href = "/login";
       },
       okText: "Chiqish",
       cancelText: "Bekor qilish",
