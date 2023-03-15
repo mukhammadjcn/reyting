@@ -147,7 +147,7 @@ i18n
               work: "Oliy ta’lim, fan va innovatsiyalar vazirligi bosh mutaxassisi, kengash kotibi",
             },
             work_group: "Ishchi guruhlar",
-            work_info: `Ishchi guruhlar Kodeksning ayrim qoidalari va vazifalarini amalga oshirish uchun Komissiya a'zolarining umumiy qarori va/yoki AI etikasi bo'yicha vakillar yig'ilishining qarori bilan tuziladi. Ishchi guruhlar tarkibi tadbirkorlik, fan, davlat hokimiyati organlari va boshqa manfaatdor shaxslar (kuzatuvchilar) vakillaridan tuzilishi mumkin.`,
+            work_info: `Ishchi guruhlar Kodeksning ayrim qoidalari va vazifalarini amalga oshirish uchun Komissiya a'zolarining umumiy qarori va yoki AI etikasi bo'yicha vakillar yig'ilishining qarori bilan tuziladi. Ishchi guruhlar tarkibi tadbirkorlik, fan, davlat hokimiyati organlari va boshqa manfaatdor shaxslar (kuzatuvchilar) vakillaridan tuzilishi mumkin.`,
             work1: {
               title: "Sun'iy intellekt etikasi ishchi guruhi",
               info: "Mamlakatda shakllangan madaniyat va qadriyatlarni hisobga olgan holda sun'iy intellektning etika kodeksini ishlab chiqish",
@@ -380,7 +380,7 @@ i18n
             },
             work_group: "Working groups",
             work_info:
-              "Working groups are created by a common decision of the members of the Commission and / or a decision of the Meeting of Commissioners for AI Ethics to implement certain provisions and tasks of the Code. The composition of the working groups can be formed from representatives of business, science, public authorities and other interested parties (observers).",
+              "Working groups are created by a common decision of the members of the Commission and   or a decision of the Meeting of Commissioners for AI Ethics to implement certain provisions and tasks of the Code. The composition of the working groups can be formed from representatives of business, science, public authorities and other interested parties (observers).",
             work1: {
               title: "AI Ethics Working Group",
               info: "Develop a code of ethics for artificial intelligence, taking into account the culture and values formed in the country",
@@ -610,7 +610,7 @@ i18n
             },
             work_group: "Рабочие группы",
             work_info:
-              "Рабочие группы создаются по общему решению членов Комиссии и/или решению Собранияуполномоченных по этике ИИ для реализации отдельных положений и задач Кодекса. Состав рабочих групп может формироваться из представителей бизнеса, науки, органов государственной власти и иных заинтересованных сторон (наблюдателей).",
+              "Рабочие группы создаются по общему решению членов Комиссии и/или решению Собрания уполномоченных по этике ИИ для реализации отдельных положений и задач Кодекса. Состав рабочих групп может формироваться из представителей бизнеса, науки, органов государственной власти и иных заинтересованных сторон (наблюдателей).",
             work1: {
               title: "Рабочая группа по этике ИИ",
               info: "Разработать этический кодекс для искусственного интеллекта с учетом культуры и ценностей, сформировавшихся в стране",

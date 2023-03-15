@@ -45,3 +45,13 @@ export const GetOffersConfig = (param = "") => {
 export const SendOffersConfig = (param = "") => {
   return EditFunc(`admin/sendAnswer${param}`, "", "PATCH");
 };
+
+// User side APIIS
+export const CreateOfferConfig = (data) => {
+  const config = {
+    data,
+    method: "POST",
+    url: `auth/createOffer`,
+  };
+  return axiosInstanceNoAuth(config);
+};

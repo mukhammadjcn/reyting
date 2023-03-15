@@ -1,4 +1,4 @@
-import { Alert, Button, Carousel, Checkbox } from "antd";
+import { Alert, Button, Carousel, Checkbox, Form, Input, message } from "antd";
 import React, { useEffect, useState } from "react";
 import Header from "src/components/home/Header";
 import Footer from "src/components/home/Footer";
@@ -8,10 +8,23 @@ import Partners from "src/components/home/Partners";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
+import { CatchError } from "src/utils/index";
+import { CreateOfferConfig } from "src/server/config/Urls";
 
 const Home: React.FC = () => {
+  const [form] = Form.useForm();
   const { t, i18n } = useTranslation();
   const [work, setWork] = useState(1);
+
+  const submitOffer = async (val: any) => {
+    try {
+      const { data } = await CreateOfferConfig(val);
+      message.success(data?.message);
+      form.resetFields();
+    } catch (error) {
+      CatchError(error);
+    }
+  };
 
   useEffect(() => {
     i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
@@ -315,6 +328,78 @@ const Home: React.FC = () => {
                 {t("home.email_check")}
               </Checkbox>
             </div>
+          </div>
+        </div>
+
+        <div className="home__feedback">
+          <div className="feedback">
+            <h2>Murojaat yuborish</h2>
+            <Form
+              form={form}
+              onFinish={submitOffer}
+              layout="vertical"
+              autoComplete="off"
+            >
+              <div className="flex">
+                <div>
+                  <Form.Item
+                    name="fullName"
+                    rules={[
+                      { required: true, message: "Ism sharifni kiriting !" },
+                    ]}
+                  >
+                    <Input placeholder="Ism sharif" size="large" />
+                  </Form.Item>
+                  <Form.Item
+                    name="phoneNumber"
+                    rules={[
+                      { required: true, message: "Telefon raqamni kiriting !" },
+                    ]}
+                  >
+                    <Input placeholder="Telefon raqam" size="large" />
+                  </Form.Item>
+                  <Form.Item
+                    name="email"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Elektron pochtani kiriting !",
+                      },
+                      {
+                        type: "email",
+                        message: `Emailni to'g'ri kiriting`,
+                      },
+                    ]}
+                  >
+                    <Input placeholder="Elektron pochta" size="large" />
+                  </Form.Item>
+                </div>
+                <div>
+                  <Form.Item
+                    name="text"
+                    rules={[
+                      { required: true, message: "Murojat matnini kiriting !" },
+                    ]}
+                  >
+                    <Input.TextArea
+                      rows={6}
+                      placeholder="Murojat matni"
+                      size="large"
+                    />
+                  </Form.Item>
+                </div>
+              </div>
+              <Form.Item style={{ marginBottom: 0 }}>
+                <Button
+                  size="large"
+                  type="primary"
+                  htmlType="submit"
+                  style={{ float: "right" }}
+                >
+                  Yuborish
+                </Button>
+              </Form.Item>
+            </Form>
           </div>
         </div>
       </div>

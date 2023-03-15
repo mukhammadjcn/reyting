@@ -95,7 +95,7 @@ function News() {
   }, []);
 
   return (
-    <div className="blog">
+    <div className="adminblog">
       <div
         className="flex"
         style={{
@@ -113,11 +113,12 @@ function News() {
           Yangilik qo'shish
         </Button>
       </div>
+
       {news.map((item: any) => (
-        <div className="blog__news" key={item.id}>
+        <div className="adminblog__news" key={item.id}>
           <Link
             to={`/home/news/${item.id}`}
-            className="blog__new"
+            className="adminblog__new"
             onClick={() => window.scrollTo(0, 0)}
           >
             <div className="left">
@@ -146,7 +147,13 @@ function News() {
         </div>
       ))}
 
-      <Modal title="" open={open} footer={null} onCancel={closeModal}>
+      <Modal
+        title=""
+        width={800}
+        open={open}
+        footer={null}
+        onCancel={closeModal}
+      >
         <Form
           form={form}
           onFinish={submitNews}
@@ -230,7 +237,9 @@ function News() {
 
           <Form.Item style={{ marginBottom: 0, marginTop: 16 }}>
             <div className="flex" style={{ justifyContent: "end" }}>
-              <Button onClick={closeModal}>Bekor qilish</Button>
+              <Button onClick={closeModal} style={{ marginRight: 16 }}>
+                Bekor qilish
+              </Button>
               <Button type="primary" htmlType="submit">
                 Yuborish
               </Button>

@@ -127,7 +127,7 @@ function NewsID() {
 
   return (
     <>
-      <div className="blogpage">
+      <div className="adminblogpage">
         <div
           className="flex"
           style={{
@@ -259,8 +259,10 @@ function NewsID() {
 
           <Form.Item style={{ marginBottom: 0, marginTop: 16 }}>
             <div className="flex" style={{ justifyContent: "end" }}>
-              <Button onClick={closeModal}>Bekor qilish</Button>
-              <Button onClick={deleteNews} danger>
+              <Button onClick={closeModal} style={{ marginRight: 16 }}>
+                Bekor qilish
+              </Button>
+              <Button onClick={deleteNews} danger style={{ marginRight: 16 }}>
                 O'chirish
               </Button>
               <Button type="primary" htmlType="submit">
