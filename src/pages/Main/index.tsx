@@ -49,7 +49,7 @@ const Home: React.FC = () => {
           <Carousel
             autoplay
             autoplaySpeed={3000}
-            dotPosition="left"
+            dotPosition="bottom"
             className="topcaraousel"
           >
             <div className="home__card">
@@ -332,83 +332,95 @@ const Home: React.FC = () => {
         </div>
 
         <div className="home__feedback">
-          <div className="feedback">
-            <h2>{t("feedback.title")}</h2>
-            <Form
-              form={form}
-              onFinish={submitOffer}
-              layout="vertical"
-              autoComplete="off"
-            >
-              <div className="flex">
-                <div>
-                  <Form.Item
-                    name="fullName"
-                    rules={[
-                      { required: true, message: "Ism sharifni kiriting !" },
-                    ]}
-                  >
-                    <Input
-                      placeholder={t("feedback.name") ?? ""}
-                      size="large"
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    name="phoneNumber"
-                    rules={[
-                      { required: true, message: "Telefon raqamni kiriting !" },
-                    ]}
-                  >
-                    <Input
-                      placeholder={t("feedback.phone") ?? ""}
-                      size="large"
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    name="email"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Elektron pochtani kiriting !",
-                      },
-                      {
-                        type: "email",
-                        message: `Emailni to'g'ri kiriting`,
-                      },
-                    ]}
-                  >
-                    <Input
-                      placeholder={t("feedback.email") ?? ""}
-                      size="large"
-                    />
-                  </Form.Item>
+          <div className="container">
+            <div className="feedback">
+              <h2>{t("feedback.title")}</h2>
+              <p>
+                O'zingizni qiziqtirgan savolingiz yozing, tez orada javob
+                qaytaramiz
+              </p>
+              <Form
+                form={form}
+                onFinish={submitOffer}
+                layout="vertical"
+                autoComplete="off"
+              >
+                <div className="flex">
+                  <div>
+                    <Form.Item
+                      name="fullName"
+                      rules={[
+                        { required: true, message: t("feedback.name") ?? "" },
+                      ]}
+                    >
+                      <Input
+                        placeholder={t("feedback.name") ?? ""}
+                        size="large"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      name="phoneNumber"
+                      rules={[
+                        {
+                          required: true,
+                          message: t("feedback.phone") ?? "",
+                        },
+                      ]}
+                    >
+                      <Input
+                        placeholder={t("feedback.phone") ?? ""}
+                        size="large"
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      name="email"
+                      rules={[
+                        {
+                          required: true,
+                          message: t("feedback.email") ?? "",
+                        },
+                        {
+                          type: "email",
+                          message: t("feedback.email") ?? "",
+                        },
+                      ]}
+                    >
+                      <Input
+                        placeholder={t("feedback.email") ?? ""}
+                        size="large"
+                      />
+                    </Form.Item>
+                  </div>
+                  <div>
+                    <Form.Item
+                      name="text"
+                      rules={[
+                        {
+                          required: true,
+                          message: t("feedback.text") ?? "",
+                        },
+                      ]}
+                    >
+                      <Input.TextArea
+                        rows={6}
+                        placeholder={t("feedback.text") ?? ""}
+                        size="large"
+                      />
+                    </Form.Item>
+                  </div>
                 </div>
-                <div>
-                  <Form.Item
-                    name="text"
-                    rules={[
-                      { required: true, message: "Murojat matnini kiriting !" },
-                    ]}
+                <Form.Item style={{ marginBottom: 0 }}>
+                  <Button
+                    size="large"
+                    type="primary"
+                    htmlType="submit"
+                    style={{ float: "right" }}
                   >
-                    <Input.TextArea
-                      rows={6}
-                      placeholder={t("feedback.text") ?? ""}
-                      size="large"
-                    />
-                  </Form.Item>
-                </div>
-              </div>
-              <Form.Item style={{ marginBottom: 0 }}>
-                <Button
-                  size="large"
-                  type="primary"
-                  htmlType="submit"
-                  style={{ float: "right" }}
-                >
-                  {t("feedback.send")}
-                </Button>
-              </Form.Item>
-            </Form>
+                    {t("feedback.send")}
+                  </Button>
+                </Form.Item>
+              </Form>
+            </div>
           </div>
         </div>
       </div>
