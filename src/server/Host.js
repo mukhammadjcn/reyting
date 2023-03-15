@@ -26,10 +26,9 @@ export let headers = {
   "Content-Type": "application/json; charset=utf-8",
   Authorization: token ? `Bearer ${token}` : "",
 };
-export let headersImage = {
+export let headersNoAuth = {
   "X-Requested-With": "XMLHttpRequest",
-  "Content-Type": "multipart/form-data",
-  Authorization: token ? `Bearer ${token}` : "",
+  "Content-Type": "application/json; charset=utf-8",
 };
 
 // Axios instance
@@ -38,8 +37,8 @@ export let axiosInstance = axios.create({
   baseURL: host,
   timeout: 100000,
 });
-export let axiosInstanceImage = axios.create({
-  headers,
+export let axiosInstanceNoAuth = axios.create({
+  headersNoAuth,
   baseURL: host,
   timeout: 100000,
 });

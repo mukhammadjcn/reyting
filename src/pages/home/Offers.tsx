@@ -1,12 +1,24 @@
-import { Button, Table, Tabs, TabsProps } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  message,
+  Modal,
+  Table,
+  Tabs,
+  TabsProps,
+} from "antd";
 import { ColumnsType } from "antd/es/table";
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { GetOffersConfig } from "src/server/config/Urls";
+import { GetOffersConfig, SendOffersConfig } from "src/server/config/Urls";
 import { IOffer } from "src/types/index";
 import { CatchError } from "src/utils/index";
+import { SettingOutlined } from "@ant-design/icons";
 
 function Offers() {
+  const [form] = Form.useForm();
+  const [open, setOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const [total, setTotal] = useState(0);
   const currentp = searchParams.get("page");
@@ -31,9 +43,6 @@ function Offers() {
       title: "Ismi",
       dataIndex: "fullName",
       key: "fullName",
-      //   render: (_, item) => (
-      //     <Link to={`/home/offers/${item.id}`}>{item.fullName}</Link>
-      //   ),
     },
     {
       title: "Telefon raqami",
@@ -48,6 +57,19 @@ function Offers() {
       key: "phoneNumber",
       align: "center",
       width: 400,
+    },
+    {
+      title: "Amallar",
+      key: "actions",
+      align: "center",
+      width: 100,
+      render: (_, item) => (
+        <Button
+          type="primary"
+          icon={<SettingOutlined />}
+          onClick={() => openModal(item)}
+        />
+      ),
     },
   ];
 
@@ -77,6 +99,26 @@ function Offers() {
       url = url + `${url.length < 2 ? "" : "&"}${key}=${value}`;
     }
     return url.length > 2 ? url : "";
+  };
+  const closeModal = () => {
+    form.resetFields();
+    setOpen(false);
+  };
+  const openModal = (item: IOffer) => {
+    form.setFieldsValue(item);
+    setOpen(true);
+  };
+  const submitOffer = async (val: IOffer) => {
+    try {
+      const { data } = await SendOffersConfig(
+        `?offerId=${val.id}&answer=${val.answer}`
+      );
+      message.success(data?.message);
+      closeModal();
+      GetOffers();
+    } catch (error) {
+      CatchError(error);
+    }
   };
 
   const GetOffers = async () => {
@@ -125,6 +167,46 @@ function Offers() {
           current: +currentpage,
         }}
       />
+
+      <Modal title="" open={open} footer={null} onCancel={closeModal}>
+        <Form
+          form={form}
+          onFinish={submitOffer}
+          layout="vertical"
+          autoComplete="off"
+        >
+          <Form.Item label="" name="id" style={{ display: "none" }}>
+            <Input.TextArea disabled />
+          </Form.Item>
+
+          <Form.Item label="Murojat matni" name="text">
+            <Input.TextArea disabled />
+          </Form.Item>
+
+          <Form.Item
+            label="Murojatga javob bering"
+            name="answer"
+            rules={[{ required: true, message: "Murojatga javob bering !" }]}
+          >
+            <Input.TextArea />
+          </Form.Item>
+
+          <Form.Item style={{ marginBottom: 0, marginTop: 16 }}>
+            <div className="flex" style={{ justifyContent: "end" }}>
+              <Button onClick={closeModal} style={{ marginRight: 16 }}>
+                Bekor qilish
+              </Button>
+              <Button
+                type="primary"
+                htmlType="submit"
+                disabled={current !== "Yangi"}
+              >
+                Yuborish
+              </Button>
+            </div>
+          </Form.Item>
+        </Form>
+      </Modal>
     </div>
   );
 }

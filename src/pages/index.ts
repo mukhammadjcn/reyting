@@ -9,7 +9,10 @@ import News from "./home/News";
 import Offers from "./home/Offers";
 import NewsID from "./home/NewsID";
 import Members from "./home/Members";
-import OfferID from "./home/OfferID";
+import Main from "./Main";
+import About from "./About";
+import Blog from "./Blog";
+import BlogPage from "./Blog/BlogPage";
 
 export {
   Login,
@@ -20,5 +23,8 @@ export {
   Members,
   NewsID,
   Offers,
-  OfferID,
+  Main,
+  About,
+  Blog,
+  BlogPage,
 };

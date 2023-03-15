@@ -1,4 +1,4 @@
-import { axiosInstanceImage } from "../Host";
+import { axiosInstanceNoAuth } from "../Host";
 import { GetFunc, EditFunc, CreateFunc, DeleteFunc } from "./Requests";
 
 // Login Configs ----------------------------------------------------------
@@ -14,26 +14,34 @@ export const UpdateNewsConfig = (id, data) => {
   return CreateFunc(`admin/updateNews/${id}`, data);
 };
 export const CreateImageConfig = (id, data) => {
-  const config = {
-    data,
-    method: "POST",
-    url: `admin/createDocument?newsId=${id}`,
-  };
-  return axiosInstanceImage(config);
+  return CreateFunc(`admin/createDocument?newsId=${id}`, data);
 };
 
 // Get news
 export const GetNewsConfig = (url, data) => {
-  return GetFunc(`admin/news${url ?? ""}`, data);
+  const config = {
+    method: "GET",
+    data,
+    url: `admin/news${url ?? ""}`,
+  };
+  return axiosInstanceNoAuth(config);
 };
 export const GetNewsIdConfig = (id, data) => {
-  return GetFunc(`admin/${id}`, data);
+  const config = {
+    method: "GET",
+    data,
+    url: `admin/news/${id}`,
+  };
+  return axiosInstanceNoAuth(config);
 };
 export const DelNewsIdConfig = (id) => {
-  return DeleteFunc(`admin/${id}`);
+  return DeleteFunc(`admin/news/${id}`);
 };
 
 // Get offers page
 export const GetOffersConfig = (param = "") => {
   return GetFunc(`admin/offers?size=20${param}`);
+};
+export const SendOffersConfig = (param = "") => {
+  return EditFunc(`admin/sendAnswer${param}`, "", "PATCH");
 };
