@@ -6,7 +6,7 @@ const Login = () => {
     <div className="login_section">
       <div className="login_left">
         <div className="login_left_wrap">
-          <Link to={"/login"} className="logo">
+          <Link to={"/login"} className="adminlogo">
             <img src={require("src/assets/images/logo.png")} alt="logo" />
             <span>ai.edu.uz</span>
           </Link>

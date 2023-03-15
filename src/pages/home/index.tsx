@@ -125,7 +125,7 @@ const App = () => {
         collapsed={collapsed}
         className="home__sidebar"
       >
-        <Link to={"/"} className="logo">
+        <Link to={"/"} className="adminlogo">
           <img src={require("../../assets/images/logo.png")} alt="logo" />
           {!collapsed && <span>AI.edu.uz</span>}
         </Link>
