@@ -333,7 +333,7 @@ const Home: React.FC = () => {
 
         <div className="home__feedback">
           <div className="feedback">
-            <h2>Murojaat yuborish</h2>
+            <h2>{t("feedback.title")}</h2>
             <Form
               form={form}
               onFinish={submitOffer}
@@ -348,7 +348,10 @@ const Home: React.FC = () => {
                       { required: true, message: "Ism sharifni kiriting !" },
                     ]}
                   >
-                    <Input placeholder="Ism sharif" size="large" />
+                    <Input
+                      placeholder={t("feedback.name") ?? ""}
+                      size="large"
+                    />
                   </Form.Item>
                   <Form.Item
                     name="phoneNumber"
@@ -356,7 +359,10 @@ const Home: React.FC = () => {
                       { required: true, message: "Telefon raqamni kiriting !" },
                     ]}
                   >
-                    <Input placeholder="Telefon raqam" size="large" />
+                    <Input
+                      placeholder={t("feedback.phone") ?? ""}
+                      size="large"
+                    />
                   </Form.Item>
                   <Form.Item
                     name="email"
@@ -371,7 +377,10 @@ const Home: React.FC = () => {
                       },
                     ]}
                   >
-                    <Input placeholder="Elektron pochta" size="large" />
+                    <Input
+                      placeholder={t("feedback.email") ?? ""}
+                      size="large"
+                    />
                   </Form.Item>
                 </div>
                 <div>
@@ -383,7 +392,7 @@ const Home: React.FC = () => {
                   >
                     <Input.TextArea
                       rows={6}
-                      placeholder="Murojat matni"
+                      placeholder={t("feedback.text") ?? ""}
                       size="large"
                     />
                   </Form.Item>
@@ -396,7 +405,7 @@ const Home: React.FC = () => {
                   htmlType="submit"
                   style={{ float: "right" }}
                 >
-                  Yuborish
+                  {t("feedback.send")}
                 </Button>
               </Form.Item>
             </Form>
