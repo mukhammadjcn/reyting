@@ -146,6 +146,10 @@ i18n
               name: "Sherzod Abdullaev",
               work: "Oliy ta’lim, fan va innovatsiyalar vazirligi bosh mutaxassisi, kengash kotibi",
             },
+            user12: {
+              name: "Abdullayev Alisher Ilxamovich",
+              work: "Oliy ta'lim, fan va innovatsiyalar vazirligi huzuridagi Raqamli ta'lim texnologiyalarini rivojlantirish markazi direktori",
+            },
             work_group: "Ishchi guruhlar",
             work_info: `Ishchi guruhlar Kodeksning ayrim qoidalari va vazifalarini amalga oshirish uchun Komissiya a'zolarining umumiy qarori va yoki AI etikasi bo'yicha vakillar yig'ilishining qarori bilan tuziladi. Ishchi guruhlar tarkibi tadbirkorlik, fan, davlat hokimiyati organlari va boshqa manfaatdor shaxslar (kuzatuvchilar) vakillaridan tuzilishi mumkin.`,
             work1: {
@@ -387,6 +391,10 @@ i18n
               name: "Sherzod Abdullaev",
               work: "Chief Specialist at the Ministry of Higher Education, Scientific and Innovation, secretary of the Council",
             },
+            user12: {
+              name: "Abdullaev Alisher Ilkhamovich",
+              work: "Director of the Center for The Development of Digital Education Technologies under The Ministry of Higher Education, Science and Innovations of the Republic of Uzbekistan",
+            },
             work_group: "Working groups",
             work_info:
               "Working groups are created by a common decision of the members of the Commission and   or a decision of the Meeting of Commissioners for AI Ethics to implement certain provisions and tasks of the Code. The composition of the working groups can be formed from representatives of business, science, public authorities and other interested parties (observers).",
@@ -625,6 +633,10 @@ i18n
             user11: {
               name: "Шерзод Абдуллаев",
               work: "Главный специалист Министерства высшего образования, науки и инноваций, cекретарь совета",
+            },
+            user12: {
+              name: "Абдуллаев Алишер Илхамович",
+              work: "Директор Центра развития цифровых образовательных технологий при Министерстве высшего образования, науки и инноваций Республики Узбекистан",
             },
             work_group: "Рабочие группы",
             work_info:

@@ -51,6 +51,14 @@ function SliderMulti() {
         <p>{t("about.user2.work")}</p>
       </div>
       <div className="user">
+        <img
+          src={require("src/assets/images/photo_2022-10-28_17-08-35.jpg")}
+          alt=""
+        />
+        <h2>{t("about.user12.name")}</h2>
+        <p>{t("about.user12.work")}</p>
+      </div>
+      <div className="user">
         <img src={require("src/assets/images/Б.Махкамов.jpg")} alt="" />
         <h2>{t("about.user3.name")}</h2>
         <p>{t("about.user3.work")}</p>
@@ -94,6 +102,14 @@ function SliderMulti() {
         <img src={require("src/assets/images/Шерзод Абдуллаев.jpg")} alt="" />
         <h2>{t("about.user11.name")}</h2>
         <p>{t("about.user11.work")}</p>
+      </div>
+      <div className="user">
+        <img
+          src={require("src/assets/images/photo_2022-10-28_17-08-35.jpg")}
+          alt=""
+        />
+        <h2>{t("about.user12.name")}</h2>
+        <p>{t("about.user12.work")}</p>
       </div>
     </Slider>
   );
