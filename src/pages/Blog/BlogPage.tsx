@@ -77,7 +77,7 @@ function BlogPage() {
           <>
             <h2 className="section_title">{t("news5.title")}</h2>
 
-            <img src={require("src/assets/images/new5.png")} alt="" />
+            <img src={require("src/assets/images/3news.jpg")} alt="" />
 
             <p>{t("news5.p1")}</p>
             <p>{t("news5.p2")}</p>

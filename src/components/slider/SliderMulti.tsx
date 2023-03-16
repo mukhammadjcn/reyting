@@ -111,6 +111,11 @@ function SliderMulti() {
         <h2>{t("about.user12.name")}</h2>
         <p>{t("about.user12.work")}</p>
       </div>
+      <div className="user">
+        <img src={require("src/assets/images/Azamova-N.png")} alt="" />
+        <h2>{t("about.user13.name")}</h2>
+        <p>{t("about.user13.work")}</p>
+      </div>
     </Slider>
   );
 }

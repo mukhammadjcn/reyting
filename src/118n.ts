@@ -150,6 +150,10 @@ i18n
               name: "Abdullayev Alisher Ilxamovich",
               work: "Oliy ta'lim, fan va innovatsiyalar vazirligi huzuridagi Raqamli ta'lim texnologiyalarini rivojlantirish markazi direktori",
             },
+            user13: {
+              name: "Nilufar A'zamova",
+              work: "Raqamli texnologiyalar va sun'iy intellektni rivojlantirish ilmiy-tadqiqot instituti direktorining ilm-fan bo‘yicha o‘rinbosari",
+            },
             work_group: "Ishchi guruhlar",
             work_info: `Ishchi guruhlar Kodeksning ayrim qoidalari va vazifalarini amalga oshirish uchun Komissiya a'zolarining umumiy qarori va yoki AI etikasi bo'yicha vakillar yig'ilishining qarori bilan tuziladi. Ishchi guruhlar tarkibi tadbirkorlik, fan, davlat hokimiyati organlari va boshqa manfaatdor shaxslar (kuzatuvchilar) vakillaridan tuzilishi mumkin.`,
             work1: {
@@ -395,6 +399,10 @@ i18n
               name: "Abdullaev Alisher Ilkhamovich",
               work: "Director of the Center for The Development of Digital Education Technologies under The Ministry of Higher Education, Science and Innovations of the Republic of Uzbekistan",
             },
+            user13: {
+              name: "Nilufar A'zamova",
+              work: "Deputy Director of the Scientific Research Institute for the Development of Digital Technologies and Artificial Intelligence",
+            },
             work_group: "Working groups",
             work_info:
               "Working groups are created by a common decision of the members of the Commission and   or a decision of the Meeting of Commissioners for AI Ethics to implement certain provisions and tasks of the Code. The composition of the working groups can be formed from representatives of business, science, public authorities and other interested parties (observers).",
@@ -637,6 +645,10 @@ i18n
             user12: {
               name: "Абдуллаев Алишер Илхамович",
               work: "Директор Центра развития цифровых образовательных технологий при Министерстве высшего образования, науки и инноваций Республики Узбекистан",
+            },
+            user13: {
+              name: "Нилуфар Аъзамова",
+              work: "Заместитель директора НИИ развития цифровых технологий и искусственного интеллекта",
             },
             work_group: "Рабочие группы",
             work_info:

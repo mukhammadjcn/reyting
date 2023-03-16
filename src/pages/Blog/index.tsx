@@ -102,24 +102,6 @@ function BLog() {
             </div>
           </Link>
           <Link
-            to="/blog/news5"
-            className="blog__new"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <div className="left">
-              <img src={require("src/assets/images/new5.png")} alt="" />
-              <div className="flex">
-                <CalendarSvg />
-                <span>20.10.2022</span>
-              </div>
-              <div className="hashteg">#{t("newsTitle")}</div>
-            </div>
-            <div className="right">
-              <h2>{t("news5.title")}</h2>
-              <p>{t("news5.p1")}</p>
-            </div>
-          </Link>
-          <Link
             to="/blog/news6"
             className="blog__new"
             onClick={() => window.scrollTo(0, 0)}
@@ -135,6 +117,24 @@ function BLog() {
             <div className="right">
               <h2>{t("news6.title")}</h2>
               <p>{t("news6.p1")}</p>
+            </div>
+          </Link>
+          <Link
+            to="/blog/news5"
+            className="blog__new"
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            <div className="left">
+              <img src={require("src/assets/images/3news.jpg")} alt="" />
+              <div className="flex">
+                <CalendarSvg />
+                <span>20.10.2022</span>
+              </div>
+              <div className="hashteg">#{t("newsTitle")}</div>
+            </div>
+            <div className="right">
+              <h2>{t("news5.title")}</h2>
+              <p>{t("news5.p1")}</p>
             </div>
           </Link>
         </div>
