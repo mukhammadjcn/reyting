@@ -335,10 +335,7 @@ const Home: React.FC = () => {
           <div className="container">
             <div className="feedback">
               <h2>{t("feedback.title")}</h2>
-              <p>
-                O'zingizni qiziqtirgan savolingiz yozing, tez orada javob
-                qaytaramiz
-              </p>
+              <p>{t("feedback.info")}</p>
               <Form
                 form={form}
                 onFinish={submitOffer}

@@ -11,7 +11,7 @@ export const CreateNewsConfig = (data) => {
   return CreateFunc(`admin/createNews`, data);
 };
 export const UpdateNewsConfig = (id, data) => {
-  return CreateFunc(`admin/updateNews/${id}`, data);
+  return EditFunc(`admin/updateNews/${id}`, data);
 };
 export const CreateImageConfig = (id, data) => {
   return CreateFunc(`admin/createDocument?newsId=${id}`, data);
@@ -44,6 +44,20 @@ export const GetOffersConfig = (param = "") => {
 };
 export const SendOffersConfig = (param = "") => {
   return EditFunc(`admin/sendAnswer${param}`, "", "PATCH");
+};
+
+// Members api
+export const CreateMemberConfig = (data) => {
+  return CreateFunc(`admin/createMember`, data);
+};
+export const UpdateMemberConfig = (id, data) => {
+  return EditFunc(`admin/updateMember/${id}`, data);
+};
+export const GetMemberConfig = () => {
+  return GetFunc(`admin/members`);
+};
+export const CreateMemberImageConfig = (id, data) => {
+  return CreateFunc(`admin/createDocument?memberId=${id}`, data);
 };
 
 // User side APIIS

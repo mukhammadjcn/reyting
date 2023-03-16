@@ -45,7 +45,7 @@ function NewsID() {
     }
   };
   const updateNews = async (val: any) => {
-    if (textEN && textRU && textUZ) {
+    if (textEN && textRU && textUZ && fileList.length > 0) {
       try {
         const { data } = await UpdateNewsConfig(
           location.pathname.replaceAll("/home/news/", ""),
@@ -76,7 +76,7 @@ function NewsID() {
         setOpen(false);
         NewsID();
       } catch (error) {
-        CatchError(error);
+        // CatchError(error);
       }
     } else {
       message.error("Hamma maydonlarni to'ldiring");

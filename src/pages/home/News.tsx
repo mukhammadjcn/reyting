@@ -11,6 +11,7 @@ import { Button, Form, Input, message, Modal, Upload, UploadFile } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { INews } from "types/index";
 
 function News() {
   const [form] = Form.useForm();
@@ -32,7 +33,7 @@ function News() {
     }
   };
   const submitNews = async (val: any) => {
-    if (textEN && textRU && textUZ && fileList) {
+    if (textEN && textRU && textUZ && fileList.length > 0) {
       try {
         const { data } = await CreateNewsConfig({
           ...val,
@@ -55,6 +56,7 @@ function News() {
         setTextUZ("");
         setFileList([]);
         setOpen(false);
+        GetNews();
       } catch (error) {
         CatchError(error);
       }
@@ -114,7 +116,7 @@ function News() {
         </Button>
       </div>
 
-      {news.map((item: any) => (
+      {news.map((item: INews) => (
         <div className="adminblog__news" key={item.id}>
           <Link
             to={`/home/news/${item.id}`}
@@ -139,7 +141,7 @@ function News() {
               <h2>{item?.titleUZ}</h2>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: item.textUZ.split("</p>").slice(0, 3).join("</p>"),
+                  __html: item.textUZ,
                 }}
               ></div>
             </div>
@@ -214,7 +216,7 @@ function News() {
             <p style={{ marginBottom: 8 }}>Yangilikni inglizcha matni</p>
             <CKEditor
               editor={ClassicEditor}
-              data={textRU}
+              data={textEN}
               onChange={(event: any, editor: any) => {
                 const data = editor.getData();
                 setTextEN(data);

@@ -85,3 +85,28 @@ export interface IOffer {
   text: string;
   answer: string;
 }
+
+export interface INews {
+  id: number;
+  titleUZ: string;
+  titleRU: string;
+  titleEN: string;
+  textUZ: string;
+  textRU: string;
+  textEN: string;
+  createdDate: string;
+  documentResponses: IImage[];
+}
+
+export interface IMember {
+  id: number;
+  fullName: string;
+  workPlace: string;
+  documentResponses: IImage[];
+}
+
+export interface IImage {
+  id: number;
+  fileUrl: string;
+  fileName: string;
+}

@@ -70,12 +70,12 @@ const App = () => {
       label: "Yangiliklar",
       onClick: () => navigate("/home/news"),
     },
-    // {
-    //   key: "members",
-    //   icon: <SearchOutlined />,
-    //   label: "A'zolar",
-    //   onClick: () => navigate("/home/members"),
-    // },
+    {
+      key: "members",
+      icon: <SearchOutlined />,
+      label: "A'zolar",
+      onClick: () => navigate("/home/members"),
+    },
     {
       key: "offers",
       label: "Murojatlar",
