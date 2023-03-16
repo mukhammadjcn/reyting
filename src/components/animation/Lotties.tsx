@@ -1,5 +1,5 @@
 import React from "react";
-// import Lottie from "react-lottie";
+import Lottie from "react-lottie";
 import { noDataAlert, optionDone } from "src/assets/lottie";
 
 function NoData({ title = "Arizalar mavjud emas", type = "nodata" }) {
@@ -13,7 +13,7 @@ function NoData({ title = "Arizalar mavjud emas", type = "nodata" }) {
   }
   return (
     <div className="nodata-anim" style={{ width: "100%" }}>
-      {/* <Lottie options={noDataAlert} height={300} width={300} /> */}
+      <Lottie options={noDataAlert} height={300} width={300} />
       <h2 style={{ textAlign: "center", marginTop: -72 }}>{title}</h2>
     </div>
   );

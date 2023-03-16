@@ -59,6 +59,9 @@ export const GetMemberConfig = () => {
 export const CreateMemberImageConfig = (id, data) => {
   return CreateFunc(`admin/createDocument?memberId=${id}`, data);
 };
+export const DelMembersIdConfig = (id) => {
+  return DeleteFunc(`admin/members/${id}`);
+};
 
 // User side APIIS
 export const CreateOfferConfig = (data) => {

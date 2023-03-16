@@ -12,6 +12,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { INews } from "types/index";
+import NoData from "src/components/animation/Lotties";
 
 function News() {
   const [form] = Form.useForm();
@@ -116,38 +117,44 @@ function News() {
         </Button>
       </div>
 
-      {news.map((item: INews) => (
-        <div className="adminblog__news" key={item.id}>
-          <Link
-            to={`/home/news/${item.id}`}
-            className="adminblog__new"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            <div className="left">
-              <img
-                src={
-                  item?.documentResponses[0]?.fileUrl ??
-                  "https://picsum.photos/200"
-                }
-                alt=""
-              />
-              <div className="flex">
-                <CalendarSvg />
-                <span>{new Date(item?.createdDate).toLocaleDateString()}</span>
+      {news.length > 0 ? (
+        news.map((item: INews) => (
+          <div className="adminblog__news" key={item.id}>
+            <Link
+              to={`/home/news/${item.id}`}
+              className="adminblog__new"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              <div className="left">
+                <img
+                  src={
+                    item?.documentResponses[0]?.fileUrl ??
+                    "https://picsum.photos/200"
+                  }
+                  alt=""
+                />
+                <div className="flex">
+                  <CalendarSvg />
+                  <span>
+                    {new Date(item?.createdDate).toLocaleDateString()}
+                  </span>
+                </div>
+                <div className="hashteg">#news</div>
               </div>
-              <div className="hashteg">#news</div>
-            </div>
-            <div className="right">
-              <h2>{item?.titleUZ}</h2>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: item.textUZ,
-                }}
-              ></div>
-            </div>
-          </Link>
-        </div>
-      ))}
+              <div className="right">
+                <h2>{item?.titleUZ}</h2>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: item.textUZ,
+                  }}
+                ></div>
+              </div>
+            </Link>
+          </div>
+        ))
+      ) : (
+        <NoData title="Yangiliklar mavjud emas" />
+      )}
 
       <Modal
         title=""

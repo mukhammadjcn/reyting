@@ -4,11 +4,13 @@ import { PlusOutlined } from "@ant-design/icons";
 import {
   CreateMemberConfig,
   CreateMemberImageConfig,
+  DelMembersIdConfig,
   GetMemberConfig,
   UpdateMemberConfig,
 } from "src/server/config/Urls";
 import { CatchError } from "src/utils/index";
 import { IMember } from "types/index";
+import NoData from "src/components/animation/Lotties";
 
 function Members() {
   const [form] = Form.useForm();
@@ -85,6 +87,18 @@ function Members() {
     setMemberSelected([member]);
     form.setFieldsValue(member);
   };
+  const deleteMember = async () => {
+    try {
+      const { data } = await DelMembersIdConfig(memberSelected[0]?.id);
+      message.success(data?.message);
+      form.resetFields();
+      setFileList([]);
+      setOpen(false);
+      GetMembers();
+    } catch (error) {
+      CatchError(error);
+    }
+  };
   const GetMembers = async () => {
     try {
       const { data } = await GetMemberConfig();
@@ -118,17 +132,27 @@ function Members() {
         </Button>
       </div>
       <div className="adminmembers">
-        {members.map((member) => (
-          <div
-            key={member.id}
-            className="user"
-            onClick={() => updateMemberFun(member)}
-          >
-            <img src={"https://picsum.photos/100"} alt="" />
-            <h2>{member.fullName}</h2>
-            <p>{member.workPlace}</p>
-          </div>
-        ))}
+        {members.length > 0 ? (
+          members.map((member) => (
+            <div
+              key={member.id}
+              className="user"
+              onClick={() => updateMemberFun(member)}
+            >
+              <img
+                src={
+                  member?.documentResponses[0]?.fileUrl ??
+                  "https://picsum.photos/100"
+                }
+                alt=""
+              />
+              <h2>{member.fullName}</h2>
+              <p>{member.workPlace}</p>
+            </div>
+          ))
+        ) : (
+          <NoData title="A'zolar mavjud emas" />
+        )}
 
         <Modal title="" open={open} footer={null} onCancel={closeModal}>
           <Form
@@ -171,8 +195,8 @@ function Members() {
                 </Button>
                 {memberSelected.length > 0 && (
                   <Button
-                    onClick={closeModal}
                     style={{ marginRight: 16 }}
+                    onClick={deleteMember}
                     danger
                   >
                     O'chirish
