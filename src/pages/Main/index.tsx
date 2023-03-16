@@ -9,12 +9,14 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import { CatchError } from "src/utils/index";
-import { CreateOfferConfig } from "src/server/config/Urls";
+import { CreateOfferConfig, GetNewsConfig } from "src/server/config/Urls";
+import { INews } from "types/index";
 
 const Home: React.FC = () => {
   const [form] = Form.useForm();
-  const { t, i18n } = useTranslation();
   const [work, setWork] = useState(1);
+  const { t, i18n } = useTranslation();
+  const [news, setNews] = useState<INews[]>([]);
 
   const submitOffer = async (val: any) => {
     try {
@@ -26,7 +28,28 @@ const Home: React.FC = () => {
     }
   };
 
+  const GetNews = async () => {
+    const { data } = await GetNewsConfig();
+    setNews(data.content);
+  };
+  const GiveTrans = (news: INews, title = true) => {
+    const lang = localStorage.getItem("lang") ?? "RU";
+    if (title) {
+      return lang == "RU"
+        ? news.titleRU
+        : lang == "EN"
+        ? news.titleEN
+        : news.titleUZ;
+    }
+    return lang == "RU"
+      ? `${news.textRU.split("</p>").slice(0, 1).join("</p>")} ...`
+      : lang == "EN"
+      ? `${news.textEN.split("</p>").slice(0, 1).join("</p>")} ...`
+      : `${news.textUZ.split("</p>").slice(0, 1).join("</p>")} ...`;
+  };
+
   useEffect(() => {
+    GetNews();
     i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
   }, []);
 
@@ -52,47 +75,26 @@ const Home: React.FC = () => {
             dotPosition="bottom"
             className="topcaraousel"
           >
-            <div className="home__card">
-              <div>
-                <h2>{t("news.title").split(" ").slice(0, 6).join(" ")} ...</h2>
-                <p>{t("news.p1").split(" ").slice(0, 44).join(" ")} ...</p>
-                <Link to={"/blog/news1"}>
-                  <button>
-                    <span>{t("home.more")}</span>
-                    <RightSVG />
-                  </button>
-                </Link>
+            {news.slice(3, 6).map((news) => (
+              <div className="home__card" key={news.id}>
+                <div>
+                  <h2>{GiveTrans(news)}</h2>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: GiveTrans(news, false),
+                    }}
+                  />
+                  <Link to={`/blog/${news.id}`}>
+                    <button>
+                      <span>{t("home.more")}</span>
+                      <RightSVG />
+                    </button>
+                  </Link>
+                </div>
+                <img src={news?.documentResponses[0]?.fileUrl} alt="" />
               </div>
-              <img src={require("src/assets/images/new2.png")} alt="" />
-            </div>
-            <div className="home__card">
-              <div>
-                <h2>{t("news2.title").split(" ").slice(0, 6).join(" ")} ...</h2>
-                <p>{t("news2.p1").split(" ").slice(0, 44).join(" ")} ...</p>
-                <Link to={"/blog/news2"}>
-                  <button>
-                    <span>{t("home.more")}</span>
-                    <RightSVG />
-                  </button>
-                </Link>
-              </div>
-              <img src={require("src/assets/images/new1.png")} alt="" />
-            </div>
-            <div className="home__card">
-              <div>
-                <h2>{t("news3.title").split(" ").slice(0, 6).join(" ")} ...</h2>
-                <p>{t("news3.p1").split(" ").slice(0, 44).join(" ")} ...</p>
-                <Link to={"/blog/news3"}>
-                  <button>
-                    <span>{t("home.more")}</span>
-                    <RightSVG />
-                  </button>
-                </Link>
-              </div>
-              <img src={require("src/assets/images/new.png")} alt="" />
-            </div>
+            ))}
           </Carousel>
-
           <div className="home__mission">
             <h2 className="section_title">{t("home.mission")}</h2>
             <p>{t("home.mission_title")}</p>
@@ -288,7 +290,7 @@ const Home: React.FC = () => {
         <div className="home-news">
           <div className="container">
             <h2 className="section_title">{t("home.blog")}</h2>
-            <HomeNews />
+            <HomeNews news={news} />
           </div>
         </div>
 

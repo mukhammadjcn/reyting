@@ -536,6 +536,9 @@ button {
     background-color: #061237;
     & > div {
       padding: 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       h2 {
         font-weight: 600;
@@ -1125,7 +1128,7 @@ button {
   .header {
     &__nav {
       top: 0;
-      left: -100%;
+      left: -120%;
       z-index: 3;
       width: 100vw;
       height: 100vh;
@@ -1435,6 +1438,19 @@ button {
   .blogpage {
     .section_title {
       margin: 32px 0 24px;
+    }
+  }
+  .development {
+    .nodata-anim {
+      margin: auto;
+      width: 90% !important;
+      & > div {
+        width: 100% !important;
+        height: 320px !important;
+      }
+      h2 {
+        font-size: 20px;
+      }
     }
   }
 }

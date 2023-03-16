@@ -1,17 +1,41 @@
 import { Breadcrumb } from "antd";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 import Footer from "src/components/home/Footer";
 import Header from "src/components/home/Header";
+import { GetNewsIdConfig } from "src/server/config/Urls";
+import { INews } from "types/index";
 
 function BlogPage() {
   const location = useLocation();
   const { t, i18n } = useTranslation();
+  const [news, setNews] = useState<any>();
 
-  console.log();
+  const GetNews = async () => {
+    const { data } = await GetNewsIdConfig(
+      location.pathname.replaceAll("/blog/", "")
+    );
+    setNews(data);
+  };
+  const GiveTrans = (news: INews, title = true) => {
+    const lang = localStorage.getItem("lang") ?? "RU";
+    if (title) {
+      return lang == "RU"
+        ? news?.titleRU
+        : lang == "EN"
+        ? news?.titleEN
+        : news?.titleUZ;
+    }
+    return lang == "RU"
+      ? news?.textRU
+      : lang == "EN"
+      ? news?.textEN
+      : news?.textUZ;
+  };
 
   useEffect(() => {
+    GetNews();
     i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
   }, []);
   return (
@@ -29,7 +53,23 @@ function BlogPage() {
           <Breadcrumb.Item>{t("nav.news")}</Breadcrumb.Item>
         </Breadcrumb>
 
-        {location.pathname.replaceAll("/blog/", "") == "news1" && (
+        <h2 className="section_title">{GiveTrans(news)}</h2>
+
+        <img
+          src={
+            news?.documentResponses[0]?.fileUrl ??
+            require("src/assets/images/new6.png")
+          }
+          alt=""
+        />
+
+        <div
+          dangerouslySetInnerHTML={{
+            __html: GiveTrans(news, false),
+          }}
+        />
+
+        {/* {location.pathname.replaceAll("/blog/", "") == "news1" && (
           <>
             <h2 className="section_title">{t("news.title")}</h2>
 
@@ -95,7 +135,7 @@ function BlogPage() {
             <p>{t("news6.p2")}</p>
             <p>{t("news6.p3")}</p>
           </>
-        )}
+        )} */}
 
         <div className="flex">
           {/* <span>#новости</span> */}

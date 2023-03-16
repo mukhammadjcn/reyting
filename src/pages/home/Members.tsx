@@ -169,8 +169,36 @@ function Members() {
               <Input />
             </Form.Item>
             <Form.Item
+              label="Azoning ism sharifi (RU)"
+              name="fullNameRU"
+              rules={[{ required: true, message: "Azoning ism sharifi !" }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Azoning ism sharifi (EN)"
+              name="fullNameEN"
+              rules={[{ required: true, message: "Azoning ism sharifi !" }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
               label="Azoning ishlagan joyi"
               name="workPlace"
+              rules={[{ required: true, message: "Azoning ishlagan joyi !" }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Azoning ishlagan joyi (RU)"
+              name="workPlaceRU"
+              rules={[{ required: true, message: "Azoning ishlagan joyi !" }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Azoning ishlagan joyi (EN)"
+              name="workPlaceEN"
               rules={[{ required: true, message: "Azoning ishlagan joyi !" }]}
             >
               <Input />

@@ -13,6 +13,7 @@ import Main from "./Main";
 import About from "./About";
 import Blog from "./Blog";
 import BlogPage from "./Blog/BlogPage";
+import Development from "./NotFound/Depelopment";
 
 export {
   Login,
@@ -27,4 +28,5 @@ export {
   About,
   Blog,
   BlogPage,
+  Development,
 };

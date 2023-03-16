@@ -84,15 +84,15 @@ function Footer() {
             </a>
           </div>
 
-          {/* <div className="footer__contact">
+          <div className="footer__contact">
             <h4>{t("nav.projects")}</h4>
-            <Link to={"#"} className="contact">
+            <Link to={"/development"} className="contact">
               <span>{t("footer.project.catalog")}</span>
             </Link>
-            <Link to={"#"} className="contact">
+            <Link to={"/development"} className="contact">
               <span>{t("footer.project.list")}</span>
             </Link>
-          </div> */}
+          </div>
 
           <div className="footer__contact">
             <h4>{t("nav.blog")}</h4>

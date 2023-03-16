@@ -17,6 +17,7 @@ import {
   About,
   Blog,
   BlogPage,
+  Development,
 } from "./pages";
 import "src/styles/App.scss";
 import { isAdmin } from "./server/Host";
@@ -57,6 +58,7 @@ const App: React.FC = () => {
 
         {/* Not found page */}
         <Route path="/*" element={<NotFound />} />
+        <Route path="/development" element={<Development />} />
       </Routes>
     </Router>
   );

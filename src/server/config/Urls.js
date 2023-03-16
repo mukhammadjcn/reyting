@@ -37,6 +37,9 @@ export const GetNewsIdConfig = (id, data) => {
 export const DelNewsIdConfig = (id) => {
   return DeleteFunc(`admin/news/${id}`);
 };
+export const PrimaryConfig = (id, type) => {
+  return EditFunc(`admin/setNewsIsPublic/${id}?isPublic=${type}`, "", "PATCH");
+};
 
 // Get offers page
 export const GetOffersConfig = (param = "") => {

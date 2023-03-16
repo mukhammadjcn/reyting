@@ -7,6 +7,7 @@ import {
   Upload,
   UploadFile,
   Image,
+  DatePicker,
 } from "antd";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -14,18 +15,20 @@ import {
   CreateImageConfig,
   DelNewsIdConfig,
   GetNewsIdConfig,
+  PrimaryConfig,
   UpdateNewsConfig,
 } from "src/server/config/Urls";
 import { CatchError } from "src/utils/index";
 import { ArrowLeftOutlined, PlusOutlined } from "@ant-design/icons";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import moment from "moment";
 
 function NewsID() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [data, setData] = useState<any>();
   const [form] = Form.useForm();
+  const [data, setData] = useState<any>();
   const [open, setOpen] = useState(false);
   const [textUZ, setTextUZ] = useState<string>("");
   const [textRU, setTextRU] = useState<string>("");
@@ -40,6 +43,10 @@ function NewsID() {
         location.pathname.replaceAll("/home/news/", "")
       );
       setData(data);
+      form.setFieldsValue({
+        ...data,
+        newsDate: moment(data?.createdDate),
+      });
     } catch (error) {
       CatchError(error);
     }
@@ -54,6 +61,7 @@ function NewsID() {
             textEN,
             textRU,
             textUZ,
+            newsDate: val?.newsDate.toString(),
           }
         );
 
@@ -119,6 +127,15 @@ function NewsID() {
       CatchError(error);
     }
   };
+  const makePrimary = async (type: boolean) => {
+    try {
+      await PrimaryConfig(data?.id, type);
+      NewsID();
+      message.success("Muvofaqqiyatli yangilandi");
+    } catch (error) {
+      CatchError(error);
+    }
+  };
   const handleCancel = () => setPreviewVisible(false);
 
   useEffect(() => {
@@ -143,6 +160,15 @@ function NewsID() {
           >
             Orqaga
           </Button>
+
+          {data?.isPublic ? (
+            <Button onClick={() => makePrimary(false)} danger>
+              Asosiydan o'chirish
+            </Button>
+          ) : (
+            <Button onClick={() => makePrimary(true)}>Asosiy qilish</Button>
+          )}
+
           <Button
             type="primary"
             onClick={() => {
@@ -175,12 +201,9 @@ function NewsID() {
       >
         <Form
           form={form}
-          onFinish={updateNews}
           layout="vertical"
           autoComplete="off"
-          initialValues={{
-            ...data,
-          }}
+          onFinish={updateNews}
         >
           <Form.Item
             label="Yangilikni o'zbekcha sarlovhasi"
@@ -243,6 +266,23 @@ function NewsID() {
               }}
             />
           </div>
+
+          <Form.Item
+            style={{ width: "100%" }}
+            label="Yangilik sanasi"
+            name="newsDate"
+            rules={[
+              {
+                required: true,
+                message: "Yangilik sanasi !",
+              },
+            ]}
+          >
+            <DatePicker
+              placeholder="Sanani belgilang !"
+              style={{ width: "50%" }}
+            />
+          </Form.Item>
 
           <Upload
             maxCount={2}

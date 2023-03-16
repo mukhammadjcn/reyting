@@ -95,6 +95,7 @@ export interface INews {
   textRU: string;
   textEN: string;
   createdDate: string;
+  isPublic: false;
   documentResponses: IImage[];
 }
 

@@ -7,7 +7,17 @@ import {
   CreateNewsConfig,
   GetNewsConfig,
 } from "src/server/config/Urls";
-import { Button, Form, Input, message, Modal, Upload, UploadFile } from "antd";
+import {
+  Alert,
+  Button,
+  DatePicker,
+  Form,
+  Input,
+  message,
+  Modal,
+  Upload,
+  UploadFile,
+} from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
@@ -41,6 +51,7 @@ function News() {
           textEN,
           textRU,
           textUZ,
+          newsDate: val?.newsDate.toString(),
         });
         message.success(data?.message);
 
@@ -139,7 +150,10 @@ function News() {
                     {new Date(item?.createdDate).toLocaleDateString()}
                   </span>
                 </div>
-                <div className="hashteg">#news</div>
+                <div className="hashteg">
+                  {item.isPublic && <span className="asosiy">#asosiy</span>}{" "}
+                  #news
+                </div>
               </div>
               <div className="right">
                 <h2>{item?.titleUZ}</h2>
@@ -230,6 +244,23 @@ function News() {
               }}
             />
           </div>
+
+          <Form.Item
+            style={{ width: "100%" }}
+            label="Yangilik sanasi"
+            name="newsDate"
+            rules={[
+              {
+                required: true,
+                message: "Yangilik sanasi !",
+              },
+            ]}
+          >
+            <DatePicker
+              placeholder="Sanani belgilang !"
+              style={{ width: "50%" }}
+            />
+          </Form.Item>
 
           <Upload
             maxCount={2}

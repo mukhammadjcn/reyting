@@ -1,3 +1,4 @@
+import dev from "./dev.json";
 import done from "./done.json";
 import alert from "./alert.json";
 import nodata from "./no_data.json";
@@ -23,6 +24,15 @@ export const noDataAlert = {
   loop: true,
   autoplay: true,
   animationData: nodata,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
+};
+
+export const devAlert = {
+  loop: true,
+  autoplay: true,
+  animationData: dev,
   rendererSettings: {
     preserveAspectRatio: "xMidYMid slice",
   },
