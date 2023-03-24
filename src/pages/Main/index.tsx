@@ -85,7 +85,7 @@ const Home: React.FC = () => {
             dotPosition="bottom"
             className="topcaraousel"
           >
-            {news.slice(3, 6).map((news) => (
+            {publicNews.map((news) => (
               <div className="home__card" key={news.id}>
                 <div>
                   <h2>{GiveTrans(news)}</h2>
