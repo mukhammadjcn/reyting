@@ -26,6 +26,15 @@ export const GetNewsConfig = (url, data) => {
   };
   return axiosInstanceNoAuth(config);
 };
+export const GetPublicNewsConfig = (url, data) => {
+  const config = {
+    method: "GET",
+    data,
+    url: `admin/publicNews${url ?? ""}`,
+  };
+  return axiosInstanceNoAuth(config);
+};
+
 export const GetNewsIdConfig = (id, data) => {
   const config = {
     method: "GET",

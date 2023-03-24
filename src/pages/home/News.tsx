@@ -51,7 +51,7 @@ function News() {
           textEN,
           textRU,
           textUZ,
-          newsDate: val?.newsDate.toString(),
+          newsDate: val?.newsDate?.format("YYYY-MM-DD"),
         });
         message.success(data?.message);
 

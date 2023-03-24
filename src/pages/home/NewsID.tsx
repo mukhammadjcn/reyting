@@ -61,7 +61,7 @@ function NewsID() {
             textEN,
             textRU,
             textUZ,
-            newsDate: val?.newsDate.toString(),
+            newsDate: val?.newsDate.format("YYYY-MM-DD"),
           }
         );
 
@@ -91,7 +91,7 @@ function NewsID() {
     }
   };
   const closeModal = () => {
-    form.resetFields();
+    // form.resetFields();
     setTextEN("");
     setTextRU("");
     setTextUZ("");

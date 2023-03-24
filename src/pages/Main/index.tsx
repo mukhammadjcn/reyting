@@ -9,7 +9,11 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import { CatchError } from "src/utils/index";
-import { CreateOfferConfig, GetNewsConfig } from "src/server/config/Urls";
+import {
+  CreateOfferConfig,
+  GetNewsConfig,
+  GetPublicNewsConfig,
+} from "src/server/config/Urls";
 import { INews } from "types/index";
 
 const Home: React.FC = () => {
@@ -17,6 +21,7 @@ const Home: React.FC = () => {
   const [work, setWork] = useState(1);
   const { t, i18n } = useTranslation();
   const [news, setNews] = useState<INews[]>([]);
+  const [publicNews, setPublicNews] = useState<INews[]>([]);
 
   const submitOffer = async (val: any) => {
     try {
@@ -31,6 +36,10 @@ const Home: React.FC = () => {
   const GetNews = async () => {
     const { data } = await GetNewsConfig();
     setNews(data.content);
+  };
+  const GetPublicNews = async () => {
+    const { data } = await GetPublicNewsConfig();
+    setPublicNews(data.content);
   };
   const GiveTrans = (news: INews, title = true) => {
     const lang = localStorage.getItem("lang") ?? "RU";
@@ -50,6 +59,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     GetNews();
+    GetPublicNews();
     i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
   }, []);
 
