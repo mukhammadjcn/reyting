@@ -147,7 +147,7 @@ i18n
               work: "Oliy ta’lim, fan va innovatsiyalar vazirligi bosh mutaxassisi, kengash kotibi",
             },
             user12: {
-              name: "Abdullayev Alisher Ilxamovich",
+              name: "Abdullayev Alisher",
               work: "Oliy ta'lim, fan va innovatsiyalar vazirligi huzuridagi Raqamli ta'lim texnologiyalarini rivojlantirish markazi direktori",
             },
             user13: {
@@ -396,7 +396,7 @@ i18n
               work: "Chief Specialist at the Ministry of Higher Education, Scientific and Innovation, secretary of the Council",
             },
             user12: {
-              name: "Abdullaev Alisher Ilkhamovich",
+              name: "Abdullaev Alisher",
               work: "Director of the Center for The Development of Digital Education Technologies under The Ministry of Higher Education, Science and Innovations of the Republic of Uzbekistan",
             },
             user13: {
@@ -643,7 +643,7 @@ i18n
               work: "Главный специалист Министерства высшего образования, науки и инноваций, cекретарь совета",
             },
             user12: {
-              name: "Абдуллаев Алишер Илхамович",
+              name: "Абдуллаев Алишер",
               work: "Директор Центра развития цифровых образовательных технологий при Министерстве высшего образования, науки и инноваций Республики Узбекистан",
             },
             user13: {

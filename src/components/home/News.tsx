@@ -25,22 +25,17 @@ function HomeNews({ news }: { news: INews[] }) {
   return (
     <>
       <div className="home-news-content">
-        <Link
-          to={`/blog/${news[news.length - 1]?.id}`}
-          onClick={() => window.scrollTo(0, 0)}
-        >
+        <Link to={`/blog/${news[0]?.id}`} onClick={() => window.scrollTo(0, 0)}>
           <div className="home-news-content-left">
-            <img src={news[news.length - 1]?.documentResponses[0]?.fileUrl} />
+            <img src={news[0]?.documentResponses[0]?.fileUrl} />
             <div className="home-news-content-box">
               <div className="home-news-content-box-wrap">
                 <div className="home-news-content-box-header">
-                  {GiveTrans(news[news.length - 1])}
+                  {GiveTrans(news[0])}
                 </div>
                 <div className="home-news-content-box-footer">
                   <CalendarSvg />{" "}
-                  {new Date(
-                    news[news.length - 1]?.createdDate
-                  ).toLocaleDateString()}
+                  {new Date(news[0]?.createdDate).toLocaleDateString()}
                 </div>
               </div>
             </div>
@@ -49,21 +44,19 @@ function HomeNews({ news }: { news: INews[] }) {
 
         <div className="home-news-content-right">
           <Link
-            to={`/blog/${news[news.length - 2]?.id}`}
+            to={`/blog/${news[1]?.id}`}
             onClick={() => window.scrollTo(0, 0)}
           >
             <div className="home-news-content-right-card">
-              <img src={news[news.length - 2]?.documentResponses[0]?.fileUrl} />
+              <img src={news[1]?.documentResponses[0]?.fileUrl} />
               <div className="home-news-content-box">
                 <div className="home-news-content-box-wrap">
                   <div className="home-news-content-box-header">
-                    {GiveTrans(news[news.length - 2])}
+                    {GiveTrans(news[1])}
                   </div>
                   <div className="home-news-content-box-footer">
                     <CalendarSvg />{" "}
-                    {new Date(
-                      news[news.length - 2]?.createdDate
-                    ).toLocaleDateString()}
+                    {new Date(news[1]?.createdDate).toLocaleDateString()}
                   </div>
                 </div>
               </div>
@@ -71,21 +64,19 @@ function HomeNews({ news }: { news: INews[] }) {
           </Link>
 
           <Link
-            to={`/blog/${news[news.length - 3]?.id}`}
+            to={`/blog/${news[2]?.id}`}
             onClick={() => window.scrollTo(0, 0)}
           >
             <div className="home-news-content-right-card">
-              <img src={news[news.length - 3]?.documentResponses[0]?.fileUrl} />
+              <img src={news[2]?.documentResponses[0]?.fileUrl} />
               <div className="home-news-content-box">
                 <div className="home-news-content-box-wrap">
                   <div className="home-news-content-box-header">
-                    {GiveTrans(news[news.length - 3])}
+                    {GiveTrans(news[2])}
                   </div>
                   <div className="home-news-content-box-footer">
                     <CalendarSvg />{" "}
-                    {new Date(
-                      news[news.length - 3]?.createdDate
-                    ).toLocaleDateString()}
+                    {new Date(news[2]?.createdDate).toLocaleDateString()}
                   </div>
                 </div>
               </div>
@@ -96,46 +87,58 @@ function HomeNews({ news }: { news: INews[] }) {
 
       <div className="home-news-carousel">
         <Carousel dotPosition="top">
-          <Link to={"/blog/news1"} onClick={() => window.scrollTo(0, 0)}>
+          <Link
+            to={`/blog/${news[0]?.id}`}
+            onClick={() => window.scrollTo(0, 0)}
+          >
             <div className="home-news-content-right-card">
-              <img src={require("src/assets/images/new2.png")} />
+              <img src={news[1]?.documentResponses[0]?.fileUrl} />
               <div className="home-news-content-box">
                 <div className="home-news-content-box-wrap">
                   <div className="home-news-content-box-header">
                     {t("home.news1")}
                   </div>
                   <div className="home-news-content-box-footer">
-                    <CalendarSvg /> 31.08.2022
+                    <CalendarSvg />{" "}
+                    {new Date(news[0]?.createdDate).toLocaleDateString()}
                   </div>
                 </div>
               </div>
             </div>
           </Link>
-          <Link to={"/blog/news2"} onClick={() => window.scrollTo(0, 0)}>
+          <Link
+            to={`/blog/${news[1]?.id}`}
+            onClick={() => window.scrollTo(0, 0)}
+          >
             <div className="home-news-content-right-card">
-              <img src={require("src/assets/images/new1.png")} />
+              <img src={news[1]?.documentResponses[1]?.fileUrl} />
               <div className="home-news-content-box">
                 <div className="home-news-content-box-wrap">
                   <div className="home-news-content-box-header">
                     {t("home.news2")}
                   </div>
                   <div className="home-news-content-box-footer">
-                    <CalendarSvg /> 04.09.2022
+                    <CalendarSvg />{" "}
+                    {new Date(news[1]?.createdDate).toLocaleDateString()}
                   </div>
                 </div>
               </div>
             </div>
           </Link>
-          <Link to={"/blog/news3"} onClick={() => window.scrollTo(0, 0)}>
+          <Link
+            to={`/blog/${news[2]?.id}`}
+            onClick={() => window.scrollTo(0, 0)}
+          >
             <div className="home-news-content-right-card">
-              <img src={require("src/assets/images/new.png")} />
+              <img src={news[1]?.documentResponses[2]?.fileUrl} />
               <div className="home-news-content-box">
                 <div className="home-news-content-box-wrap">
                   <div className="home-news-content-box-header">
                     {t("home.news3")}
                   </div>
                   <div className="home-news-content-box-footer">
-                    <CalendarSvg /> 20.08.2022
+                    <CalendarSvg />{" "}
+                    {new Date(news[2]?.createdDate).toLocaleDateString()}
                   </div>
                 </div>
               </div>
