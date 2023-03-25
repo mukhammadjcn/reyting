@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import Slider from "react-slick";
 import Footer from "src/components/home/Footer";
 import Header from "src/components/home/Header";
 import Partners from "src/components/home/Partners";
@@ -7,6 +8,40 @@ import SliderMulti from "src/components/slider/SliderMulti";
 
 function About() {
   const { t, i18n } = useTranslation();
+
+  const settings = {
+    dots: true,
+    speed: 500,
+    infinite: true,
+    autoplay: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerPadding: "10px",
+    responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 1080,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 720,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+        },
+      },
+    ],
+  };
 
   useEffect(() => {
     i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
@@ -74,7 +109,7 @@ function About() {
           <Partners />
         </div>
 
-        <div className="container">
+        {/* <div className="container">
           <div className="documents" id="doc">
             <h2 className="section_title">{t("about.documents")}</h2>
             <div className="documents_box">
@@ -100,6 +135,46 @@ function About() {
                 <p>{t("about.document3.info")}</p>
               </div>
             </div>
+          </div>
+        </div> */}
+
+        <div className="container">
+          <div className="documents" id="doc">
+            <h2 className="section_title">{t("about.documents")}</h2>
+            <Slider {...settings} className="user-slider">
+              <div className="documents_item">
+                <img src={require("src/assets/images/doc1.png")} alt="" />
+                <a href="https://lex.uz/docs/5031048" target="_blank">
+                  {t("about.document1.name")}
+                </a>
+                <p>{t("about.document1.info")}</p>
+              </div>
+              <div className="documents_item">
+                <img src={require("src/assets/images/doc2.png")} alt="" />
+                <a href="https://lex.uz/docs/6102468" target="_blank">
+                  {t("about.document2.name")}
+                </a>
+                <p>{t("about.document2.info")}</p>
+              </div>
+              <div className="documents_item">
+                <img src={require("src/assets/images/doc3.png")} alt="" />
+                <a href="https://lex.uz/docs/5297051" target="_blank">
+                  {t("about.document3.name")}
+                </a>
+                <p>{t("about.document3.info")}</p>
+              </div>
+              <div className="documents_item">
+                <img src={require("src/assets/images/doc4.jpg")} alt="" />
+                <a
+                  href={require("src/assets/ПОЛОЖЕНИЕ_О_КОНСУЛЬТАТИВНОГО_СОВЕТА.pdf")}
+                  target="_blank"
+                  download={true}
+                >
+                  {t("about.document4.name")}
+                </a>
+                {/* <p>{t("about.document3.info")}</p> */}
+              </div>
+            </Slider>
           </div>
         </div>
       </div>

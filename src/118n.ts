@@ -195,6 +195,10 @@ i18n
               name: "Sun'iy intellekt texnologiyalarini jadal joriy etish uchun shart-sharoitlar yaratish chora-tadbirlari to'g'risida",
               info: "O‘zbekiston Respublikasi Prezidentining 2021-yil 17-fevraldagi PQ-4996-son qarori",
             },
+            document4: {
+              name: "Oliy ta’lim, fan va innovatsiyalar vazirligi huzurida sun’iy intellekt texnologiyalari bo‘yicha Maslahat kengashi nizomi",
+              info: "",
+            },
           },
           news: {
             title:
@@ -269,6 +273,7 @@ i18n
             text: "Murojaat matni",
             info: `O'zingizni qiziqtirgan savolingizni yozing, tez orada javob beramiz`,
           },
+          development: "Sahifa ishlab chiqish jarayonida",
         },
       },
       EN: {
@@ -445,6 +450,10 @@ i18n
               name: "On measures to create conditions for rapid introduction of artificial intelligence technologies",
               info: "Decision PQ-4996 of the President of the Republic of Uzbekistan dated February 17, 2021",
             },
+            document4: {
+              name: "Regulation about the Advisory Council on Artificial Intelligence under the Ministry of Higher Education, Science and Innovation of the Republic of Uzbekistan",
+              info: "",
+            },
           },
           news: {
             title: "School Teachers Technical Skill Development Programme",
@@ -518,6 +527,7 @@ i18n
             text: "Request text",
             info: `Write your question, we will answer soon`,
           },
+          development: "The page is under development",
         },
       },
       RU: {
@@ -692,6 +702,10 @@ i18n
               name: "О мерах по созданию условий для быстрого внедрения технологий искусственного интеллекта",
               info: "Постановление Президента Республики Узбекистан PQ-4996 от 17 февраля 2021 года",
             },
+            document4: {
+              name: "Положение о консультативном совете по искусственному интеллекту при Министерстве высшего образования, науки и инноваций Республики Узбекистан",
+              info: "",
+            },
           },
           news: {
             title:
@@ -766,6 +780,7 @@ i18n
             text: "Текст заявки",
             info: `Напишите свой вопрос, мы ответим в ближайшее время`,
           },
+          development: "Страница находится в разработке",
         },
       },
     },
