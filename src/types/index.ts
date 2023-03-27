@@ -91,6 +91,9 @@ export interface INews {
   titleUZ: string;
   titleRU: string;
   titleEN: string;
+  anonsUZ: string;
+  anonsRU: string;
+  anonsEN: string;
   textUZ: string;
   textRU: string;
   textEN: string;

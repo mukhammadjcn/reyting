@@ -22,6 +22,7 @@ function Members() {
   const [memberSelected, setMemberSelected] = useState<IMember[]>([]);
 
   const closeModal = () => {
+    setMemberSelected([]);
     form.resetFields();
     setFileList([]);
     setOpen(false);
@@ -92,6 +93,7 @@ function Members() {
       const { data } = await DelMembersIdConfig(memberSelected[0]?.id);
       message.success(data?.message);
       form.resetFields();
+      setMemberSelected([]);
       setFileList([]);
       setOpen(false);
       GetMembers();

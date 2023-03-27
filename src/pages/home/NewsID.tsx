@@ -233,6 +233,32 @@ function NewsID() {
             <Input />
           </Form.Item>
 
+          <Form.Item
+            label="Yangilikni o'zbekcha anonsi"
+            name="anonsUZ"
+            rules={[
+              { required: true, message: "Yangilikni o'zbekcha anonsi !" },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Yangilikni ruscha anonsi"
+            name="anonsRU"
+            rules={[{ required: true, message: "Yangilikni ruscha anonsi !" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Yangilikni inglizcha anonsi"
+            name="anonsEN"
+            rules={[
+              { required: true, message: "Yangilikni inglizcha anonsi !" },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
           <div style={{ marginBottom: 16 }}>
             <p style={{ marginBottom: 8 }}>Yangilikni o'zbekcha matni</p>
             <CKEditor
