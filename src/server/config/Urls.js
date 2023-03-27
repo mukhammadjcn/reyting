@@ -57,6 +57,9 @@ export const GetOffersConfig = (param = "") => {
 export const SendOffersConfig = (param = "") => {
   return EditFunc(`admin/sendAnswer${param}`, "", "PATCH");
 };
+export const DelOfferIdConfig = (id) => {
+  return DeleteFunc(`admin/offers/${id}`);
+};
 
 // Members api
 export const CreateMemberConfig = (data) => {

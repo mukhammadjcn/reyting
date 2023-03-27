@@ -11,7 +11,11 @@ import {
 import { ColumnsType } from "antd/es/table";
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { GetOffersConfig, SendOffersConfig } from "src/server/config/Urls";
+import {
+  DelOfferIdConfig,
+  GetOffersConfig,
+  SendOffersConfig,
+} from "src/server/config/Urls";
 import { IOffer } from "src/types/index";
 import { CatchError } from "src/utils/index";
 import { SettingOutlined } from "@ant-design/icons";
@@ -26,6 +30,7 @@ function Offers() {
   const [current, setCurrent] = useState(currentTab ? currentTab : "Yangi");
   const [currentpage, setCurrentPage] = useState(currentp ? currentp : 1);
   const [offers, setOffers] = useState<IOffer[]>([]);
+  const [currentOffer, setCurrentOffer] = useState<IOffer[]>([]);
   const [loading, setLoading] = useState(false);
 
   const items: TabsProps["items"] = [
@@ -53,8 +58,8 @@ function Offers() {
     },
     {
       title: "Elektron pochta",
-      dataIndex: "phoneNumber",
-      key: "phoneNumber",
+      dataIndex: "email",
+      key: "email",
       align: "center",
       width: 400,
     },
@@ -101,11 +106,13 @@ function Offers() {
     return url.length > 2 ? url : "";
   };
   const closeModal = () => {
+    setCurrentOffer([]);
     form.resetFields();
     setOpen(false);
   };
   const openModal = (item: IOffer) => {
     form.setFieldsValue(item);
+    setCurrentOffer([item]);
     setOpen(true);
   };
   const submitOffer = async (val: IOffer) => {
@@ -146,6 +153,16 @@ function Offers() {
       CatchError(error);
     }
     setLoading(false);
+  };
+  const deleteOffer = async () => {
+    try {
+      const { data } = await DelOfferIdConfig(currentOffer[0]?.id);
+      message.success(data?.message);
+      closeModal();
+      GetOffers();
+    } catch (error) {
+      CatchError(error);
+    }
   };
 
   useEffect(() => {
@@ -193,6 +210,16 @@ function Offers() {
 
           <Form.Item style={{ marginBottom: 0, marginTop: 16 }}>
             <div className="flex" style={{ justifyContent: "end" }}>
+              {current !== "Yangi" && (
+                <Button
+                  danger
+                  type="primary"
+                  onClick={deleteOffer}
+                  style={{ marginRight: 16 }}
+                >
+                  O'chirish
+                </Button>
+              )}
               <Button onClick={closeModal} style={{ marginRight: 16 }}>
                 Bekor qilish
               </Button>
