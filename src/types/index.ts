@@ -105,7 +105,11 @@ export interface INews {
 export interface IMember {
   id: number;
   fullName: string;
+  fullNameEN: string;
+  fullNameRU: string;
   workPlace: string;
+  workPlaceEN: string;
+  workPlaceRU: string;
   documentResponses: IImage[];
 }
 

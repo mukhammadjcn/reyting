@@ -18,20 +18,26 @@ function BlogPage() {
     );
     setNews(data);
   };
-  const GiveTrans = (news: INews, title = true) => {
+  const GiveTrans = (news: INews, title = "title") => {
     const lang = localStorage.getItem("lang") ?? "RU";
-    if (title) {
+    if (title == "title") {
       return lang == "RU"
-        ? news?.titleRU
+        ? news.titleRU
         : lang == "EN"
-        ? news?.titleEN
-        : news?.titleUZ;
+        ? news.titleEN
+        : news.titleUZ;
+    } else if (title == "anons") {
+      return lang == "RU"
+        ? news.anonsRU
+        : lang == "EN"
+        ? news.anonsEN
+        : news.anonsUZ;
     }
     return lang == "RU"
-      ? news?.textRU
+      ? news.textRU
       : lang == "EN"
-      ? news?.textEN
-      : news?.textUZ;
+      ? news.textEN
+      : news.textUZ;
   };
 
   useEffect(() => {
@@ -60,7 +66,7 @@ function BlogPage() {
 
           <div
             dangerouslySetInnerHTML={{
-              __html: GiveTrans(news, false),
+              __html: GiveTrans(news, "false"),
             }}
           />
 

@@ -41,20 +41,21 @@ const Home: React.FC = () => {
     const { data } = await GetPublicNewsConfig();
     setPublicNews(data.content);
   };
-  const GiveTrans = (news: INews, title = true) => {
+  const GiveTrans = (news: INews, title = "title") => {
     const lang = localStorage.getItem("lang") ?? "RU";
-    if (title) {
+    if (title == "title") {
       return lang == "RU"
         ? news.titleRU
         : lang == "EN"
         ? news.titleEN
         : news.titleUZ;
+    } else if (title == "anons") {
+      return lang == "RU"
+        ? news.anonsRU
+        : lang == "EN"
+        ? news.anonsEN
+        : news.anonsUZ;
     }
-    return lang == "RU"
-      ? `${news.textRU.split("</p>").slice(0, 1).join("</p>")} ...`
-      : lang == "EN"
-      ? `${news.textEN.split("</p>").slice(0, 1).join("</p>")} ...`
-      : `${news.textUZ.split("</p>").slice(0, 1).join("</p>")} ...`;
   };
 
   useEffect(() => {
@@ -89,11 +90,7 @@ const Home: React.FC = () => {
               <div className="home__card" key={news.id}>
                 <div>
                   <h2>{GiveTrans(news)}</h2>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: GiveTrans(news, false),
-                    }}
-                  />
+                  <p>{GiveTrans(news, "anons")}</p>
                   <Link to={`/blog/${news.id}`}>
                     <button>
                       <span>{t("home.more")}</span>

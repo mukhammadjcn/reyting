@@ -16,20 +16,21 @@ function BLog() {
     const { data } = await GetNewsConfig();
     setNews(data.content);
   };
-  const GiveTrans = (news: INews, title = true) => {
+  const GiveTrans = (news: INews, title = "title") => {
     const lang = localStorage.getItem("lang") ?? "RU";
-    if (title) {
+    if (title == "title") {
       return lang == "RU"
         ? news.titleRU
         : lang == "EN"
         ? news.titleEN
         : news.titleUZ;
+    } else if (title == "anons") {
+      return lang == "RU"
+        ? news.anonsRU
+        : lang == "EN"
+        ? news.anonsEN
+        : news.anonsUZ;
     }
-    return lang == "RU"
-      ? `${news.textRU.split(" ").slice(0, 42).join(" ")} ...`
-      : lang == "EN"
-      ? `${news.textEN.split(" ").slice(0, 42).join(" ")} ...`
-      : `${news.textUZ.split(" ").slice(0, 42).join(" ")} ...`;
   };
 
   useEffect(() => {
@@ -68,11 +69,7 @@ function BLog() {
               </div>
               <div className="right">
                 <h2>{GiveTrans(news)}</h2>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: GiveTrans(news, false),
-                  }}
-                />
+                <p>{GiveTrans(news, "anons")}</p>
               </div>
             </Link>
           ))}

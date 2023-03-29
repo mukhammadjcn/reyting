@@ -1,13 +1,13 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import Slider from "react-slick";
+import { IMember } from "types/index";
+import { LoadingOutlined } from "@ant-design/icons";
 
-function SliderMulti() {
-  const { t } = useTranslation();
+function SliderMulti({ members }: { members: IMember[] }) {
   const settings = {
     dots: true,
     speed: 500,
-    infinite: true,
+    infinite: false,
     autoplay: true,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -38,84 +38,36 @@ function SliderMulti() {
     ],
   };
 
+  const GiveTrans = (member: IMember, name = true) => {
+    const lang = localStorage.getItem("lang") ?? "RU";
+    if (name) {
+      return lang == "RU"
+        ? member.fullNameRU
+        : lang == "EN"
+        ? member.fullNameEN
+        : member.fullName;
+    } else {
+      return lang == "RU"
+        ? member.workPlaceRU
+        : lang == "EN"
+        ? member.workPlaceEN
+        : member.workPlace;
+    }
+  };
+
   return (
     <Slider {...settings} className="user-slider">
-      <div className="user">
-        <img src={require("src/assets/images/user.png")} alt="" />
-        <h2>{t("about.user1.name")}</h2>
-        <p>{t("about.user1.work")}</p>
-      </div>
-      <div className="user">
-        <img src={require("src/assets/images/user2.png")} alt="" />
-        <h2>{t("about.user2.name")}</h2>
-        <p>{t("about.user2.work")}</p>
-      </div>
-      <div className="user">
-        <img
-          src={require("src/assets/images/photo_2022-10-28_17-08-35.jpg")}
-          alt=""
-        />
-        <h2>{t("about.user12.name")}</h2>
-        <p>{t("about.user12.work")}</p>
-      </div>
-      <div className="user">
-        <img src={require("src/assets/images/Б.Махкамов.jpg")} alt="" />
-        <h2>{t("about.user3.name")}</h2>
-        <p>{t("about.user3.work")}</p>
-      </div>
-      <div className="user">
-        <img src={require("src/assets/images/А.Незнамов.jpg")} alt="" />
-        <h2>{t("about.user4.name")}</h2>
-        <p>{t("about.user4.work")}</p>
-      </div>
-      <div className="user">
-        <img src={require("src/assets/images/И Вихров.jpg")} alt="" />
-        <h2>{t("about.user5.name")}</h2>
-        <p>{t("about.user5.work")}</p>
-      </div>
-      <div className="user">
-        <img src={require("src/assets/images/В. Определенов.jpeg")} alt="" />
-        <h2>{t("about.user6.name")}</h2>
-        <p>{t("about.user6.work")}</p>
-      </div>{" "}
-      <div className="user">
-        <img src={require("src/assets/images/Ф Холиков.jpg")} alt="" />
-        <h2>{t("about.user7.name")}</h2>
-        <p>{t("about.user7.work")}</p>
-      </div>{" "}
-      <div className="user">
-        <img src={require("src/assets/images/Ш.Умирзаков.jpg")} alt="" />
-        <h2>{t("about.user8.name")}</h2>
-        <p>{t("about.user8.work")}</p>
-      </div>{" "}
-      <div className="user">
-        <img src={require("src/assets/images/user4.png")} alt="" />
-        <h2>{t("about.user9.name")}</h2>
-        <p>{t("about.user9.work")}</p>
-      </div>{" "}
-      <div className="user">
-        <img src={require("src/assets/images/А Азими.jpg")} alt="" />
-        <h2>{t("about.user10.name")}</h2>
-        <p>{t("about.user10.work")}</p>
-      </div>
-      <div className="user">
-        <img src={require("src/assets/images/Шерзод Абдуллаев.jpg")} alt="" />
-        <h2>{t("about.user11.name")}</h2>
-        <p>{t("about.user11.work")}</p>
-      </div>
-      <div className="user">
-        <img
-          src={require("src/assets/images/photo_2022-10-28_17-08-35.jpg")}
-          alt=""
-        />
-        <h2>{t("about.user12.name")}</h2>
-        <p>{t("about.user12.work")}</p>
-      </div>
-      <div className="user">
-        <img src={require("src/assets/images/Azamova-N.png")} alt="" />
-        <h2>{t("about.user13.name")}</h2>
-        <p>{t("about.user13.work")}</p>
-      </div>
+      {members.length > 0 ? (
+        members.map((member) => (
+          <div className="user" key={member.id}>
+            <img src={member.documentResponses[0].fileUrl} alt="" />
+            <h2>{GiveTrans(member)}</h2>
+            <p>{GiveTrans(member, false)}</p>
+          </div>
+        ))
+      ) : (
+        <LoadingOutlined />
+      )}
     </Slider>
   );
 }

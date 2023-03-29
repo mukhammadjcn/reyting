@@ -240,14 +240,14 @@ function NewsID() {
               { required: true, message: "Yangilikni o'zbekcha anonsi !" },
             ]}
           >
-            <Input />
+            <Input.TextArea rows={4} maxLength={450} showCount />
           </Form.Item>
           <Form.Item
             label="Yangilikni ruscha anonsi"
             name="anonsRU"
             rules={[{ required: true, message: "Yangilikni ruscha anonsi !" }]}
           >
-            <Input />
+            <Input.TextArea rows={4} maxLength={450} showCount />
           </Form.Item>
           <Form.Item
             label="Yangilikni inglizcha anonsi"
@@ -256,7 +256,7 @@ function NewsID() {
               { required: true, message: "Yangilikni inglizcha anonsi !" },
             ]}
           >
-            <Input />
+            <Input.TextArea rows={4} maxLength={450} showCount />
           </Form.Item>
 
           <div style={{ marginBottom: 16 }}>
@@ -267,6 +267,22 @@ function NewsID() {
               onChange={(event: any, editor: any) => {
                 const data = editor.getData();
                 setTextUZ(data);
+              }}
+              config={{
+                toolbar: [
+                  "heading",
+                  "|",
+                  "bold",
+                  "italic",
+                  "blockQuote",
+                  "link",
+                  "numberedList",
+                  "bulletedList",
+                  "insertTable",
+                  "|",
+                  "undo",
+                  "redo",
+                ],
               }}
             />
           </div>
@@ -279,6 +295,22 @@ function NewsID() {
                 const data = editor.getData();
                 setTextRU(data);
               }}
+              config={{
+                toolbar: [
+                  "heading",
+                  "|",
+                  "bold",
+                  "italic",
+                  "blockQuote",
+                  "link",
+                  "numberedList",
+                  "bulletedList",
+                  "insertTable",
+                  "|",
+                  "undo",
+                  "redo",
+                ],
+              }}
             />
           </div>
           <div style={{ marginBottom: 16 }}>
@@ -289,6 +321,22 @@ function NewsID() {
               onChange={(event: any, editor: any) => {
                 const data = editor.getData();
                 setTextEN(data);
+              }}
+              config={{
+                toolbar: [
+                  "heading",
+                  "|",
+                  "bold",
+                  "italic",
+                  "blockQuote",
+                  "link",
+                  "numberedList",
+                  "bulletedList",
+                  "insertTable",
+                  "|",
+                  "undo",
+                  "redo",
+                ],
               }}
             />
           </div>

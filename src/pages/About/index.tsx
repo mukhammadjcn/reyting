@@ -1,13 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Slider from "react-slick";
 import Footer from "src/components/home/Footer";
 import Header from "src/components/home/Header";
 import Partners from "src/components/home/Partners";
 import SliderMulti from "src/components/slider/SliderMulti";
+import { GetMemberConfig } from "src/server/config/Urls";
+import { CatchError } from "src/utils/index";
+import { IMember } from "src/types/index";
 
 function About() {
   const { t, i18n } = useTranslation();
+  const [members, setMembers] = useState<IMember[]>([]);
 
   const settings = {
     dots: true,
@@ -43,7 +47,17 @@ function About() {
     ],
   };
 
+  const GetMembers = async () => {
+    try {
+      const { data } = await GetMemberConfig();
+      setMembers(data);
+    } catch (error) {
+      CatchError(error);
+    }
+  };
+
   useEffect(() => {
+    GetMembers();
     i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
   }, []);
   return (
@@ -55,7 +69,7 @@ function About() {
             {t("nav.about2")}
           </h2>
 
-          <SliderMulti />
+          <SliderMulti members={members} />
 
           <h2 className="section_title" id="group">
             {t("about.work_group")}
