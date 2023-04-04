@@ -1,7 +1,7 @@
-import { Breadcrumb } from "antd";
+import { Breadcrumb, Pagination } from "antd";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Footer from "src/components/home/Footer";
 import Header from "src/components/home/Header";
 import { CalendarSvg } from "src/components/svg";
@@ -9,11 +9,38 @@ import { GetNewsConfig } from "src/server/config/Urls";
 import { INews } from "types/index";
 
 function BLog() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const { t, i18n } = useTranslation();
+  const [total, setTotal] = useState(0);
+  const current = searchParams.get("page");
+  const [currentpage, setCurrentPage] = useState(current ? current : 1);
   const [news, setNews] = useState<INews[]>([]);
 
+  const handleMakeParams = (key: any, value: any) => {
+    if (value) {
+      if (searchParams.has(key)) searchParams.set(key, value);
+      else searchParams.append(key, value);
+    } else searchParams.delete(key);
+    setSearchParams(searchParams);
+  };
+  const setPage = (val: any) => {
+    setCurrentPage(val);
+    handleMakeParams("page", val);
+    GetNews();
+    window.scrollTo(0, 0);
+  };
+  const urlMaker = () => {
+    let url = "&";
+    for (let key of searchParams.keys()) {
+      let value = searchParams.get(key);
+      url = url + `${url.length < 2 ? "" : "&"}${key}=${value}`;
+    }
+    return url.length > 2 ? url : "";
+  };
+
   const GetNews = async () => {
-    const { data } = await GetNewsConfig();
+    const { data } = await GetNewsConfig(urlMaker());
+    setTotal(data?.totalElements);
     setNews(data.content);
   };
   const GiveTrans = (news: INews, title = "title") => {
@@ -73,6 +100,17 @@ function BLog() {
               </div>
             </Link>
           ))}
+        </div>
+
+        <div
+          className="flex"
+          style={{ justifyContent: "center", marginBottom: 24 }}
+        >
+          <Pagination
+            total={total}
+            current={+currentpage}
+            onChange={(val) => setPage(val)}
+          />
         </div>
       </div>
       <Footer />

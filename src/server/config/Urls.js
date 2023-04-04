@@ -22,7 +22,7 @@ export const GetNewsConfig = (url, data) => {
   const config = {
     method: "GET",
     data,
-    url: `admin/news${url ?? ""}`,
+    url: `admin/news?size=10${url ?? ""}`,
   };
   return axiosInstanceNoAuth(config);
 };
