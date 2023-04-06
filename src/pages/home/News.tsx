@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { CatchError } from "src/utils/index";
 import { CalendarSvg } from "src/components/svg";
 import React, { useEffect, useState } from "react";
@@ -15,6 +15,7 @@ import {
   Input,
   message,
   Modal,
+  Pagination,
   Upload,
   UploadFile,
 } from "antd";
@@ -35,9 +36,37 @@ function News() {
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [total, setTotal] = useState(0);
+  const current = searchParams.get("page");
+  const [currentpage, setCurrentPage] = useState(current ? current : 1);
+
+  const handleMakeParams = (key: any, value: any) => {
+    if (value) {
+      if (searchParams.has(key)) searchParams.set(key, value);
+      else searchParams.append(key, value);
+    } else searchParams.delete(key);
+    setSearchParams(searchParams);
+  };
+  const setPage = (val: any) => {
+    setCurrentPage(val);
+    handleMakeParams("page", val);
+    GetNews();
+    window.scrollTo(0, 0);
+  };
+  const urlMaker = () => {
+    let url = "&";
+    for (let key of searchParams.keys()) {
+      let value = searchParams.get(key);
+      url = url + `${url.length < 2 ? "" : "&"}${key}=${value}`;
+    }
+    return url.length > 2 ? url : "";
+  };
+
   const GetNews = async () => {
     try {
-      const { data } = await GetNewsConfig();
+      const { data } = await GetNewsConfig(urlMaker());
+      setTotal(data?.totalElements);
       setNews(data?.content);
     } catch (error) {
       // CatchError(error);
@@ -169,6 +198,17 @@ function News() {
       ) : (
         <NoData title="Yangiliklar mavjud emas" />
       )}
+
+      <div
+        className="flex"
+        style={{ justifyContent: "center", marginBottom: 24 }}
+      >
+        <Pagination
+          total={total}
+          current={+currentpage}
+          onChange={(val) => setPage(val)}
+        />
+      </div>
 
       <Modal
         title=""
