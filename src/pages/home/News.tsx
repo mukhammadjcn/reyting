@@ -20,18 +20,14 @@ import {
   UploadFile,
 } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { INews } from "types/index";
 import NoData from "src/components/animation/Lotties";
+import SunEditor from "suneditor-react";
 
 function News() {
   const [form] = Form.useForm();
   const [news, setNews] = useState([]);
   const [open, setOpen] = useState(false);
-  const [textUZ, setTextUZ] = useState<string>("");
-  const [textRU, setTextRU] = useState<string>("");
-  const [textEN, setTextEN] = useState<string>("");
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
@@ -40,6 +36,25 @@ function News() {
   const [total, setTotal] = useState(0);
   const current = searchParams.get("page");
   const [currentpage, setCurrentPage] = useState(current ? current : 1);
+
+  let options = {
+    buttonList: [
+      ["undo", "redo"],
+      ["paragraphStyle", "blockquote"],
+      ["bold", "underline", "italic", "strike", "subscript", "superscript"],
+      ["fontColor", "hiliteColor"],
+      ["align", "list", "lineHeight"],
+      ["outdent", "indent"],
+
+      ["table", "horizontalRule", "link", "image", "video"],
+      ["fullScreen", "showBlocks", "codeView"],
+      ["preview", "print"],
+      ["removeFormat"],
+    ], // Or Array of button list, eg. [['font', 'align'], ['image']]
+    defaultTag: "p",
+    minHeight: "200px",
+    showPathLabel: false,
+  };
 
   const handleMakeParams = (key: any, value: any) => {
     if (value) {
@@ -73,13 +88,10 @@ function News() {
     }
   };
   const submitNews = async (val: any) => {
-    if (textEN && textRU && textUZ && fileList.length > 0) {
+    if (fileList.length > 0) {
       try {
         const { data } = await CreateNewsConfig({
           ...val,
-          textEN,
-          textRU,
-          textUZ,
           newsDate: val?.newsDate?.format("YYYY-MM-DD"),
         });
         message.success(data?.message);
@@ -92,9 +104,6 @@ function News() {
         await CreateImageConfig(data?.object, images);
 
         form.resetFields();
-        setTextEN("");
-        setTextRU("");
-        setTextUZ("");
         setFileList([]);
         setOpen(false);
         GetNews();
@@ -107,9 +116,6 @@ function News() {
   };
   const closeModal = () => {
     form.resetFields();
-    setTextEN("");
-    setTextRU("");
-    setTextUZ("");
     setFileList([]);
     setOpen(false);
   };
@@ -186,11 +192,13 @@ function News() {
               </div>
               <div className="right">
                 <h2>{item?.titleUZ}</h2>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: item.textUZ,
-                  }}
-                ></div>
+                <div>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: item.anonsUZ,
+                    }}
+                  ></p>
+                </div>
               </div>
             </Link>
           </div>
@@ -277,87 +285,45 @@ function News() {
             <Input.TextArea rows={4} maxLength={450} showCount />
           </Form.Item>
 
-          <div style={{ marginBottom: 16 }}>
-            <p style={{ marginBottom: 8 }}>Yangilikni o'zbekcha matni</p>
-            <CKEditor
-              editor={ClassicEditor}
-              data={textUZ}
-              onChange={(event: any, editor: any) => {
-                const data = editor.getData();
-                setTextUZ(data);
-              }}
-              config={{
-                toolbar: [
-                  "heading",
-                  "|",
-                  "bold",
-                  "italic",
-                  "blockQuote",
-                  "link",
-                  "numberedList",
-                  "bulletedList",
-                  "insertTable",
-                  "|",
-                  "undo",
-                  "redo",
-                ],
-              }}
-            />
-          </div>
-          <div style={{ marginBottom: 16 }}>
-            <p style={{ marginBottom: 8 }}>Yangilikni ruscha matni</p>
-            <CKEditor
-              editor={ClassicEditor}
-              data={textRU}
-              onChange={(event: any, editor: any) => {
-                const data = editor.getData();
-                setTextRU(data);
-              }}
-              config={{
-                toolbar: [
-                  "heading",
-                  "|",
-                  "bold",
-                  "italic",
-                  "blockQuote",
-                  "link",
-                  "numberedList",
-                  "bulletedList",
-                  "insertTable",
-                  "|",
-                  "undo",
-                  "redo",
-                ],
-              }}
-            />
-          </div>
-          <div style={{ marginBottom: 16 }}>
-            <p style={{ marginBottom: 8 }}>Yangilikni inglizcha matni</p>
-            <CKEditor
-              editor={ClassicEditor}
-              data={textEN}
-              onChange={(event: any, editor: any) => {
-                const data = editor.getData();
-                setTextEN(data);
-              }}
-              config={{
-                toolbar: [
-                  "heading",
-                  "|",
-                  "bold",
-                  "italic",
-                  "blockQuote",
-                  "link",
-                  "numberedList",
-                  "bulletedList",
-                  "insertTable",
-                  "|",
-                  "undo",
-                  "redo",
-                ],
-              }}
-            />
-          </div>
+          <Form.Item
+            label="Yangilikni o'zbekcha matni"
+            name="textUZ"
+            rules={[
+              {
+                min: 20,
+                required: true,
+                message: "Yangilikni o'zbekcha matni !",
+              },
+            ]}
+          >
+            <SunEditor setOptions={options} height="400" />
+          </Form.Item>
+          <Form.Item
+            label="Yangilikni ruscha matni"
+            name="textRU"
+            rules={[
+              {
+                min: 20,
+                required: true,
+                message: "Yangilikni ruscha matni !",
+              },
+            ]}
+          >
+            <SunEditor setOptions={options} height="400" />
+          </Form.Item>
+          <Form.Item
+            label="Yangilikni inglizcha matni"
+            name="textEN"
+            rules={[
+              {
+                min: 20,
+                required: true,
+                message: "Yangilikni inglizcha matni !",
+              },
+            ]}
+          >
+            <SunEditor setOptions={options} height="400" />
+          </Form.Item>
 
           <Form.Item
             style={{ width: "100%" }}

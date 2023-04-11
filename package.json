@@ -9,8 +9,6 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^36.0.1",
-    "@ckeditor/ckeditor5-react": "^5.1.0",
     "antd": "^5.0.7",
     "aos": "^2.3.4",
     "axios": "^0.27.2",
@@ -26,6 +24,8 @@
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
+    "suneditor": "^2.44.8",
+    "suneditor-react": "^3.4.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -49,7 +49,6 @@
   },
   "devDependencies": {
     "@types/aos": "^3.0.4",
-    "@types/ckeditor__ckeditor5-build-classic": "^29.0.1",
     "@types/node": "^18.11.13",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",

@@ -536,6 +536,7 @@ button {
     overflow: hidden;
     border-radius: 16px;
     background-color: #061237;
+    height: 600px !important;
     & > div {
       padding: 64px;
       display: flex;
@@ -575,7 +576,7 @@ button {
     }
     img {
       width: 500px;
-      height: 500px;
+      height: 100%;
       object-fit: cover;
     }
   }
@@ -1134,6 +1135,16 @@ button {
       }
     }
   }
+  figure {
+    img {
+      width: 100% !important;
+    }
+  }
+  table {
+    p {
+      margin-top: 0;
+    }
+  }
 }
 
 @media (max-width: 1080px) {
@@ -1372,6 +1383,7 @@ button {
         color: #ffffff;
         line-height: 32px;
       }
+      height: auto !important;
     }
     &__directions {
       &-right {
