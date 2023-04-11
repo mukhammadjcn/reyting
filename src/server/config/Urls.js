@@ -16,6 +16,9 @@ export const UpdateNewsConfig = (id, data) => {
 export const CreateImageConfig = (id, data) => {
   return CreateFunc(`admin/createDocument?newsId=${id}`, data);
 };
+export const ImageConfig = (data) => {
+  return CreateFunc(`admin/uploadFile`, data);
+};
 
 // Get news
 export const GetNewsConfig = (url, data) => {
