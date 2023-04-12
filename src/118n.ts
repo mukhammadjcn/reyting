@@ -47,12 +47,12 @@ i18n
             mission_title:
               "Maslahat kengashining asosiy maqsadi ilmiy tadqiqotlar, amaliy startaplar va boshqa tashabbuslarni rivojlantirish uchun turli ilg‘or g‘oyalarini taklif qila oluvchi muhim mutaxassislar hamjamiyati (professional komyuniti)ni shakllantirish uchun shart-sharoit yaratish hamda keyinchalik sun’iy intellekt texnologiyalari vositalari va imkoniyatlarini O‘zbekiston iqtisodiyotining turli sohalariga joriy qilish orqali fuqarolar farovonligini oshirishga xizmat qilish hisoblanadi.",
             work_title: "FAOLIYAT YO'NALISHLARI",
-            work1: "Maslahat kengashi to'g'risidagi nizom",
+            work1: "Tibbiyotda sun`iy intelekt",
             work2: "Sun'iy intellekt etikasi",
             work3: "Ta'lim",
             work4: "Turizm va kreativ industriyalar",
             work1_info:
-              "O'zR OTFIV huzuridagi Sun’iy intellekt bo‘yicha maslahat kengashi to‘g‘risidagi nizom",
+              "Sun'iy intellekt texnologiyalaridan foydalangan holda tibbiyot va sog'liqni saqlash sohalari uchun echimlarni taklif eting",
             work2_info:
               "Mamlakatda shakllangan madaniyat va qadriyatlarni hisobga olgan holda sun'iy intellektning etika kodeksini ishlab chiqish",
             work3_info:
@@ -301,12 +301,12 @@ i18n
             mission_title:
               "The Advisory Council was formed with the aim of creating conditions for the formation of a significant community of specialists (professional community) who, based on the foundation laid by the documents and programs adopted in the Country, will be able to offer innovative ideas for scientific research, practical start-ups and develop other initiatives that will subsequently ensure the transition from experiments to real implementations technology and processes based on artificial intelligence into the economy of Uzbekistan, thereby improving the quality of life of citizens of the Republic of Uzbekistan.",
             work_title: "AREAS OF WORK",
-            work1: "Regulations on the advisory board",
+            work1: "Artificial intelligence in medicine",
             work2: "The ethics of artificial intelligence",
             work3: "Education",
             work4: "Tourism and Creative Industries",
             work1_info:
-              "Regulations on the Advisory Council on Artificial Intelligence under the MHESI RUz",
+              "Offer solutions for the field of medicine and healthcare using artificial intelligence technologies",
             work2_info:
               "Development of an ethical code for artificial intelligence, taking into account the culture and values that have formed in the country",
             work3_info:
@@ -553,13 +553,13 @@ i18n
             mission: "Миссия",
             mission_title:
               "Консультативный совет образован с целью создания условий для формирования значимого сообщества специалистов (профессионального комьюнити), которые смогут, основываясь на фундаменте, заложенном основными принятыми в стране документами и программами, предложить различные прорывные идеи научных исследований, практических стартапов и развить другие инициативы, которые впоследствии обеспечат переход от экспериментов к реальным серьезным внедрениям в экономику Узбекистана, тем самым повышая благосостояние каждого жителя благодаря инструментам и возможностям, которые дает искусственный интеллект.",
-            work_title: "НАПРАВЛЕНИЯ РАБОТЫ",
-            work1: "Положение о консультативного совета",
+            work_title: "Направленные работы",
+            work1: "Искусственный интеллект в медицине",
             work2: "Этика искусственного интеллекта",
             work3: "Образования",
             work4: "Туризм и Креативные индустрии",
             work1_info:
-              "Положение о консультативного совета по искусственному интеллекту при МВОНИ РУз",
+              "Предложить решений для сферы медицины и здравоохранение с использованием технологий искусственного интеллекта",
             work2_info:
               "Разработка этического кодекса искусственного интеллекта с учетом культуры и ценностей, сформировавшихся в стране",
             work3_info:
