@@ -116,6 +116,19 @@ function About() {
                 <p>{t("about.work3.name")}</p>
               </div>
             </div>
+            <div className="aboutpage__item">
+              <div className="left">
+                <h2>{t("about.work4.title")}</h2>
+                <h3>{t("about.work4.info")}</h3>
+                <span>{t("about.work4.group")}</span>
+                <p>{t("about.work4.team")}</p>
+              </div>
+              <div className="right">
+                <img src={require("src/assets/images/user5.jpg")} alt="" />
+                <h4>{t("about.work4.label")}</h4>
+                <p>{t("about.work4.name")}</p>
+              </div>
+            </div>
           </div>
         </div>
 

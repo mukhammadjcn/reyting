@@ -171,7 +171,7 @@ i18n
               group: "Ishchi guruh tarkibi:",
               label: "Rahbar",
               team: "Sherzod Abdullaev, Nodirbek Abulov, Yusuf Avazov, Igor Vixrov, Ulug'bek Berdanov, Vladimir Oprelenov, Axmed Seffax (OAE)",
-              name: "Dr.Danish Ather",
+              name: "Doktor Danish Ather",
             },
             work3: {
               title:
@@ -180,7 +180,15 @@ i18n
               group: "Ishchi guruh tarkibi:",
               label: "Rahbar",
               name: "Bobur Raximov",
-              team: "Anna Ubaydullaeva, Jaxongir Mirmo'minov, Vladimir Operedinov, Doktor Yunus",
+              team: "Anna Ubaydullaeva, Jaxongir Mirmo'minov, Vladimir Operedinov, Amar Yunus",
+            },
+            work4: {
+              title: "Tibbiyotda sun'iy intellekt bo'yicha ishchi guruhi",
+              info: "Sun'iy intellekt texnologiyalaridan foydalangan holda tibbiyot va sog'liqni saqlash sohalari uchun echimlarni taklif eting",
+              group: "Ishchi guruh tarkibi:",
+              label: "Rahbar",
+              name: "Igor Vixrov",
+              team: "Otabek Xujaev, Ammar Yunas",
             },
             documents: "Hujjatlar",
             document1: {
@@ -389,7 +397,7 @@ i18n
               work: "Founder and CEO of TASS VISION",
             },
             user9: {
-              name: "Dr. Danish Ather",
+              name: "Danish Ather",
               work: "Associate Professor, Amity University Tashkent, IEEE Senior Member, India",
             },
             user10: {
@@ -425,7 +433,7 @@ i18n
               info: "To contribute to the improvement of the effectiveness of the artificial intelligence training process in Uzbekistan",
               group: "Composition of the working group:",
               label: "Team leader:",
-              name: "Doktor Daniya",
+              name: "Doctor Danish Ather",
               team: "Sherzod Abdullaev, Nodirbek Abulov, Yusuf Avazov, Igor Vixrov, Ulug'bek Berdanov, Vladimir Oprelenov, Axmed Seffax (OAE)",
             },
             work3: {
@@ -435,7 +443,15 @@ i18n
               group: "Composition of the working group:",
               label: "Team leader:",
               name: "Bobur Raximov",
-              team: "Vladimir Opredelenov, Anna Ubaydullaeva, Jakhongir Mirmuminov, Dr.Ammar Younas",
+              team: "Vladimir Opredelenov, Anna Ubaydullaeva, Jakhongir Mirmuminov, Ammar Younas",
+            },
+            work4: {
+              title: "Working Group on Artificial Intelligence in Medicine",
+              info: "Offer solutions for the field of medicine and healthcare using artificial intelligence technologies",
+              group: "Composition of the working group:",
+              label: "Team leader:",
+              name: "Igor Vikhrov",
+              team: "Otabek Khuzhaev, Ammar Younas",
             },
             documents: "Documents",
             document1: {
@@ -641,7 +657,7 @@ i18n
               work: "Основатель и главный директор компании  TASS VISION",
             },
             user9: {
-              name: "Др.Даниш Атер",
+              name: "Даниш Атер",
               work: "Доцент Университета Амити в Ташкенте, Старший член IEEE",
             },
             user10: {
@@ -677,7 +693,7 @@ i18n
               info: "Способствовать повышению эффективности процесса обучения искусственному интеллекту в Узбекистане",
               group: "Состав рабочей группы:",
               label: "Руководитель",
-              name: "Доктор Дания",
+              name: "Доктор Даниш Атер",
               team: "Шерзод Абдуллаев, Нодирбек Абулов, Юсуф Авазов, Игор Вихров, Улуғбек Берданов, Владимир Определенов, Ахмед Сеффах",
             },
             work3: {
@@ -687,7 +703,15 @@ i18n
               group: "Состав рабочей группы:",
               label: "Руководитель",
               name: "Бoбур Рахимов",
-              team: "Владимир Определенов, Анна Убайдуллаева, Жахонгир Мирмуминов, Др.Аммар Юнус",
+              team: "Владимир Определенов, Анна Убайдуллаева, Жахонгир Мирмуминов, Аммар Юнус",
+            },
+            work4: {
+              title: "Рабочая группа по искусственному интеллекту в медицине",
+              info: "Предложить решений для сферы медицины и здравоохранение с использованием технологий искусственного интеллекта",
+              group: "Состав рабочей группы:",
+              label: "Руководитель",
+              name: "Игорь Вихров",
+              team: "Отабек Хужаев, Аммар Юнас",
             },
             documents: "Документы",
             document1: {
