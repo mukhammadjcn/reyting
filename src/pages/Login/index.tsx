@@ -1,3 +1,4 @@
+import { LoginSVG } from "src/assets/icons";
 import { Link } from "react-router-dom";
 import "src/styles/login.scss";
 
@@ -13,22 +14,24 @@ const Login = () => {
 
           <div className="login_left_content">
             <p>
-              Kollejlar va texnikumlarda <span>masofadan</span> turib oʻqitish
+              AI.EDU.UZ tizimi uchun <span>boshqaruv</span> paneli
             </p>
-            <span>
+            {/* <span>
               Kollejlar va texnikumlarda masofadan turib oʻqitish sirtqi va
               kechki taʼlim shakllarida oʻquv jarayonini masofadan turib
               oʻqitish tizimi.
-            </span>
+            </span> */}
           </div>
         </div>
-        <video
+        {/* <video
           src={require("src/assets/images/video.mp4")}
           autoPlay
           loop
           playsInline
           muted
-        ></video>
+        ></video> */}
+
+        <LoginSVG />
       </div>
       <div className="login-admin">
         <div className="login-admin__form">
