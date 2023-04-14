@@ -161,7 +161,7 @@ i18n
               info: "Mamlakatda shakllangan madaniyat va qadriyatlarni hisobga olgan holda sun'iy intellektning etika kodeksini ishlab chiqish",
               group: "Ishchi guruh tarkibi:",
               label: "Rahbar",
-              team: "Vladimir Opredelenov, Ammar Younas, Igor Vixrov, Shaxzod Umirzakov, Zafar Yuldashev, Andrey Neznamov.",
+              team: "Vladimir Opredelenov, Ammar Yunas, Igor Vixrov, Shaxzod Umirzakov, Zafar Yuldashev, Andrey Neznamov.",
               name: "Bobur Raximov",
             },
             work2: {
@@ -170,7 +170,7 @@ i18n
               info: "O‘zbekistonda sun’iy intellektni o‘qitish jarayoni samaradorligini oshirishga hissa qo‘shish",
               group: "Ishchi guruh tarkibi:",
               label: "Rahbar",
-              team: "Sherzod Abdullaev, Nodirbek Abulov, Yusuf Avazov, Igor Vixrov, Ulug'bek Berdanov, Vladimir Oprelenov, Axmed Seffax (OAE)",
+              team: "Sherzod Abdullaev, Nodirbek Abulov, Yusuf Avazov, Igor Vixrov, Ulug'bek Berdanov, Vladimir Oprelenov, Axmed Seffax",
               name: "Doktor Danish Ather",
             },
             work3: {
@@ -180,7 +180,7 @@ i18n
               group: "Ishchi guruh tarkibi:",
               label: "Rahbar",
               name: "Bobur Raximov",
-              team: "Anna Ubaydullaeva, Jaxongir Mirmo'minov, Vladimir Operedinov, Amar Yunus",
+              team: "Anna Ubaydullaeva, Jaxongir Mirmo'minov, Vladimir Operedinov, Ammar Yunas",
             },
             work4: {
               title: "Tibbiyotda sun'iy intellekt bo'yicha ishchi guruhi",
@@ -434,7 +434,7 @@ i18n
               group: "Composition of the working group:",
               label: "Team leader:",
               name: "Doctor Danish Ather",
-              team: "Sherzod Abdullaev, Nodirbek Abulov, Yusuf Avazov, Igor Vixrov, Ulug'bek Berdanov, Vladimir Oprelenov, Axmed Seffax (OAE)",
+              team: "Sherzod Abdullaev, Nodirbek Abulov, Yusuf Avazov, Igor Vixrov, Ulugbek Berdanov, Vladimir Oprelenov, Axmed Seffax (OAE)",
             },
             work3: {
               title:
@@ -685,7 +685,7 @@ i18n
               group: "Состав рабочей группы:",
               label: "Руководитель",
               name: "Бoбур Рахимов",
-              team: "Владимир Определенов, Ammar Younas, Игор Вихров, Шахзод Умирзаков, Зафар Юлдашев, Андрей Незнамов.",
+              team: "Владимир Определенов, Аммар Юнaс, Игор Вихров, Шахзод Умирзаков, Зафар Юлдашев, Андрей Незнамов.",
             },
             work2: {
               title:
@@ -699,11 +699,11 @@ i18n
             work3: {
               title:
                 "Рабочая группа по туризму, культуре и креативной индустрии",
-              info: "Предложить решения для туризма и культуры с использованием цифровых технологий и технологий искусственного интеллекта",
+              info: "Предложить решениe для туризма и культуры с использованием цифровых технологий и технологий искусственного интеллекта",
               group: "Состав рабочей группы:",
               label: "Руководитель",
               name: "Бoбур Рахимов",
-              team: "Владимир Определенов, Анна Убайдуллаева, Жахонгир Мирмуминов, Аммар Юнус",
+              team: "Владимир Определенов, Анна Убайдуллаева, Жахонгир Мирмуминов, Аммар Юнaс",
             },
             work4: {
               title: "Рабочая группа по искусственному интеллекту в медицине",
@@ -711,7 +711,7 @@ i18n
               group: "Состав рабочей группы:",
               label: "Руководитель",
               name: "Игорь Вихров",
-              team: "Отабек Хужаев, Аммар Юнас",
+              team: "Отабек Хужаев, Аммар Юнaс",
             },
             documents: "Документы",
             document1: {
