@@ -286,6 +286,11 @@ i18n
             info: `Loyihalar ro'yxati:`,
             name1: `O‘zbekistonda sun’iy intellektning axloq kodeksini ishlab chiqish`,
           },
+          education: {
+            title: `Ta’lim loyihalari katalogi shakllantirilmoqda va yaqin orada bu yerda e’lon qilinadi.`,
+            info: `Loyihalar roʻyxati:`,
+            name1: `Umumta’lim maktablarining informatika fani o‘qituvchilari uchun AI asoslari bo‘yicha o‘quv kursini ishga tushirish`,
+          },
         },
       },
       EN: {
@@ -552,6 +557,11 @@ i18n
             info: `List of projects:`,
             name1: `Development of a code of ethics for artificial intelligence in Uzbekistan`,
           },
+          education: {
+            title: `A catalog of educational projects is being formed and will be announced here in the near future.`,
+            info: `List of projects:`,
+            name1: `Launch of a training course on the basics of AI for computer science teachers of secondary schools.`,
+          },
         },
       },
       RU: {
@@ -816,6 +826,11 @@ i18n
             title: `Проекты на этапе подготовки и будут здесь анонсированы в ближайшее время.`,
             info: `Список проектов:`,
             name1: `Разработка кодекса этики искусственного интеллекта Узбекистана`,
+          },
+          education: {
+            title: `Формируется каталог образовательных проектов и будут здесь анонсированы в ближайшее время.`,
+            info: `Список проектов:`,
+            name1: `Запуск учебного курса по основам ИИ для учителей информатики среднеобразовательных школ`,
           },
         },
       },

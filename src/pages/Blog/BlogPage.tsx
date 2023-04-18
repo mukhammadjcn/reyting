@@ -71,78 +71,9 @@ function BlogPage() {
             }}
           />
 
-          {/* {location.pathname.replaceAll("/blog/", "") == "news1" && (
-    <>
-      <h2 className="section_title">{t("news.title")}</h2>
-
-      <img src={require("src/assets/images/new2.png")} alt="" />
-
-      <p>{t("news.p1")}</p>
-      <p>{t("news.p2")}</p>
-      <p>{t("news.p3")}</p>
-    </>
-  )}
-  {location.pathname.replaceAll("/blog/", "") == "news2" && (
-    <>
-      <h2 className="section_title">{t("news2.title")}</h2>
-      <img src={require("src/assets/images/new1.png")} alt="" />
-      <p>{t("news2.p1")}</p>
-      <p>{t("news2.p2")}</p>
-      <p>{t("news2.p3")}</p>
-      <p>{t("news2.p4")}</p>
-    </>
-  )}
-  {location.pathname.replaceAll("/blog/", "") == "news3" && (
-    <>
-      <h2 className="section_title">{t("news3.title")}</h2>
-
-      <img src={require("src/assets/images/new.png")} alt="" />
-
-      <p>{t("news3.p1")}</p>
-      <p>{t("news3.p2")}</p>
-      <p>{t("news3.p3")}</p>
-    </>
-  )}
-  {location.pathname.replaceAll("/blog/", "") == "news4" && (
-    <>
-      <h2 className="section_title">{t("news4.title")}</h2>
-
-      <img src={require("src/assets/images/new4.png")} alt="" />
-
-      <p>{t("news4.p1")}</p>
-      <p>{t("news4.p2")}</p>
-      <p>{t("news4.p3")}</p>
-      <p>{t("news4.p4")}</p>
-    </>
-  )}
-  {location.pathname.replaceAll("/blog/", "") == "news5" && (
-    <>
-      <h2 className="section_title">{t("news5.title")}</h2>
-
-      <img src={require("src/assets/images/3news.jpg")} alt="" />
-
-      <p>{t("news5.p1")}</p>
-      <p>{t("news5.p2")}</p>
-      <p>{t("news5.p3")}</p>
-      <p>{t("news5.p4")}</p>
-    </>
-  )}
-  {location.pathname.replaceAll("/blog/", "") == "news6" && (
-    <>
-      <h2 className="section_title">{t("news6.title")}</h2>
-
-      <img src={require("src/assets/images/new6.png")} alt="" />
-
-      <p>{t("news6.p1")}</p>
-      <p>{t("news6.p2")}</p>
-      <p>{t("news6.p3")}</p>
-    </>
-  )} */}
-
           <p style={{ textAlign: "end", marginBottom: 36 }}>
             {moment(news?.createdDate).format("DD.MM.YYYY")}
           </p>
-          {/* <span style={{ placeSelf: "end" }}>webroject.media</span> */}
         </div>
       ) : (
         <div className="blogpage container">

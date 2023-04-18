@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && compress-cra",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -51,6 +51,7 @@
     "@types/react-dom": "^18.0.11",
     "@types/react-lottie": "^1.2.6",
     "@types/react-slick": "^0.23.10",
+    "compress-create-react-app": "^1.4.1",
     "sass": "^1.56.2",
     "typescript": "^5.0.4"
   }

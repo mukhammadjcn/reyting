@@ -9,53 +9,113 @@ function Partners() {
         <h2 className="section_title ">{t("home.partners")}</h2>
         <div className="slide-track">
           <div className="slide">
-            <img src={require("src/assets/images/ytit.png")} alt="" />
+            <img
+              src={require("src/assets/images/ytit.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div className="slide">
-            <img src={require("src/assets/images/smart.png")} alt="" />
+            <img
+              src={require("src/assets/images/smart.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div className="slide">
-            <img src={require("src/assets/images/mb.png")} alt="" />
+            <img
+              src={require("src/assets/images/mb.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div className="slide">
-            <img src={require("src/assets/images/aab.png")} alt="" />
+            <img
+              src={require("src/assets/images/aab.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div className="slide">
-            <img src={require("src/assets/images/aij (2).png")} alt="" />
+            <img
+              src={require("src/assets/images/aij (2).png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
         </div>
         <div className="slide-track slide-track-right">
           <div className="slide">
-            <img src={require("src/assets/images/ucelll.png")} alt="" />
+            <img
+              src={require("src/assets/images/ucelll.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div className="slide">
-            <img src={require("src/assets/images/uztelecom.png")} alt="" />
+            <img
+              src={require("src/assets/images/uztelecom.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div className="slide">
-            <img src={require("src/assets/images/uzinfocom.png")} alt="" />
+            <img
+              src={require("src/assets/images/uzinfocom.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div className="slide">
-            <img src={require("src/assets/images/tass.png")} alt="" />
+            <img
+              src={require("src/assets/images/tass.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div className="slide">
-            <img src={require("src/assets/images/zyplal.png")} alt="" />
+            <img
+              src={require("src/assets/images/zyplal.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
         </div>
         <div className="slide-track">
           <div className="slide">
-            <img src={require("src/assets/images/tatu.png")} alt="" />
+            <img
+              src={require("src/assets/images/tatu.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div className="slide">
-            <img src={require("src/assets/images/amity.png")} alt="" />
+            <img
+              src={require("src/assets/images/amity.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div className="slide">
-            <img src={require("src/assets/images/yuridik.png")} alt="" />
+            <img
+              src={require("src/assets/images/yuridik.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div className="slide">
-            <img src={require("src/assets/images/zayed.png")} alt="" />
+            <img
+              src={require("src/assets/images/zayed.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
           <div className="slide">
-            <img src={require("src/assets/images/raqamli.png")} alt="" />
+            <img
+              src={require("src/assets/images/raqamli.png")}
+              alt=""
+              loading="lazy"
+            />
           </div>
         </div>
       </div>

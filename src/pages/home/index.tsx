@@ -4,15 +4,9 @@ import { Layout, Menu, Modal } from "antd";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  FileSyncOutlined,
-  FileSearchOutlined,
   FileProtectOutlined,
-  SettingOutlined,
-  FileExcelOutlined,
-  ContainerOutlined,
   FileTextOutlined,
   LogoutOutlined,
-  DeleteOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
 import "src/styles/home.scss";

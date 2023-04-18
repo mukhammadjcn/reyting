@@ -1230,6 +1230,7 @@ button {
   }
 }
 .development {
+  margin-bottom: 64px;
   min-height: calc(100vh - 96px - 336px);
   h1 {
     font-weight: 600;
@@ -1628,5 +1629,16 @@ button {
   }
   .topcaraousel .slick-dots-bottom {
     bottom: 12px !important;
+  }
+  .development {
+    margin-bottom: 100px;
+    h1 {
+      font-size: 20px;
+      line-height: 32px;
+    }
+    h3 {
+      font-size: 18px;
+      line-height: 36px;
+    }
   }
 }

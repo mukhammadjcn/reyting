@@ -86,10 +86,10 @@ const Header: React.FC = () => {
           <Link to={"/about"} onClick={navigateP}>
             {t("nav.about")}
           </Link>
-          <Link to={"/development"} onClick={navigateP}>
+          <Link to={"/development?projects"} onClick={navigateP}>
             {t("nav.projects")}
           </Link>
-          <Link to={"/development"} onClick={navigateP}>
+          <Link to={"/development?education"} onClick={navigateP}>
             {t("nav.edu")}
           </Link>
           <Link

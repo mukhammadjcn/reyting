@@ -85,7 +85,11 @@ function About() {
                 <p>{t("about.work1.team")}</p>
               </div>
               <div className="right">
-                <img src={require("src/assets/images/user.png")} alt="" />
+                <img
+                  src={require("src/assets/images/user.png")}
+                  alt=""
+                  loading="lazy"
+                />
                 <h4>{t("about.work1.label")}</h4>
                 <p>{t("about.work1.name")}</p>
               </div>
@@ -98,7 +102,11 @@ function About() {
                 <p>{t("about.work2.team")}</p>
               </div>
               <div className="right">
-                <img src={require("src/assets/images/user4.png")} alt="" />
+                <img
+                  src={require("src/assets/images/user4.png")}
+                  alt=""
+                  loading="lazy"
+                />
                 <h4>{t("about.work2.label")}</h4>
                 <p>{t("about.work2.name")}</p>
               </div>
@@ -111,7 +119,11 @@ function About() {
                 <p>{t("about.work3.team")}</p>
               </div>
               <div className="right">
-                <img src={require("src/assets/images/user.png")} alt="" />
+                <img
+                  src={require("src/assets/images/user.png")}
+                  alt=""
+                  loading="lazy"
+                />
                 <h4>{t("about.work3.label")}</h4>
                 <p>{t("about.work3.name")}</p>
               </div>
@@ -124,7 +136,11 @@ function About() {
                 <p>{t("about.work4.team")}</p>
               </div>
               <div className="right">
-                <img src={require("src/assets/images/user5.jpg")} alt="" />
+                <img
+                  src={require("src/assets/images/user5.jpg")}
+                  alt=""
+                  loading="lazy"
+                />
                 <h4>{t("about.work4.label")}</h4>
                 <p>{t("about.work4.name")}</p>
               </div>
@@ -136,62 +152,49 @@ function About() {
           <Partners />
         </div>
 
-        {/* <div className="container">
-          <div className="documents" id="doc">
-            <h2 className="section_title">{t("about.documents")}</h2>
-            <div className="documents_box">
-              <div className="documents_item">
-                <img src={require("src/assets/images/doc1.png")} alt="" />
-                <a href="https://lex.uz/docs/5031048" target="_blank">
-                  {t("about.document1.name")}
-                </a>
-                <p>{t("about.document1.info")}</p>
-              </div>
-              <div className="documents_item">
-                <img src={require("src/assets/images/doc2.png")} alt="" />
-                <a href="https://lex.uz/docs/6102468" target="_blank">
-                  {t("about.document2.name")}
-                </a>
-                <p>{t("about.document2.info")}</p>
-              </div>
-              <div className="documents_item">
-                <img src={require("src/assets/images/doc3.png")} alt="" />
-                <a href="https://lex.uz/docs/5297051" target="_blank">
-                  {t("about.document3.name")}
-                </a>
-                <p>{t("about.document3.info")}</p>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
         <div className="container">
           <div className="documents" id="doc">
             <h2 className="section_title">{t("about.documents")}</h2>
             <Slider {...settings} className="user-slider">
               <div className="documents_item">
-                <img src={require("src/assets/images/doc1.png")} alt="" />
+                <img
+                  src={require("src/assets/images/doc1.png")}
+                  alt=""
+                  loading="lazy"
+                />
                 <a href="https://lex.uz/docs/5031048" target="_blank">
                   {t("about.document1.name")}
                 </a>
                 <p>{t("about.document1.info")}</p>
               </div>
               <div className="documents_item">
-                <img src={require("src/assets/images/doc2.png")} alt="" />
+                <img
+                  src={require("src/assets/images/doc2.png")}
+                  alt=""
+                  loading="lazy"
+                />
                 <a href="https://lex.uz/docs/6102468" target="_blank">
                   {t("about.document2.name")}
                 </a>
                 <p>{t("about.document2.info")}</p>
               </div>
               <div className="documents_item">
-                <img src={require("src/assets/images/doc3.png")} alt="" />
+                <img
+                  src={require("src/assets/images/doc3.png")}
+                  alt=""
+                  loading="lazy"
+                />
                 <a href="https://lex.uz/docs/5297051" target="_blank">
                   {t("about.document3.name")}
                 </a>
                 <p>{t("about.document3.info")}</p>
               </div>
               <div className="documents_item">
-                <img src={require("src/assets/images/doc4.jpg")} alt="" />
+                <img
+                  src={require("src/assets/images/doc4.jpg")}
+                  alt=""
+                  loading="lazy"
+                />
                 <a
                   href={require("src/assets/ПОЛОЖЕНИЕ_О_КОНСУЛЬТАТИВНОГО_СОВЕТА.pdf")}
                   target="_blank"
@@ -199,7 +202,6 @@ function About() {
                 >
                   {t("about.document4.name")}
                 </a>
-                {/* <p>{t("about.document3.info")}</p> */}
               </div>
             </Slider>
           </div>

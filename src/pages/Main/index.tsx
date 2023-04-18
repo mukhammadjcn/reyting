@@ -113,12 +113,12 @@ const Home: React.FC = () => {
       ],
     };
 
-    if (localStorage.getItem("lang") == "RU") {
-      return months?.[`RU`]?.[new Date(date).getMonth()];
+    if (localStorage.getItem("lang") == "UZ") {
+      return months?.[`UZ`]?.[new Date(date).getMonth()];
     } else if (localStorage.getItem("lang") == "EN") {
       return months?.[`EN`]?.[new Date(date).getMonth()];
     } else {
-      return months?.[`UZ`]?.[new Date(date).getMonth()];
+      return months?.[`RU`]?.[new Date(date).getMonth()];
     }
   };
 

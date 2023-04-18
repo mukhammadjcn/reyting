@@ -6,7 +6,6 @@ import {
   Modal,
   Upload,
   UploadFile,
-  Image,
   DatePicker,
 } from "antd";
 import React, { useEffect, useState } from "react";
