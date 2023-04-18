@@ -1,4 +1,5 @@
 import { Breadcrumb, Skeleton } from "antd";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
@@ -138,10 +139,10 @@ function BlogPage() {
     </>
   )} */}
 
-          <div className="flex">
-            {/* <span>#новости</span> */}
-            {/* <span style={{ placeSelf: "end" }}>webroject.media</span> */}
-          </div>
+          <p style={{ textAlign: "end", marginBottom: 36 }}>
+            {moment(news?.createdDate).format("DD.MM.YYYY")}
+          </p>
+          {/* <span style={{ placeSelf: "end" }}>webroject.media</span> */}
         </div>
       ) : (
         <div className="blogpage container">

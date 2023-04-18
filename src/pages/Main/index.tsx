@@ -2,7 +2,6 @@ import { Alert, Button, Carousel, Checkbox, Form, Input, message } from "antd";
 import React, { useEffect, useState } from "react";
 import Header from "src/components/home/Header";
 import Footer from "src/components/home/Footer";
-import { RightSVG } from "src/components/svg";
 import HomeNews from "src/components/home/News";
 import Partners from "src/components/home/Partners";
 import { useTranslation } from "react-i18next";
@@ -68,6 +67,60 @@ const Home: React.FC = () => {
         : news.anonsUZ;
     }
   };
+  const GiveDate = (date: string) => {
+    let months = {
+      RU: [
+        "январь",
+        "февраль",
+        "март",
+        "апрель",
+        "май",
+        "июнь",
+        "июль",
+        "август",
+        "сентябрь",
+        "октябрь",
+        "ноябрь",
+        "декабрь",
+      ],
+      EN: [
+        "january",
+        "february",
+        "march",
+        "april",
+        "may",
+        "june",
+        "july",
+        "august",
+        "september",
+        "october",
+        "november",
+        "december",
+      ],
+      UZ: [
+        "yanvar",
+        "fevral",
+        "mart",
+        "aprel",
+        "may",
+        "iyun",
+        "iyul",
+        "avgust",
+        "sentyabr",
+        "oktyabr",
+        "noyabr",
+        "dekabr",
+      ],
+    };
+
+    if (localStorage.getItem("lang") == "RU") {
+      return months?.[`RU`]?.[new Date(date).getMonth()];
+    } else if (localStorage.getItem("lang") == "EN") {
+      return months?.[`EN`]?.[new Date(date).getMonth()];
+    } else {
+      return months?.[`UZ`]?.[new Date(date).getMonth()];
+    }
+  };
 
   useEffect(() => {
     GetNews();
@@ -93,7 +146,7 @@ const Home: React.FC = () => {
 
           <Carousel
             autoplay
-            dotPosition="top"
+            dotPosition="bottom"
             autoplaySpeed={3000}
             className="topcaraousel"
           >
@@ -111,7 +164,11 @@ const Home: React.FC = () => {
               //   </div>
               //   <img src={news?.documentResponses[0]?.fileUrl} alt="" />
               // </div>
-              <div className="home__card2" key={news.id}>
+              <Link
+                to={`/blog/${news.id}`}
+                className="home__card2"
+                key={news.id}
+              >
                 <div className="wrap">
                   <img
                     loading="eager"
@@ -120,15 +177,13 @@ const Home: React.FC = () => {
                   />
                 </div>
                 <div className="home__card2-content">
-                  <h2>{GiveTrans(news)} </h2>
-                  <Link to={`/blog/${news.id}`}>
-                    <button>
-                      <span>{t("home.more")}</span>
-                      <RightSVG />
-                    </button>
-                  </Link>
+                  <h2>{GiveTrans(news)}</h2>
+                  <div>
+                    <h3>18</h3>
+                    <p>{GiveDate(news.createdDate)}</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </Carousel>
           <div className="home__mission">
