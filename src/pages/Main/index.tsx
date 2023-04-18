@@ -26,7 +26,18 @@ const Home: React.FC = () => {
   const submitOffer = async (val: any) => {
     try {
       const { data } = await CreateOfferConfig(val);
-      message.success(data?.message);
+      // message.success(data?.message);
+      localStorage.getItem("lang") == "RU"
+        ? message.success(
+            "Ваше сообщение успешно сохранено, мы ответим вам в ближайшее время"
+          )
+        : localStorage.getItem("lang") == "EN"
+        ? message.success(
+            "Your message has been successfully saved, we will reply to you as soon as possible."
+          )
+        : message.success(
+            "Xabaringiz muvaffaqiyatli saqlandi, biz sizga imkon qadar tezroq javob beramiz."
+          );
       form.resetFields();
     } catch (error) {
       CatchError(error);
@@ -81,16 +92,31 @@ const Home: React.FC = () => {
           <h1 className="title">{t("home.title")}</h1>
 
           <Carousel
-            autoplay
+            autoplay={false}
             autoplaySpeed={3000}
-            dotPosition="bottom"
+            dotPosition="top"
             className="topcaraousel"
           >
             {publicNews.map((news) => (
-              <div className="home__card" key={news.id}>
-                <div>
-                  <h2>{GiveTrans(news)}</h2>
-                  <p>{GiveTrans(news, "anons")}</p>
+              // <div className="home__card" key={news.id}>
+              //   <div>
+              //     <h2>{GiveTrans(news)}</h2>
+              //     <p>{GiveTrans(news, "anons")}</p>
+              //     <Link to={`/blog/${news.id}`}>
+              //       <button>
+              //         <span>{t("home.more")}</span>
+              //         <RightSVG />
+              //       </button>
+              //     </Link>
+              //   </div>
+              //   <img src={news?.documentResponses[0]?.fileUrl} alt="" />
+              // </div>
+              <div className="home__card2" key={news.id}>
+                <div className="wrap">
+                  <img src={news?.documentResponses[0]?.fileUrl} alt="" />
+                </div>
+                <div className="home__card2-content">
+                  <h2>{GiveTrans(news)} </h2>
                   <Link to={`/blog/${news.id}`}>
                     <button>
                       <span>{t("home.more")}</span>
@@ -98,7 +124,6 @@ const Home: React.FC = () => {
                     </button>
                   </Link>
                 </div>
-                <img src={news?.documentResponses[0]?.fileUrl} alt="" />
               </div>
             ))}
           </Carousel>

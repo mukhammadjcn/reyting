@@ -15,7 +15,15 @@ function Depelopment() {
     <>
       <Header />
       <div className="development">
-        <NoData title={t("development") ?? ""} type="dev" />
+        <div className="container">
+          <h1>{t("development.title")}</h1>
+
+          <h3>{t("development.info")}</h3>
+          <ul>
+            <li>{t("development.name1")}</li>
+          </ul>
+        </div>
+        {/* <NoData title={t("development") ?? ""} type="dev" /> */}
       </div>
       <Footer />
     </>
