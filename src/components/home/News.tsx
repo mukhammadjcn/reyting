@@ -27,7 +27,7 @@ function HomeNews({ news }: { news: INews[] }) {
       <div className="home-news-content">
         <Link to={`/blog/${news[0]?.id}`} onClick={() => window.scrollTo(0, 0)}>
           <div className="home-news-content-left">
-            <img src={news[0]?.documentResponses[0]?.fileUrl} />
+            <img src={news[0]?.documentResponses[0]?.fileUrl} loading="lazy" />
             <div className="home-news-content-box">
               <div className="home-news-content-box-wrap">
                 <div className="home-news-content-box-header">
@@ -48,7 +48,10 @@ function HomeNews({ news }: { news: INews[] }) {
             onClick={() => window.scrollTo(0, 0)}
           >
             <div className="home-news-content-right-card">
-              <img src={news[1]?.documentResponses[0]?.fileUrl} />
+              <img
+                src={news[1]?.documentResponses[0]?.fileUrl}
+                loading="lazy"
+              />
               <div className="home-news-content-box">
                 <div className="home-news-content-box-wrap">
                   <div className="home-news-content-box-header">
@@ -68,7 +71,10 @@ function HomeNews({ news }: { news: INews[] }) {
             onClick={() => window.scrollTo(0, 0)}
           >
             <div className="home-news-content-right-card">
-              <img src={news[2]?.documentResponses[0]?.fileUrl} />
+              <img
+                src={news[2]?.documentResponses[0]?.fileUrl}
+                loading="lazy"
+              />
               <div className="home-news-content-box">
                 <div className="home-news-content-box-wrap">
                   <div className="home-news-content-box-header">
@@ -92,7 +98,10 @@ function HomeNews({ news }: { news: INews[] }) {
             onClick={() => window.scrollTo(0, 0)}
           >
             <div className="home-news-content-right-card">
-              <img src={news[1]?.documentResponses[0]?.fileUrl} />
+              <img
+                src={news[1]?.documentResponses[0]?.fileUrl}
+                loading="lazy"
+              />
               <div className="home-news-content-box">
                 <div className="home-news-content-box-wrap">
                   <div className="home-news-content-box-header">
@@ -111,7 +120,10 @@ function HomeNews({ news }: { news: INews[] }) {
             onClick={() => window.scrollTo(0, 0)}
           >
             <div className="home-news-content-right-card">
-              <img src={news[1]?.documentResponses[1]?.fileUrl} />
+              <img
+                src={news[2]?.documentResponses[0]?.fileUrl}
+                loading="lazy"
+              />
               <div className="home-news-content-box">
                 <div className="home-news-content-box-wrap">
                   <div className="home-news-content-box-header">
@@ -130,7 +142,10 @@ function HomeNews({ news }: { news: INews[] }) {
             onClick={() => window.scrollTo(0, 0)}
           >
             <div className="home-news-content-right-card">
-              <img src={news[1]?.documentResponses[2]?.fileUrl} />
+              <img
+                src={news[3]?.documentResponses[0]?.fileUrl}
+                loading="lazy"
+              />
               <div className="home-news-content-box">
                 <div className="home-news-content-box-wrap">
                   <div className="home-news-content-box-header">

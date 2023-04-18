@@ -453,6 +453,9 @@ button {
   .slick-dots li button:before {
     display: none;
   }
+  .slick-dots-top {
+    top: 84px !important;
+  }
 }
 .user {
   outline: none;
@@ -580,9 +583,7 @@ button {
       object-fit: cover;
     }
   }
-  .slick-dots-top {
-    top: 84px !important;
-  }
+
   &__card2 {
     margin: 64px 0 0;
     overflow: hidden;
