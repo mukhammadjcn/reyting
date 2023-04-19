@@ -7,6 +7,7 @@ import Footer from "src/components/home/Footer";
 import Header from "src/components/home/Header";
 import { GetNewsIdConfig } from "src/server/config/Urls";
 import { INews } from "types/index";
+import { LoadingOutlined } from "@ant-design/icons";
 
 function BlogPage() {
   const location = useLocation();
@@ -85,9 +86,17 @@ function BlogPage() {
             <Skeleton.Input />
           </div>
           <div style={{ marginBottom: 24 }} className="image">
-            <Skeleton.Image active={true} />
+            <Skeleton.Node active={true}>
+              <LoadingOutlined style={{ fontSize: 28, color: "#bfbfbf" }} />
+            </Skeleton.Node>
           </div>
 
+          <div style={{ marginBottom: 24 }}>
+            <Skeleton active />
+          </div>
+          <div style={{ marginBottom: 24 }}>
+            <Skeleton active />
+          </div>
           <div style={{ marginBottom: 24 }}>
             <Skeleton active />
           </div>

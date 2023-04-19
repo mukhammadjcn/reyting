@@ -8,6 +8,7 @@ import Footer from "src/components/home/Footer";
 import Header from "src/components/home/Header";
 import { CalendarSvg } from "src/components/svg";
 import PaginationFilter from "src/components/home/PaginationFilter";
+import { LoadingOutlined } from "@ant-design/icons";
 
 function BLog() {
   const { t } = useTranslation();
@@ -60,12 +61,15 @@ function BLog() {
             >
               <div className={`left ${!loading ? "disableload" : ""}`}>
                 <img src={news.documentResponses[0]?.fileUrl} alt="" />
-                <Skeleton.Image active={true} />
                 <div className="flex">
                   <CalendarSvg />
                   <span>{new Date(news.createdDate).toLocaleDateString()}</span>
                 </div>
                 <div className="hashteg">#{t("newsTitle")}</div>
+
+                <div className="wrap">
+                  <LoadingOutlined />
+                </div>
               </div>
               <div className="right">
                 <h2>{GiveTrans(news)}</h2>

@@ -1301,24 +1301,23 @@ button {
       span {
         color: #000000;
       }
-      .ant-skeleton {
-        width: 500px;
-        height: 300px;
+      .wrap {
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 5;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background: white;
+        opacity: 0.8;
         transition: 0.3s ease-in-out;
-        .ant-skeleton-image {
-          width: 100%;
-          height: 100%;
-        }
       }
     }
     .disableload {
-      .ant-skeleton {
-        z-index: -2 !important;
+      .wrap {
+        opacity: 0;
       }
     }
     .right {
@@ -1361,12 +1360,11 @@ button {
   img {
     width: 100%;
   }
-  figure {
-    width: 100% !important;
-  }
+
   &__banner {
     height: 430px;
     object-fit: cover;
+    object-position: top;
   }
   p {
     margin-top: 24px;
@@ -1395,8 +1393,12 @@ button {
     }
   }
   figure {
+    width: 100% !important;
     img {
       width: 100% !important;
+      height: 430px !important;
+      object-fit: cover;
+      object-position: top;
     }
   }
   table {

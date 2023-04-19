@@ -56,12 +56,23 @@ function Offers() {
       align: "center",
       width: 400,
     },
+
     {
       title: "Elektron pochta",
       dataIndex: "email",
       key: "email",
       align: "center",
       width: 400,
+    },
+    {
+      title: "Murojaat sanasi",
+      dataIndex: "createDate",
+      key: "createDate",
+      align: "center",
+      width: 400,
+      render: (_, record) => (
+        <div>{new Date(record.createDate).toLocaleString()}</div>
+      ),
     },
     {
       title: "Amallar",

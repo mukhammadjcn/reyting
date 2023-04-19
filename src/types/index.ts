@@ -88,6 +88,7 @@ export interface IOffer {
   fullName: string;
   text: string;
   answer: string;
+  createDate: string;
 }
 
 export interface INews {
