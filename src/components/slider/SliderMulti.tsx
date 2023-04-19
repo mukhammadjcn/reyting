@@ -7,8 +7,8 @@ function SliderMulti({ members }: { members: IMember[] }) {
   const [loading, setLoading] = useState(true);
   const settings = {
     dots: true,
-    speed: 1500,
-    infinite: false,
+    speed: 5000,
+    infinite: true,
     autoplay: true,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -61,22 +61,18 @@ function SliderMulti({ members }: { members: IMember[] }) {
 
   return (
     <Slider {...settings} className="user-slider">
-      {members.length > 0 ? (
-        members.map((member) => (
-          <div className="user" key={member.id}>
-            <div className="user__img">
-              <div className="wrapper" style={!loading ? { opacity: 0 } : {}}>
-                <LoadingOutlined />
-              </div>
-              <img src={member.documentResponses[0].fileUrl} />
+      {members.map((member) => (
+        <div className="user" key={member.id}>
+          <div className="user__img">
+            <div className="wrapper" style={!loading ? { opacity: 0 } : {}}>
+              <LoadingOutlined />
             </div>
-            <h2>{GiveTrans(member)}</h2>
-            <p>{GiveTrans(member, false)}</p>
+            <img src={member.documentResponses[0].fileUrl} />
           </div>
-        ))
-      ) : (
-        <LoadingOutlined />
-      )}
+          <h2>{GiveTrans(member)}</h2>
+          <p>{GiveTrans(member, false)}</p>
+        </div>
+      ))}
     </Slider>
   );
 }

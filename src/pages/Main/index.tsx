@@ -190,6 +190,7 @@ const Home: React.FC = () => {
                   <svg
                     width="56"
                     height="56"
+                    style={{ flexShrink: 0 }}
                     viewBox="0 0 56 56"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -235,6 +236,7 @@ const Home: React.FC = () => {
                   <svg
                     width="56"
                     height="56"
+                    style={{ flexShrink: 0 }}
                     viewBox="0 0 56 56"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -268,6 +270,7 @@ const Home: React.FC = () => {
                   <svg
                     width="56"
                     height="56"
+                    style={{ flexShrink: 0 }}
                     viewBox="0 0 56 56"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -299,6 +302,7 @@ const Home: React.FC = () => {
                   }
                 >
                   <svg
+                    style={{ flexShrink: 0 }}
                     width="56"
                     height="56"
                     viewBox="0 0 56 56"

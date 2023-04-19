@@ -10,7 +10,7 @@ import { INews } from "types/index";
 
 function BlogPage() {
   const location = useLocation();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [news, setNews] = useState<any>();
 
   const GetNews = async () => {
@@ -43,8 +43,8 @@ function BlogPage() {
 
   useEffect(() => {
     GetNews();
-    i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
   }, []);
+
   return (
     <>
       <Header />
@@ -63,7 +63,11 @@ function BlogPage() {
 
           <h2 className="section_title">{GiveTrans(news)}</h2>
 
-          <img src={news?.documentResponses[0]?.fileUrl} alt="" />
+          <img
+            alt=""
+            className="blogpage__banner"
+            src={news?.documentResponses[0]?.fileUrl}
+          />
 
           <div
             dangerouslySetInnerHTML={{

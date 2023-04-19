@@ -13,7 +13,7 @@ function About() {
 
   const settings = {
     dots: true,
-    speed: 500,
+    speed: 3000,
     infinite: true,
     autoplay: true,
     slidesToShow: 3,
