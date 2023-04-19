@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import Slider from "react-slick";
+import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { MainContext } from "src/hooks/index";
 import Footer from "src/components/home/Footer";
 import Header from "src/components/home/Header";
 import Partners from "src/components/home/Partners";
 import SliderMulti from "src/components/slider/SliderMulti";
-import { GetMemberConfig } from "src/server/config/Urls";
-import { CatchError } from "src/utils/index";
-import { IMember } from "src/types/index";
 
 function About() {
-  const { t, i18n } = useTranslation();
-  const [members, setMembers] = useState<IMember[]>([]);
+  const { t } = useTranslation();
+  const { members } = useContext(MainContext);
 
   const settings = {
     dots: true,
@@ -47,19 +45,6 @@ function About() {
     ],
   };
 
-  const GetMembers = async () => {
-    try {
-      const { data } = await GetMemberConfig();
-      setMembers(data);
-    } catch (error) {
-      CatchError(error);
-    }
-  };
-
-  useEffect(() => {
-    GetMembers();
-    i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
-  }, []);
   return (
     <>
       <Header />
@@ -69,7 +54,7 @@ function About() {
             {t("nav.about2")}
           </h2>
 
-          <SliderMulti members={members} />
+          <SliderMulti members={members || []} />
 
           <h2 className="section_title" id="group">
             {t("about.work_group")}
@@ -85,11 +70,7 @@ function About() {
                 <p>{t("about.work1.team")}</p>
               </div>
               <div className="right">
-                <img
-                  src={require("src/assets/images/user.png")}
-                  alt=""
-                  loading="lazy"
-                />
+                <img src={require("src/assets/images/user.png")} alt="" />
                 <h4>{t("about.work1.label")}</h4>
                 <p>{t("about.work1.name")}</p>
               </div>
@@ -102,11 +83,7 @@ function About() {
                 <p>{t("about.work2.team")}</p>
               </div>
               <div className="right">
-                <img
-                  src={require("src/assets/images/user4.png")}
-                  alt=""
-                  loading="lazy"
-                />
+                <img src={require("src/assets/images/user4.png")} alt="" />
                 <h4>{t("about.work2.label")}</h4>
                 <p>{t("about.work2.name")}</p>
               </div>
@@ -119,11 +96,7 @@ function About() {
                 <p>{t("about.work3.team")}</p>
               </div>
               <div className="right">
-                <img
-                  src={require("src/assets/images/user.png")}
-                  alt=""
-                  loading="lazy"
-                />
+                <img src={require("src/assets/images/user.png")} alt="" />
                 <h4>{t("about.work3.label")}</h4>
                 <p>{t("about.work3.name")}</p>
               </div>
@@ -136,11 +109,7 @@ function About() {
                 <p>{t("about.work4.team")}</p>
               </div>
               <div className="right">
-                <img
-                  src={require("src/assets/images/user5.jpg")}
-                  alt=""
-                  loading="lazy"
-                />
+                <img src={require("src/assets/images/user5.jpg")} alt="" />
                 <h4>{t("about.work4.label")}</h4>
                 <p>{t("about.work4.name")}</p>
               </div>
@@ -157,44 +126,28 @@ function About() {
             <h2 className="section_title">{t("about.documents")}</h2>
             <Slider {...settings} className="user-slider">
               <div className="documents_item">
-                <img
-                  src={require("src/assets/images/doc1.png")}
-                  alt=""
-                  loading="lazy"
-                />
+                <img src={require("src/assets/images/doc1.png")} alt="" />
                 <a href="https://lex.uz/docs/5031048" target="_blank">
                   {t("about.document1.name")}
                 </a>
                 <p>{t("about.document1.info")}</p>
               </div>
               <div className="documents_item">
-                <img
-                  src={require("src/assets/images/doc2.png")}
-                  alt=""
-                  loading="lazy"
-                />
+                <img src={require("src/assets/images/doc2.png")} alt="" />
                 <a href="https://lex.uz/docs/6102468" target="_blank">
                   {t("about.document2.name")}
                 </a>
                 <p>{t("about.document2.info")}</p>
               </div>
               <div className="documents_item">
-                <img
-                  src={require("src/assets/images/doc3.png")}
-                  alt=""
-                  loading="lazy"
-                />
+                <img src={require("src/assets/images/doc3.png")} alt="" />
                 <a href="https://lex.uz/docs/5297051" target="_blank">
                   {t("about.document3.name")}
                 </a>
                 <p>{t("about.document3.info")}</p>
               </div>
               <div className="documents_item">
-                <img
-                  src={require("src/assets/images/doc4.jpg")}
-                  alt=""
-                  loading="lazy"
-                />
+                <img src={require("src/assets/images/doc4.jpg")} alt="" />
                 <a
                   href={require("src/assets/ПОЛОЖЕНИЕ_О_КОНСУЛЬТАТИВНОГО_СОВЕТА.pdf")}
                   target="_blank"

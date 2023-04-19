@@ -46,6 +46,10 @@ export interface IBoshqarmaList {
   pinfl: string;
 }
 
+export interface PaginationFilterProps {
+  total?: number;
+}
+
 // ------------------------------------------
 export interface IUser {
   id: number;
@@ -117,4 +121,13 @@ export interface IImage {
   id: number;
   fileUrl: string;
   fileName: string;
+}
+
+export interface ContextTypes {
+  total: number;
+  news?: INews[];
+  loading: Boolean;
+  members?: IMember[];
+  publicNews?: INews[];
+  setNews?: React.Dispatch<React.SetStateAction<INews[]>>;
 }

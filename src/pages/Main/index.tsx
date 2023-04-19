@@ -1,5 +1,5 @@
 import { Alert, Button, Carousel, Checkbox, Form, Input, message } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "src/components/home/Header";
 import Footer from "src/components/home/Footer";
 import HomeNews from "src/components/home/News";
@@ -8,19 +8,17 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import { CatchError } from "src/utils/index";
-import {
-  CreateOfferConfig,
-  GetNewsConfig,
-  GetPublicNewsConfig,
-} from "src/server/config/Urls";
+import { CreateOfferConfig } from "src/server/config/Urls";
 import { INews } from "types/index";
+import { MainContext } from "src/hooks/index";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const Home: React.FC = () => {
   const [form] = Form.useForm();
+  const { t } = useTranslation();
   const [work, setWork] = useState(2);
-  const { t, i18n } = useTranslation();
-  const [news, setNews] = useState<INews[]>([]);
-  const [publicNews, setPublicNews] = useState<INews[]>([]);
+  const [loading, setLoading] = useState(false);
+  const { publicNews, news } = useContext(MainContext);
 
   const submitOffer = async (val: any) => {
     try {
@@ -41,15 +39,6 @@ const Home: React.FC = () => {
     } catch (error) {
       CatchError(error);
     }
-  };
-
-  const GetNews = async () => {
-    const { data } = await GetNewsConfig();
-    setNews(data.content);
-  };
-  const GetPublicNews = async () => {
-    const { data } = await GetPublicNewsConfig();
-    setPublicNews(data.content);
   };
   const GiveTrans = (news: INews, title = "title") => {
     const lang = localStorage.getItem("lang") ?? "RU";
@@ -123,9 +112,9 @@ const Home: React.FC = () => {
   };
 
   useEffect(() => {
-    GetNews();
-    GetPublicNews();
-    i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
+    setTimeout(() => {
+      setLoading(true);
+    }, 2000);
   }, []);
 
   return (
@@ -140,6 +129,7 @@ const Home: React.FC = () => {
         }
       />
       <Header />
+
       <div className="home">
         <div className="container">
           <h1 className="title">{t("home.title")}</h1>
@@ -150,26 +140,14 @@ const Home: React.FC = () => {
             autoplaySpeed={3000}
             className="topcaraousel"
           >
-            {publicNews.map((news) => (
-              // <div className="home__card" key={news.id}>
-              //   <div>
-              //     <h2>{GiveTrans(news)}</h2>
-              //     <p>{GiveTrans(news, "anons")}</p>
-              //     <Link to={`/blog/${news.id}`}>
-              //       <button>
-              //         <span>{t("home.more")}</span>
-              //         <RightSVG />
-              //       </button>
-              //     </Link>
-              //   </div>
-              //   <img src={news?.documentResponses[0]?.fileUrl} alt="" />
-              // </div>
+            {publicNews?.map((news) => (
               <Link
                 to={`/blog/${news.id}`}
                 className="home__card2"
                 key={news.id}
               >
-                <div className="wrap">
+                <div className={`wrap ${!loading ? "wrap__loading" : ""}`}>
+                  <LoadingOutlined />
                   <img
                     loading="eager"
                     alt="Caraosel imgaes"
@@ -380,7 +358,7 @@ const Home: React.FC = () => {
         <div className="home-news">
           <div className="container">
             <h2 className="section_title">{t("home.blog")}</h2>
-            <HomeNews news={news} />
+            <HomeNews news={news || []} />
           </div>
         </div>
 
@@ -512,6 +490,16 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* <div
+          className={`home__loading ${!loading && "home__loading-disabled"}`}
+        >
+          <img src={require("src/assets/images/logo.png")} alt="" />
+          <h1>
+            Министерство высшего образования, науки и инноваций Республики
+            Узбекистан
+          </h1>
+        </div> */}
       </div>
 
       <Footer />

@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { IMember } from "types/index";
 import { LoadingOutlined } from "@ant-design/icons";
 
 function SliderMulti({ members }: { members: IMember[] }) {
+  const [loading, setLoading] = useState(true);
   const settings = {
     dots: true,
-    speed: 500,
+    speed: 1500,
     infinite: false,
     autoplay: true,
     slidesToShow: 3,
@@ -37,7 +38,6 @@ function SliderMulti({ members }: { members: IMember[] }) {
       },
     ],
   };
-
   const GiveTrans = (member: IMember, name = true) => {
     const lang = localStorage.getItem("lang") ?? "RU";
     if (name) {
@@ -55,12 +55,21 @@ function SliderMulti({ members }: { members: IMember[] }) {
     }
   };
 
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1500);
+  }, []);
+
   return (
     <Slider {...settings} className="user-slider">
       {members.length > 0 ? (
         members.map((member) => (
           <div className="user" key={member.id}>
-            <img src={member.documentResponses[0].fileUrl} alt="" />
+            <div className="user__img">
+              <div className="wrapper" style={!loading ? { opacity: 0 } : {}}>
+                <LoadingOutlined />
+              </div>
+              <img src={member.documentResponses[0].fileUrl} />
+            </div>
             <h2>{GiveTrans(member)}</h2>
             <p>{GiveTrans(member, false)}</p>
           </div>

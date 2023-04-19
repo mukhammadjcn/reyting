@@ -1,48 +1,18 @@
-import { Breadcrumb, Pagination } from "antd";
-import React, { useEffect, useState } from "react";
+import { Breadcrumb } from "antd";
+import { INews } from "types/index";
+import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { MainContext } from "src/hooks/index";
 import { useTranslation } from "react-i18next";
-import { Link, useSearchParams } from "react-router-dom";
 import Footer from "src/components/home/Footer";
 import Header from "src/components/home/Header";
 import { CalendarSvg } from "src/components/svg";
-import { GetNewsConfig } from "src/server/config/Urls";
-import { INews } from "types/index";
+import PaginationFilter from "src/components/home/PaginationFilter";
 
 function BLog() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const { t, i18n } = useTranslation();
-  const [total, setTotal] = useState(0);
-  const current = searchParams.get("page");
-  const [currentpage, setCurrentPage] = useState(current ? current : 1);
-  const [news, setNews] = useState<INews[]>([]);
+  const { t } = useTranslation();
+  const { news, total } = useContext(MainContext);
 
-  const handleMakeParams = (key: any, value: any) => {
-    if (value) {
-      if (searchParams.has(key)) searchParams.set(key, value);
-      else searchParams.append(key, value);
-    } else searchParams.delete(key);
-    setSearchParams(searchParams);
-  };
-  const setPage = (val: any) => {
-    setCurrentPage(val);
-    handleMakeParams("page", val);
-    GetNews();
-    window.scrollTo(0, 0);
-  };
-  const urlMaker = () => {
-    let url = "&";
-    for (let key of searchParams.keys()) {
-      let value = searchParams.get(key);
-      url = url + `${url.length < 2 ? "" : "&"}${key}=${value}`;
-    }
-    return url.length > 2 ? url : "";
-  };
-
-  const GetNews = async () => {
-    const { data } = await GetNewsConfig(urlMaker());
-    setTotal(data?.totalElements);
-    setNews(data.content);
-  };
   const GiveTrans = (news: INews, title = "title") => {
     const lang = localStorage.getItem("lang") ?? "RU";
     if (title == "title") {
@@ -60,11 +30,6 @@ function BLog() {
     }
   };
 
-  useEffect(() => {
-    GetNews();
-    i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
-  }, []);
-
   return (
     <>
       <Header />
@@ -79,7 +44,7 @@ function BLog() {
         <h2 className="section_title">{t("home.blog")}</h2>
 
         <div className="blog__news">
-          {news.map((news) => (
+          {news?.map((news) => (
             <Link
               key={news.id}
               className="blog__new"
@@ -106,11 +71,7 @@ function BLog() {
           className="flex"
           style={{ justifyContent: "center", marginBottom: 24 }}
         >
-          <Pagination
-            total={total}
-            current={+currentpage}
-            onChange={(val) => setPage(val)}
-          />
+          <PaginationFilter total={total} />
         </div>
       </div>
       <Footer />
