@@ -243,14 +243,23 @@ button {
     height: 120px;
     border-radius: 8px;
     background: #edf1fe;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.3s ease-in;
     img {
       width: 60%;
       height: 60%;
       object-fit: contain;
       filter: grayscale(100%);
+      transition: 0.3s ease-in;
+    }
+    &:hover {
+      filter: drop-shadow(rgba(0, 0, 0, 0.12) 0px 0px 12px);
+      img {
+        filter: grayscale(0);
+      }
     }
   }
 }
