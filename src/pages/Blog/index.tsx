@@ -35,7 +35,7 @@ function BLog() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 1200);
   }, []);
 
   return (

@@ -7,11 +7,11 @@ function SliderMulti({ members }: { members: IMember[] }) {
   const [loading, setLoading] = useState(true);
   const settings = {
     dots: true,
-    speed: 5000,
     infinite: true,
     autoplay: true,
     slidesToShow: 3,
     slidesToScroll: 1,
+    autoplaySpeed: 5000,
     centerPadding: "10px",
     responsive: [
       {
@@ -56,7 +56,7 @@ function SliderMulti({ members }: { members: IMember[] }) {
   };
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1500);
+    setTimeout(() => setLoading(false), 1200);
   }, []);
 
   return (

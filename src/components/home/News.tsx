@@ -28,7 +28,7 @@ function HomeNews({ news }: { news: INews[] }) {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1200);
   }, []);
 
   return (
