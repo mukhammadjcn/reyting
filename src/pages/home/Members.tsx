@@ -11,8 +11,10 @@ import {
 import { CatchError } from "src/utils/index";
 import { IMember } from "types/index";
 import NoData from "src/components/animation/Lotties";
+import { useTranslation } from "react-i18next";
 
 function Members() {
+  const { i18n } = useTranslation();
   const [form] = Form.useForm();
   const [open, setOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
@@ -109,9 +111,26 @@ function Members() {
       CatchError(error);
     }
   };
+  const GiveTrans = (member: IMember, name = true) => {
+    const lang = localStorage.getItem("lang") ?? "RU";
+    if (name) {
+      return lang == "RU"
+        ? member.fullNameRU
+        : lang == "EN"
+        ? member.fullNameEN
+        : member.fullName;
+    } else {
+      return lang == "RU"
+        ? member.workPlaceRU
+        : lang == "EN"
+        ? member.workPlaceEN
+        : member.workPlace;
+    }
+  };
 
   useEffect(() => {
     GetMembers();
+    i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
   }, []);
 
   return (
@@ -148,8 +167,8 @@ function Members() {
                 }
                 alt=""
               />
-              <h2>{member.fullName}</h2>
-              <p>{member.workPlace}</p>
+              <h2>{GiveTrans(member)}</h2>
+              <p>{GiveTrans(member, false)}</p>
             </div>
           ))
         ) : (

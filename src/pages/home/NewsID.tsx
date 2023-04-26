@@ -7,6 +7,7 @@ import {
   Upload,
   UploadFile,
   DatePicker,
+  Skeleton,
 } from "antd";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -21,12 +22,16 @@ import { CatchError } from "src/utils/index";
 import { ArrowLeftOutlined, PlusOutlined } from "@ant-design/icons";
 import moment from "moment";
 import SunEditor from "suneditor-react";
+import { INews } from "types/index";
+import { LoadingOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 function NewsID() {
   const location = useLocation();
   const navigate = useNavigate();
   const [form] = Form.useForm();
-  const [data, setData] = useState<any>();
+  const { i18n } = useTranslation();
+  const [news, setNews] = useState<any>();
   const [open, setOpen] = useState(false);
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [previewVisible, setPreviewVisible] = useState(false);
@@ -50,13 +55,34 @@ function NewsID() {
     minHeight: "200px",
     showPathLabel: false,
   };
+  const GiveTrans = (news: INews, title = "title") => {
+    const lang = localStorage.getItem("lang") ?? "RU";
+    if (title == "title") {
+      return lang == "RU"
+        ? news?.titleRU
+        : lang == "EN"
+        ? news?.titleEN
+        : news?.titleUZ;
+    } else if (title == "anons") {
+      return lang == "RU"
+        ? news?.anonsRU
+        : lang == "EN"
+        ? news?.anonsEN
+        : news?.anonsUZ;
+    }
+    return lang == "RU"
+      ? news?.textRU
+      : lang == "EN"
+      ? news?.textEN
+      : news?.textUZ;
+  };
 
   const NewsID = async () => {
     try {
       const { data } = await GetNewsIdConfig(
         location.pathname.replaceAll("/home/news/", "")
       );
-      setData(data);
+      setNews(data);
       form.setFieldsValue({
         ...data,
         newsDate: moment(data?.createdDate),
@@ -134,7 +160,7 @@ function NewsID() {
   };
   const makePrimary = async (type: boolean) => {
     try {
-      await PrimaryConfig(data?.id, type);
+      await PrimaryConfig(news?.id, type);
       NewsID();
       message.success("Muvofaqqiyatli yangilandi");
     } catch (error) {
@@ -145,6 +171,7 @@ function NewsID() {
 
   useEffect(() => {
     NewsID();
+    i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
   }, []);
 
   return (
@@ -166,7 +193,7 @@ function NewsID() {
             Orqaga
           </Button>
 
-          {data?.isPublic ? (
+          {news?.isPublic ? (
             <Button onClick={() => makePrimary(false)} danger>
               Asosiydan o'chirish
             </Button>
@@ -184,14 +211,42 @@ function NewsID() {
           </Button>
         </div>
 
-        <h2 className="section_title">{data?.titleUZ}</h2>
-        <img
-          src={
-            data?.documentResponses[0]?.fileUrl ?? "https://picsum.photos/200"
-          }
-          alt=""
-        />
-        <div dangerouslySetInnerHTML={{ __html: data?.textUZ }}></div>
+        {news?.createdDate ? (
+          <div className="blogpage container">
+            <h2 className="section_title">{GiveTrans(news)}</h2>
+
+            <div
+              dangerouslySetInnerHTML={{
+                __html: GiveTrans(news, "false"),
+              }}
+            />
+
+            <p style={{ textAlign: "end", marginBottom: 36 }}>
+              {moment(news?.createdDate).format("DD.MM.YYYY")}
+            </p>
+          </div>
+        ) : (
+          <div className="blogpage container">
+            <div style={{ marginBottom: 24 }}>
+              <Skeleton.Input />
+            </div>
+            <div style={{ marginBottom: 24 }} className="image">
+              <Skeleton.Node active={true}>
+                <LoadingOutlined style={{ fontSize: 28, color: "#bfbfbf" }} />
+              </Skeleton.Node>
+            </div>
+
+            <div style={{ marginBottom: 24 }}>
+              <Skeleton active />
+            </div>
+            <div style={{ marginBottom: 24 }}>
+              <Skeleton active />
+            </div>
+            <div style={{ marginBottom: 24 }}>
+              <Skeleton active />
+            </div>
+          </div>
+        )}
       </div>
 
       <Modal
@@ -275,7 +330,7 @@ function NewsID() {
             <SunEditor
               height="400"
               setOptions={options}
-              setContents={data?.textUZ}
+              setContents={news?.textUZ}
             />
           </Form.Item>
           <Form.Item
@@ -292,7 +347,7 @@ function NewsID() {
             <SunEditor
               height="400"
               setOptions={options}
-              setContents={data?.textRU}
+              setContents={news?.textRU}
             />
           </Form.Item>
           <Form.Item
@@ -309,7 +364,7 @@ function NewsID() {
             <SunEditor
               height="400"
               setOptions={options}
-              setContents={data?.textEN}
+              setContents={news?.textEN}
             />
           </Form.Item>
 

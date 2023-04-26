@@ -23,9 +23,11 @@ import { PlusOutlined } from "@ant-design/icons";
 import { INews } from "types/index";
 import NoData from "src/components/animation/Lotties";
 import SunEditor from "suneditor-react";
+import { useTranslation } from "react-i18next";
 
 function News() {
   const [form] = Form.useForm();
+  const { i18n } = useTranslation();
   const [news, setNews] = useState([]);
   const [open, setOpen] = useState(false);
   const [fileList, setFileList] = useState<UploadFile[]>([]);
@@ -54,6 +56,23 @@ function News() {
     defaultTag: "p",
     minHeight: "200px",
     showPathLabel: false,
+  };
+  const GiveTrans = (news: INews, title = "title") => {
+    console.log(news);
+    const lang = localStorage.getItem("lang") ?? "RU";
+    if (title == "title") {
+      return lang == "RU"
+        ? news?.titleRU
+        : lang == "EN"
+        ? news?.titleEN
+        : news?.titleUZ;
+    } else if (title == "anons") {
+      return lang == "RU"
+        ? news?.anonsRU
+        : lang == "EN"
+        ? news?.anonsEN
+        : news?.anonsUZ;
+    }
   };
 
   const handleMakeParams = (key: any, value: any) => {
@@ -164,6 +183,7 @@ function News() {
 
   useEffect(() => {
     GetNews();
+    i18n.changeLanguage(localStorage.getItem("lang") ?? "RU");
   }, []);
 
   return (
@@ -214,14 +234,8 @@ function News() {
                 </div>
               </div>
               <div className="right">
-                <h2>{item?.titleUZ}</h2>
-                <div>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: item.anonsUZ,
-                    }}
-                  ></p>
-                </div>
+                <h2>{GiveTrans(item)}</h2>
+                <p>{GiveTrans(item, "anons")}</p>
               </div>
             </Link>
           </div>

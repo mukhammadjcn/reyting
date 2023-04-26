@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { Layout, Menu, Modal } from "antd";
+import { Dropdown, Layout, Menu, MenuProps, Modal } from "antd";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -11,11 +11,13 @@ import {
 } from "@ant-design/icons";
 import "src/styles/home.scss";
 import { role } from "src/server/Host";
+import { ENLANGSVG, RULANGSVG, UZLANGSVG } from "src/components/svg";
+import { useTranslation } from "react-i18next";
 
 const App = () => {
   const url = useLocation();
   const navigate = useNavigate();
-  const [data, SetData] = useState<any>();
+  const { t, i18n } = useTranslation();
   const { Header, Sider, Content } = Layout;
   const [collapsed, setCollapsed] = useState(false);
 
@@ -83,6 +85,63 @@ const App = () => {
       icon: <LogoutOutlined />,
       label: "Tizimdan chiqish",
       onClick: () => Logout(),
+    },
+  ];
+  const [lang, setLang] = useState(localStorage.getItem("lang") ?? "RU");
+  const Flags = ({ name }: { name: "UZ" | "RU" | "EN" }) => {
+    if (name == "UZ") {
+      return (
+        <div className="language">
+          <UZLANGSVG />
+          <span>UZ</span>
+          {/* <BottomSVG /> */}
+        </div>
+      );
+    } else if (name == "RU") {
+      return (
+        <div className="language">
+          <RULANGSVG />
+          <span>RU</span>
+          {/* <BottomSVG /> */}
+        </div>
+      );
+    } else {
+      return (
+        <div className="language">
+          <ENLANGSVG />
+          <span>EN</span>
+          {/* <BottomSVG /> */}
+        </div>
+      );
+    }
+  };
+  const items: MenuProps["items"] = [
+    {
+      label: <Flags name="EN" />,
+      key: "EN",
+      onClick: () => {
+        setLang("EN");
+        i18n.changeLanguage("EN");
+        localStorage.setItem("lang", "EN");
+      },
+    },
+    {
+      label: <Flags name="RU" />,
+      key: "RU",
+      onClick: () => {
+        setLang("RU");
+        i18n.changeLanguage("RU");
+        localStorage.setItem("lang", "RU");
+      },
+    },
+    {
+      label: <Flags name="UZ" />,
+      key: "UZ",
+      onClick: () => {
+        setLang("UZ");
+        i18n.changeLanguage("UZ");
+        localStorage.setItem("lang", "UZ");
+      },
     },
   ];
 
@@ -156,7 +215,17 @@ const App = () => {
           )}
 
           <h2>Ai.edu.uz</h2>
-          <p></p>
+          <Dropdown menu={{ items }} trigger={["click"]}>
+            <div>
+              {lang == "UZ" ? (
+                <Flags name="UZ" />
+              ) : lang == "RU" ? (
+                <Flags name="RU" />
+              ) : (
+                <Flags name="EN" />
+              )}
+            </div>
+          </Dropdown>
         </Header>
         <Content className="home__content">
           <Outlet />

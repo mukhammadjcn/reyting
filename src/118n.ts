@@ -24,6 +24,7 @@ i18n
     resources: {
       UZ: {
         translation: {
+          all: "Barchasi",
           ministr:
             "O‘ZBEKISTON RESPUBLIKASI OLIY TA’LIM, FAN VA INNOVATSIYALAR VAZIRLIGI",
           nav: {
@@ -295,6 +296,7 @@ i18n
       },
       EN: {
         translation: {
+          all: "All",
           ministr:
             "MINISTRY OF HIGHER EDUCATION, SCIENCE AND INNOVATIONS OF THE REPUBLIC OF UZBEKISTAN",
           nav: {
@@ -566,6 +568,7 @@ i18n
       },
       RU: {
         translation: {
+          all: "Все",
           ministr:
             "Министерство высшего образования, науки и инноваций Республики Узбекистан",
           nav: {

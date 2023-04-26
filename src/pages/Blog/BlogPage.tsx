@@ -64,11 +64,11 @@ function BlogPage() {
 
           <h2 className="section_title">{GiveTrans(news)}</h2>
 
-          <img
+          {/* <img
             alt=""
             className="blogpage__banner"
             src={news?.documentResponses[0]?.fileUrl}
-          />
+          /> */}
 
           <div
             dangerouslySetInnerHTML={{

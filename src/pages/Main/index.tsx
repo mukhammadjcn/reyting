@@ -12,6 +12,7 @@ import { CreateOfferConfig } from "src/server/config/Urls";
 import { INews } from "types/index";
 import { MainContext } from "src/hooks/index";
 import { LoadingOutlined } from "@ant-design/icons";
+import { RightSVG } from "src/components/svg";
 
 const Home: React.FC = () => {
   const [form] = Form.useForm();
@@ -361,7 +362,12 @@ const Home: React.FC = () => {
 
         <div className="home-news">
           <div className="container">
-            <h2 className="section_title">{t("home.blog")}</h2>
+            <div className="flex">
+              <h2 className="section_title">{t("home.blog")}</h2>
+              <Link to={"/blog"} className="rightAllBtn">
+                {t("all")} <RightSVG />{" "}
+              </Link>
+            </div>
             <HomeNews news={news || []} />
           </div>
         </div>
