@@ -158,7 +158,7 @@ const Home: React.FC = () => {
                 <div className="home__card2-content">
                   <h2>{GiveTrans(news)}</h2>
                   <div>
-                    <h3>18</h3>
+                    <h3>{new Date(news.createdDate).getDate()}</h3>
                     <p>{GiveDate(news.createdDate)}</p>
                   </div>
                 </div>

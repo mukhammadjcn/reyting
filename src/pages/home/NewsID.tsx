@@ -15,6 +15,7 @@ import {
   CreateImageConfig,
   DelNewsIdConfig,
   GetNewsIdConfig,
+  ImageConfig,
   PrimaryConfig,
   UpdateNewsConfig,
 } from "src/server/config/Urls";
@@ -168,6 +169,28 @@ function NewsID() {
     }
   };
   const handleCancel = () => setPreviewVisible(false);
+  function handleImageUploadBefore(files: any, info: any, uploadHandler: any) {
+    // uploadHandler is a function
+    let final = new FormData();
+    final.append("file", files[0]);
+
+    ImageConfig(final)
+      .then((res) => res.data)
+      .then((data) => {
+        let res = {
+          result: [
+            {
+              url: data?.object?.fileUrl,
+              name: data?.object?.fileName,
+              size: 1,
+            },
+          ],
+        };
+        uploadHandler(res);
+      });
+
+    return undefined;
+  }
 
   useEffect(() => {
     NewsID();
@@ -331,6 +354,7 @@ function NewsID() {
               height="400"
               setOptions={options}
               setContents={news?.textUZ}
+              onImageUploadBefore={handleImageUploadBefore}
             />
           </Form.Item>
           <Form.Item
@@ -348,6 +372,7 @@ function NewsID() {
               height="400"
               setOptions={options}
               setContents={news?.textRU}
+              onImageUploadBefore={handleImageUploadBefore}
             />
           </Form.Item>
           <Form.Item
@@ -365,6 +390,7 @@ function NewsID() {
               height="400"
               setOptions={options}
               setContents={news?.textEN}
+              onImageUploadBefore={handleImageUploadBefore}
             />
           </Form.Item>
 
