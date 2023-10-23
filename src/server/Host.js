@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Host URL
-export let host = "https://ai.edu.uz/api";
+export let host = "https://Reyting.edu.uz/api";
 
 // Names for local usage
 export const ROLE = "role";
@@ -18,7 +18,8 @@ export const getLocal = (name) => localStorage.getItem(name);
 export const removeLocal = (name) => localStorage.removeItem(name);
 export const setLocal = (name, value) => localStorage.setItem(name, value);
 
-export const isAdmin = () => token && role == "ROLE_ADMIN";
+export const isAdmin = () => true;
+// export const isAdmin = () => token && role == "ROLE_ADMIN";
 
 // Requests header
 export let headers = {

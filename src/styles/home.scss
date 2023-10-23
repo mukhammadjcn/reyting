@@ -1,12 +1,15 @@
 .home {
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
   // Header
   &__header {
     height: 56px;
     padding: 0 24px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     background: white !important;
   }
   &__sidebar {
@@ -27,11 +30,17 @@
   }
   &__content {
     padding: 24px;
+    height: calc(100vh - 56px);
+    overflow-y: scroll;
+    width: 100%;
+  }
+  &__body {
+    width: 100%;
+    flex-grow: 1;
   }
   .slick-dots-bottom {
     bottom: 76px;
   }
-
   // Pages
   .yangi {
     padding: 24px;
@@ -75,161 +84,87 @@
     font-weight: 600;
   }
 }
-.adminblog {
-  .section_title {
-    margin: 16px 0 48px;
+
+// -------------------------------------
+.sidebar {
+  height: 100vh;
+  flex-shrink: 0;
+  width: 280px;
+  background-color: #303366;
+
+  &__tabs {
+    padding: 12px;
   }
-  &__news {
-    padding: 24px;
-    background: white;
-    border-radius: 8px;
-    margin-bottom: 48px;
-  }
-  &__new {
-    gap: 24px;
+  &__tab {
+    cursor: pointer;
+    padding: 12px;
     display: flex;
-    .left {
-      position: relative;
-      img {
-        width: 500px;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 8px;
-      }
-      .flex {
-        gap: 8px;
-        top: 24px;
-        left: 24px;
-        padding: 6px;
-        position: absolute;
-        background: white;
-        border-radius: 8px;
-      }
-      .hashteg {
-        position: absolute;
-        bottom: 16px;
-        left: 16px;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        display: flex;
-        align-items: center;
-        color: #ffffff;
-      }
-      span {
-        color: #000000;
-      }
-      .asosiy {
-        padding: 2px 8px;
-        border-radius: 8px;
-        background: #1677ff;
-        color: white;
-        margin-right: 16px;
-      }
+    align-items: center;
+    gap: 12px;
+    transition: 0.3s ease-in-out;
+    &:not(:first-child) {
+      margin-top: 4px;
     }
-    .right {
-      gap: 16px;
-      display: flex;
-      flex-direction: column;
-      h2 {
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 32px;
-        color: #000000;
+    svg {
+      flex-shrink: 0;
+      path,
+      circle,
+      rect {
+        transition: 0.3s ease-in-out;
       }
-      p {
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 32px;
-        color: #000000;
-        flex-grow: 1;
-        // display: none;
-        // &:nth-child(1) {
-        //   display: block;
-        // }
-      }
-      a {
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 24px;
-        color: #1677ff;
-        margin-bottom: 16px;
-      }
-    }
-  }
-}
-.adminmembers {
-  gap: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  .user {
-    width: 352px;
-    outline: none;
-    padding: 0 16px;
-    margin-bottom: 24px;
-    img {
-      width: 320px;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 8px;
     }
     h2 {
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 32px;
-      color: #000000;
-      margin: 8px 0 6px;
-    }
-    p {
+      color: var(--content-inverse, #fff);
+      /* Label/Regular/Secondary */
+      font-size: 14px;
       font-weight: 400;
-      font-size: 16px;
-      line-height: 24px;
-      color: #000000;
+      line-height: 16px; /* 114.286% */
+      letter-spacing: 0.24px;
+      flex-grow: 1;
     }
-    &-slider {
-      margin-top: 24px;
-    }
-  }
-}
-.adminblogpage {
-  margin: auto;
-  max-width: 800px !important;
-  .section_title {
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 48px;
-    color: #000000;
-    margin: 24px 0 32px;
-  }
-  img {
-    height: 500px;
-    object-fit: cover;
-    width: 100% !important;
-  }
-  p {
-    margin-top: 24px;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 32px;
-    color: #181818;
-  }
-  .image {
-    .ant-skeleton {
-      width: 100%;
-      height: 280px;
-      &-image {
-        width: 100%;
-        height: 100%;
+
+    &:hover {
+      background-color: #24264e;
+      border-radius: 8px;
+      svg {
+        path {
+          fill: #a078e5;
+          stroke: #a078e5;
+        }
+        circle,
+        rect {
+          stroke: #a078e5;
+        }
       }
     }
   }
-  figure {
-    width: 100% !important;
-    img {
-      width: 100% !important;
-      height: 500px !important;
-      object-fit: cover;
-      object-position: top;
+  &__tab-active {
+    background-color: #24264e;
+    border-radius: 8px;
+    svg {
+      path {
+        fill: #a078e5;
+        stroke: #a078e5;
+      }
+      circle,
+      rect {
+        stroke: #a078e5;
+      }
     }
+  }
+  .adminlogo {
+    padding: 12px 24px;
+  }
+}
+.tables {
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px; /* 133.333% */
+    margin-bottom: 24px;
+  }
+
+  .ant-table-cell {
+    vertical-align: top;
   }
 }

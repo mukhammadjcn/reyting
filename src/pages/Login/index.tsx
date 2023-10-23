@@ -9,28 +9,15 @@ const Login = () => {
         <div className="login_left_wrap">
           <Link to={"/login"} className="adminlogo">
             <img src={require("src/assets/images/logo.png")} alt="logo" />
-            <span>ai.edu.uz</span>
+            <span>Reyting.edu.uz</span>
           </Link>
 
           <div className="login_left_content">
             <p>
-              AI.EDU.UZ tizimi uchun <span>boshqaruv</span> paneli
+              Reyting.edu.uz tizimi uchun <span>boshqaruv</span> paneli
             </p>
-            {/* <span>
-              Kollejlar va texnikumlarda masofadan turib oʻqitish sirtqi va
-              kechki taʼlim shakllarida oʻquv jarayonini masofadan turib
-              oʻqitish tizimi.
-            </span> */}
           </div>
         </div>
-        {/* <video
-          src={require("src/assets/images/video.mp4")}
-          autoPlay
-          loop
-          playsInline
-          muted
-        ></video> */}
-
         <LoginSVG />
       </div>
       <div className="login-admin">
@@ -38,7 +25,7 @@ const Login = () => {
           <h2>Tizimga kirish</h2>
 
           <div className="login-admin__oneID">
-            <a href="https://ai.edu.uz/api/auth/oneId">
+            <a href="https://Reyting.edu.uz/api/auth/oneId">
               <div className="login-admin__title">ONE ID orqali kirish</div>
             </a>
             <div className="pulse-css">
