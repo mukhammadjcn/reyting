@@ -5,6 +5,5 @@ import NotFound from "./NotFound";
 import Status from "./Status";
 
 import Home from "./home";
-import Development from "./NotFound/Depelopment";
 
-export { Login, Status, NotFound, Home, Development };
+export { Login, Status, NotFound, Home };

@@ -4,7 +4,7 @@ import {
   Navigate,
   BrowserRouter as Router,
 } from "react-router-dom";
-import { Login, Status, NotFound, Home, Development } from "./pages";
+import { Login, Status, NotFound, Home } from "./pages";
 import "src/styles/App.scss";
 import { isAdmin } from "./server/Host";
 import React from "react";
@@ -32,7 +32,6 @@ const App: React.FC = () => {
 
           {/* Not found page */}
           <Route path="/*" element={<NotFound />} />
-          <Route path="/development" element={<Development />} />
         </Routes>
       </MainContextProvider>
     </Router>
