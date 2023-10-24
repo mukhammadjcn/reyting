@@ -60,6 +60,9 @@ function AntConfigProvider({ children }: ProviderProps) {
             paddingContentVerticalLG: 10,
             colorTextHeading: "#9D9EA0",
           },
+          Segmented: {
+            colorBgLayout: "#8f85ff",
+          },
         },
       }}
     >

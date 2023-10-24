@@ -70,9 +70,7 @@ function Sidebar() {
       <ul className="sidebar__tabs">
         {sidebarUrls.map((tab) => (
           <Link
-            to={
-              tab.key < 7 ? `/home?page=${tab.key}&tab=${tab.key}_1` : "/gone"
-            }
+            to={tab.key < 7 ? `/home?page=${tab.key}&quater=1` : "/gone"}
             key={tab.key}
             className={`sidebar__tab ${
               page == tab.key && "sidebar__tab-active"
