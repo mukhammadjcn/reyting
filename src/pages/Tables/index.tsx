@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { ConfigProvider, Table, Tabs } from "antd";
 import React from "react";
 
 function Tables() {
@@ -50,11 +50,30 @@ function Tables() {
       <h2 className="tables__title">
         ОТМ ахборот тизимлари, ахборот ресурслари ҳолати
       </h2>
-      <Table
-        dataSource={dataSource}
-        columns={columns}
-        style={{ width: "1180px" }}
-        scroll={{ x: 1240 }}
+
+      <Tabs
+        type="card"
+        defaultActiveKey="1"
+        items={new Array(3).fill(null).map((_, i) => {
+          const id = String(i + 1);
+          return {
+            label: `2.${id}`,
+            key: id,
+            children: (
+              <Table
+                title={() => (
+                  <h2 className="tables__title" style={{ fontSize: 18 }}>
+                    ОТМ ахборот тизимлари, ахборот ресурслари ҳолати
+                  </h2>
+                )}
+                dataSource={dataSource}
+                columns={columns}
+                style={{ width: "1180px" }}
+                scroll={{ x: 1240 }}
+              />
+            ),
+          };
+        })}
       />
     </div>
   );

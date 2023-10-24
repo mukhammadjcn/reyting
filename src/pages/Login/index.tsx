@@ -25,7 +25,7 @@ const Login = () => {
           <h2>Tizimga kirish</h2>
 
           <div className="login-admin__oneID">
-            <a href="https://Reyting.edu.uz/api/auth/oneId">
+            <a href="https://akt.e-edu.uz/api/public/oneId">
               <div className="login-admin__title">ONE ID orqali kirish</div>
             </a>
             <div className="pulse-css">
