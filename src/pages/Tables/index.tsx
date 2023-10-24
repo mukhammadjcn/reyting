@@ -1,5 +1,7 @@
 import { ConfigProvider, Table, Tabs } from "antd";
 import React from "react";
+import { useSearchParams } from "react-router-dom";
+import { tabs, titles } from "src/static";
 
 function Tables() {
   const dataSource = [
@@ -12,7 +14,6 @@ function Tables() {
       hemis: "10 Downing Street",
     },
   ];
-
   const columns = [
     {
       title: "№",
@@ -45,25 +46,35 @@ function Tables() {
     },
   ];
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = searchParams.get("page");
+  const tab = searchParams.get("tab");
+  const handleMakeParams = (key: any, value: any) => {
+    if (value) {
+      if (searchParams.has(key)) searchParams.set(key, value);
+      else searchParams.append(key, value);
+    } else searchParams.delete(key);
+    setSearchParams(searchParams);
+  };
+
   return (
     <div className="tables">
-      <h2 className="tables__title">
-        ОТМ ахборот тизимлари, ахборот ресурслари ҳолати
-      </h2>
+      <h2 className="tables__title">{titles[`tab${String(page)}`]}</h2>
 
       <Tabs
         type="card"
-        defaultActiveKey="1"
-        items={new Array(3).fill(null).map((_, i) => {
+        activeKey={tab?.split("_")[1] || ""}
+        onChange={(val) => handleMakeParams("tab", `${page}_${val}`)}
+        items={new Array(tabs[String(page)]).fill(null).map((_, i) => {
           const id = String(i + 1);
           return {
-            label: `2.${id}`,
+            label: `${page}.${id}`,
             key: id,
             children: (
               <Table
                 title={() => (
                   <h2 className="tables__title" style={{ fontSize: 18 }}>
-                    ОТМ ахборот тизимлари, ахборот ресурслари ҳолати
+                    {titles[`tab${String(tab)}`]}
                   </h2>
                 )}
                 dataSource={dataSource}

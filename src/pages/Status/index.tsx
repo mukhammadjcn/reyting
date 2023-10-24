@@ -1,9 +1,8 @@
 import { message } from "antd";
 import React, { useEffect } from "react";
 import { CatchError } from "src/utils/index";
-import { ACCESS, ROLE, setLocal } from "src/server/Host";
+import { ACCESS, ROLE, UNIVERSITY, setLocal } from "src/server/Host";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { SignInOneIDAdminConfig } from "src/server/config/Urls";
 import "src/styles/status.scss";
 
 const Status: React.FC = () => {
@@ -12,18 +11,22 @@ const Status: React.FC = () => {
 
   const NavigateHome = async () => {
     await new Promise((res) => setTimeout(res, 2000));
-    const code = searchParam.get("code");
-    if (code) {
-      try {
-        const { data } = await SignInOneIDAdminConfig(code);
+    const role = searchParam.get("role");
+    const token = searchParam.get("token");
+    const univer = searchParam.get("univer");
 
+    if (token && role === "ROLE_OTMADMIN") {
+      try {
         // SET ROLE
-        setLocal(ROLE, data?.object?.role);
+        setLocal(ROLE, role);
 
         // SET TOKEN
-        setLocal(ACCESS, data?.object?.jwtToken);
+        setLocal(ACCESS, token);
 
-        window.location.href = "/home/news";
+        // Set univer name
+        setLocal(UNIVERSITY, univer);
+
+        window.location.href = "/home?page=1&tab=1_1";
       } catch (error) {
         navigate("/");
         CatchError(error);

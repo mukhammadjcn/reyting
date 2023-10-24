@@ -7,6 +7,7 @@ export let host = "https://Reyting.edu.uz/api";
 export const ROLE = "role";
 export const ACCESS = "access";
 export const REFRESH = "refresh";
+export const UNIVERSITY = "univer";
 
 // Get cookies
 export const role = localStorage.getItem(ROLE);
@@ -18,8 +19,7 @@ export const getLocal = (name) => localStorage.getItem(name);
 export const removeLocal = (name) => localStorage.removeItem(name);
 export const setLocal = (name, value) => localStorage.setItem(name, value);
 
-export const isAdmin = () => true;
-// export const isAdmin = () => token && role == "ROLE_ADMIN";
+export const isAdmin = () => token && role == "ROLE_OTMADMIN";
 
 // Requests header
 export let headers = {

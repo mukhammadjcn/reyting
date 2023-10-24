@@ -11,7 +11,7 @@ const Notfound: React.FC = () => {
         subTitle="Sahifa topilmadi, 404 !"
         style={{ marginTop: 50, paddingTop: 120 }}
         extra={
-          <Link to="/">
+          <Link to="/home?page=1&tab=1_1">
             <Button type="primary">Bosh sahifaga qaytish</Button>
           </Link>
         }

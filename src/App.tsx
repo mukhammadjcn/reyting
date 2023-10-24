@@ -13,20 +13,17 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        {/* <Route
+        <Route
           index
           element={isAdmin() ? <Navigate to="/home" /> : <Login />}
         />
         <Route
           path="home"
           element={isAdmin() ? <Home /> : <Navigate to="/" />}
-        ></Route> */}
-
-        <Route index element={<Login />} />
-        <Route path="home" element={<Home />}></Route>
+        ></Route>
 
         {/* Status page */}
-        <Route path="/code" element={<Status />} />
+        <Route path="/auth/oneId" element={<Status />} />
 
         {/* Not found page */}
         <Route path="/*" element={<NotFound />} />
