@@ -742,3 +742,12 @@ export const CalendarSvg = () => (
     />
   </svg>
 );
+
+{
+  /* <DatePicker
+            picker="year"
+            style={{ marginRight: 16 }}
+            onChange={(val) => handleMakeParams("year", val?.get("year"))}
+            disabledDate={(val) => val?.get("year") < new Date().getFullYear()}
+          /> */
+}

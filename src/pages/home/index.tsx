@@ -13,7 +13,7 @@ const App = () => {
       cancelText: "Bekor qilish",
       onOk() {
         localStorage.clear();
-        window.location.href = "/login";
+        window.location.href = "/";
       },
     });
   };

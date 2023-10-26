@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, DatePicker, Segmented } from "antd";
 import { useSearchParams } from "react-router-dom";
-import { givePages, titles } from "src/static";
+import { titles } from "src/static";
 import { EditOutlined } from "@ant-design/icons";
-import dayjs from "dayjs";
+import { GetPage1, GetPage2, GetPage3, GetPage6 } from "./apis";
 
 function Tables() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = searchParams.get("page");
+  const page = searchParams.get("page") || 1;
   const quater = searchParams.get("quater") || 1;
   const year = searchParams.get("year") || new Date().getFullYear();
+  const [data, setData] = useState<any>();
   const handleMakeParams = (key: any, value: any) => {
     if (value) {
       if (searchParams.has(key)) searchParams.set(key, value);
@@ -18,17 +19,22 @@ function Tables() {
     setSearchParams(searchParams);
   };
 
+  const GetData = async () => {
+    +page === 1 && setData(await GetPage1());
+    +page === 2 && setData(await GetPage2());
+    +page === 3 && setData(await GetPage3());
+    +page === 6 && setData(await GetPage6());
+  };
+
+  useEffect(() => {
+    GetData();
+  }, [searchParams]);
+
   return (
     <div className="tables">
       <div className="flex">
         <h2 className="tables__title">{titles[`tab${String(page)}`]}</h2>
         <div className="flex">
-          <DatePicker
-            picker="year"
-            style={{ marginRight: 16 }}
-            onChange={(val) => handleMakeParams("year", val?.get("year"))}
-            disabledDate={(val) => val?.get("year") < new Date().getFullYear()}
-          />
           <Segmented
             options={[
               {
@@ -47,8 +53,8 @@ function Tables() {
       </div>
 
       <div className="tables__cards">
-        {givePages[`page${page}`]?.cardType !== "big"
-          ? givePages[`page${page}`]?.cards?.map((card: any) => (
+        {data?.cardType !== "big"
+          ? data?.cards?.map((card: any) => (
               <div className="card" key={card?.title}>
                 <div className="card__header">
                   <h2>{card?.title}</h2>
@@ -58,13 +64,16 @@ function Tables() {
                   {card?.values?.map((section: any) => (
                     <div className="flex" key={section?.title}>
                       <h3>{section?.title}</h3>
-                      <b>{section?.count} та</b>
+                      <b>
+                        {section?.count}{" "}
+                        {typeof section?.count === "number" && "та"}
+                      </b>
                     </div>
                   ))}
                 </div>
               </div>
             ))
-          : givePages[`page${page}`]?.cards?.map((card: any) => (
+          : data?.cards?.map((card: any) => (
               <div className="card card__big" key={card?.title}>
                 <div className="card__header">
                   <h2>{card?.title}</h2>
@@ -74,7 +83,7 @@ function Tables() {
                   {card?.values?.map((section: any) => (
                     <div className="flex" key={section?.title}>
                       <h3>{section?.title}</h3>
-                      <b>{section?.count} та</b>
+                      <b>{section?.count}</b>
                     </div>
                   ))}
                 </div>

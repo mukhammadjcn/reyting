@@ -15,7 +15,9 @@ const App: React.FC = () => {
       <Routes>
         <Route
           index
-          element={isAdmin() ? <Navigate to="/home" /> : <Login />}
+          element={
+            isAdmin() ? <Navigate to="/home?page=1&quater=1" /> : <Login />
+          }
         />
         <Route
           path="home"

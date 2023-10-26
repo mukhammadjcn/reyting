@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Host URL
-export let host = "https://Reyting.edu.uz/api";
+export let host = "https://akt.e-edu.uz/api/";
 
 // Names for local usage
 export const ROLE = "role";

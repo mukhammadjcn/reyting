@@ -67,6 +67,7 @@ export const givePages: any = {
     title: "АКТ инфратузилмаси ҳолати",
     cards: [
       {
+        url: "teacherEquipmentRate",
         title:
           "Профессор-ўқитyвчи ва ходимларнинг компьютер билан таъминланганлик холати",
         values: [
@@ -74,110 +75,135 @@ export const givePages: any = {
             title:
               "Профессор-ўқитувчи ва ходимлар учун ажратилган компьютерлар сони",
             count: 0,
+            url: "computerCount",
           },
           {
             title: "Профессор-ўқитувчи ва ходимлар умумий сони",
             count: 0,
+            url: "totalTeacherCount",
           },
         ],
       },
       {
+        url: "studentEquipmentRate",
         title: "Талабаларнинг компьютер билан таъминланганлик холати",
         values: [
           {
             title: "Талабалар фойдаланиши учун ажратилган компьютерлар сони",
             count: 0,
+            url: "computerCount",
           },
           {
             title: "Талабаларнинг умумий сони",
             count: 0,
+            url: "totalStudentCount",
           },
         ],
       },
       {
+        url: "internetConnectedBuildingRate",
         title: "Интернет уланган ўқув, ТТЖ ва бошқа бинолар улуши",
         values: [
           {
             title: "Интернет уланган бинолар сони (Шартнома uлова қuлинади)",
             count: 0,
+            url: "educationalBuildingCount",
           },
           {
             title: "Ўқув бинолари сони",
             count: 0,
+            url: "buildingCount",
           },
           {
             title: "ТТЖлар сони",
             count: 0,
+            url: "dormitoryCount",
           },
           {
             title: "Бошқа бинолар сони",
             count: 0,
+            url: "otherBuildingCount",
           },
         ],
       },
       {
+        url: "fiberOpticCoverageRate",
         title: "Оптик толали алоқа линиялари билан қамраб олинганлик улуши",
         values: [
           {
             title:
               "Оптик толали интернет уланган бинолар сони (Шартнома uлова қилинади)",
             count: 0,
+            url: "buildingWithOpticCount",
           },
           {
             title: "Биноларнинг умумий сони",
             count: 0,
+            url: "totalBuildingCount",
           },
         ],
       },
       {
         title: "Интернет тезлиги",
+        url: "internetSpeed",
         values: [
           {
             title: "Ўқув биноларида интернетга уланиш ўртача тезлиги",
+            url: "averageInternetSpeed",
             count: 0,
           },
           {
             title: "Талабаларнинг умумий сони",
+            url: "totalStudentCount",
             count: 0,
           },
         ],
       },
       {
+        url: "wirelessInternetRate",
         title: "Симсиз интернет қамрови ва сифати",
         values: [
           {
             title: "Симсиз интернет тарқатувчи қурилмалар сони",
             count: 0,
+            url: "deviceCount",
           },
           {
             title: "Талабаларнинг умумий сони",
             count: 0,
+            url: "totalStudentCount",
           },
           {
             title: "Профессор-ўқитувчи ва ходимлар умумий сони",
             count: 0,
+            url: "totalTeacherCount",
           },
         ],
       },
       {
+        url: "auditoriumEquipmentElectronicDevice",
         title:
           "Ўқув аудиторияларининг проектор, интерактив доска, катта диагоналли экранлар билан жихозланганлиги",
         values: [
           {
             title: "Ўқув аудиторияларидаги проекторлар сони",
             count: 0,
+            url: "projectorCount",
           },
           {
             title: "Ўқув аудиторияларидагиинтерактив доскалар сони",
             count: 0,
+            url: "blackboardCount",
           },
           {
             title: "Ўқув аудиторияларидаги катта диагоналли экранлар сони",
             count: 0,
+            url: "screenCount",
           },
           {
             title: "Ўқув, аудиториялари сони",
             count: 0,
+            url: "classRoomCount",
           },
         ],
       },
