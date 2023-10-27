@@ -57,6 +57,47 @@ export const Page3_2 = (param = "") => {
   return GetFunc(`ITRetrainedStaffRate?size=30${param}`);
 };
 
+// Page 5  urls
+export const Page5_1 = (param = "") => {
+  return GetFunc(`approvedISecurityRequirement?size=30${param}`);
+};
+export const Page5_2 = (param = "") => {
+  return GetFunc(`confidentialDataStatute?size=30${param}`);
+};
+export const Page5_3 = (param = "") => {
+  return GetFunc(`iSecurityStaff?size=30${param}`);
+};
+export const Page5_4 = (param = "") => {
+  return GetFunc(`iSecurityStaffRetraining?size=30${param}`);
+};
+export const Page5_5 = (param = "") => {
+  return GetFunc(`websiteSecurityExpertise?size=30${param}`);
+};
+export const Page5_6 = (param = "") => {
+  return GetFunc(`websiteSSLCertificate?size=30${param}`);
+};
+export const Page5_7 = (param = "") => {
+  return GetFunc(`iSystemAndResourceBackup?size=30${param}`);
+};
+export const Page5_8 = (param = "") => {
+  return GetFunc(`storageConfidentialData?size=30${param}`);
+};
+export const Page5_9 = (param = "") => {
+  return GetFunc(`serversPasswordProtectionToolsState?size=30${param}`);
+};
+export const Page5_10 = (param = "") => {
+  return GetFunc(`verificationStaffToAccessServerRoom?size=30${param}`);
+};
+export const Page5_11 = (param = "") => {
+  return GetFunc(`firewall?size=30${param}`);
+};
+export const Page5_12 = (param = "") => {
+  return GetFunc(`protectionToolsFromHarmfulProgram?size=30${param}`);
+};
+export const Page5_13 = (param = "") => {
+  return GetFunc(`videoSurveillanceSystem?size=30${param}`);
+};
+
 // Page 6  urls
 export const Page6_1 = (param = "") => {
   return GetFunc(`iTDevelopmentMeasure?size=30${param}`);

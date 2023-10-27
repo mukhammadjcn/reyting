@@ -9,7 +9,7 @@
     padding: 0 24px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     background: white !important;
   }
   &__sidebar {
@@ -127,29 +127,93 @@
     &:hover {
       background-color: #24264e;
       border-radius: 8px;
+    }
+  }
+  &__tab-active {
+    background-color: #24264e;
+    border-radius: 8px;
+  }
+  &__tab-active-1 {
+    svg {
+      path,
+      rect {
+        stroke: #a078e5;
+      }
+    }
+  }
+  &__tab-active-2 {
+    svg {
+      path {
+        fill: #a078e5;
+      }
+    }
+  }
+  &__tab-active-3 {
+    svg {
+      path {
+        fill: #a078e5;
+      }
+    }
+  }
+  &__tab-active-5 {
+    svg {
+      path,
+      circle {
+        stroke: #a078e5;
+      }
+    }
+  }
+  &__tab-active-6 {
+    svg {
+      path {
+        stroke: #a078e5;
+      }
+    }
+  }
+  &__1 {
+    &:hover {
       svg {
-        path {
-          fill: #a078e5;
-          stroke: #a078e5;
-        }
-        circle,
+        path,
         rect {
           stroke: #a078e5;
         }
       }
     }
   }
-  &__tab-active {
-    background-color: #24264e;
-    border-radius: 8px;
-    svg {
-      path {
-        fill: #a078e5;
-        stroke: #a078e5;
+  &__2 {
+    &:hover {
+      svg {
+        path {
+          fill: #a078e5;
+        }
       }
-      circle,
-      rect {
-        stroke: #a078e5;
+    }
+  }
+  &__3 {
+    &:hover {
+      svg {
+        path {
+          fill: #a078e5;
+        }
+      }
+    }
+  }
+  &__5 {
+    &:hover {
+      svg {
+        path,
+        circle {
+          stroke: #a078e5;
+        }
+      }
+    }
+  }
+  &__6 {
+    &:hover {
+      svg {
+        path {
+          stroke: #a078e5;
+        }
       }
     }
   }
@@ -235,4 +299,10 @@
       }
     }
   }
+}
+.loading {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

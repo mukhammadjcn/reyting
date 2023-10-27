@@ -43,11 +43,11 @@ function Sidebar() {
     //   logo: <Tab4SVG />,
     //   title: "Расмий веб-сайтнинг мавжудлиги ва ундан фойдалана олиш",
     // },
-    // {
-    //   key: 5,
-    //   logo: <Tab5SVG />,
-    //   title: "Ахборот хавфсизлигини таъминлашдаги меъёрий тадбирлар",
-    // },
+    {
+      key: 5,
+      logo: <Tab5SVG />,
+      title: "Ахборот хавфсизлигини таъминлашдаги меъёрий тадбирлар",
+    },
     {
       key: 6,
       logo: <Tab6SVG />,
@@ -72,8 +72,10 @@ function Sidebar() {
           <Link
             to={tab.key < 7 ? `/home?page=${tab.key}&quater=1` : "/gone"}
             key={tab.key}
-            className={`sidebar__tab ${
-              page == tab.key && "sidebar__tab-active"
+            className={`sidebar__tab sidebar__${tab.key} ${
+              page == tab.key
+                ? `sidebar__tab-active sidebar__tab-active-${tab.key}`
+                : ""
             }`}
           >
             {tab.logo}

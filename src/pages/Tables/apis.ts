@@ -12,19 +12,32 @@ import {
   Page2_6,
   Page3_1,
   Page3_2,
+  Page5_1,
+  Page5_10,
+  Page5_11,
+  Page5_12,
+  Page5_13,
+  Page5_2,
+  Page5_3,
+  Page5_4,
+  Page5_5,
+  Page5_6,
+  Page5_7,
+  Page5_8,
+  Page5_9,
   Page6_1,
   Page6_2,
   Page6_3,
 } from "src/server/config/Urls";
 
-export const GetPage1 = async () => {
-  const data1_1 = await Page1_1();
-  const data1_2 = await Page1_2();
-  const data1_3 = await Page1_3();
-  const data1_4 = await Page1_4();
-  const data1_5 = await Page1_5();
-  const data1_6 = await Page1_6();
-  const data1_7 = await Page1_7();
+export const GetPage1 = async (param = "") => {
+  const data1_1 = await Page1_1(param);
+  const data1_2 = await Page1_2(param);
+  const data1_3 = await Page1_3(param);
+  const data1_4 = await Page1_4(param);
+  const data1_5 = await Page1_5(param);
+  const data1_6 = await Page1_6(param);
+  const data1_7 = await Page1_7(param);
 
   return {
     cardType: "small",
@@ -175,11 +188,11 @@ export const GetPage1 = async () => {
   };
 };
 
-export const GetPage2 = async () => {
-  const data1_1 = await Page2_1();
-  const data1_2 = await Page2_2();
-  const data1_5 = await Page2_5();
-  const data1_6 = await Page2_6();
+export const GetPage2 = async (param = "") => {
+  const data1_1 = await Page2_1(param);
+  const data1_2 = await Page2_2(param);
+  const data1_5 = await Page2_5(param);
+  const data1_6 = await Page2_6(param);
 
   return {
     cardType: "big",
@@ -330,9 +343,9 @@ export const GetPage2 = async () => {
   };
 };
 
-export const GetPage3 = async () => {
-  const data1_1 = await Page3_1();
-  const data1_2 = await Page3_2();
+export const GetPage3 = async (param = "") => {
+  const data1_1 = await Page3_1(param);
+  const data1_2 = await Page3_2(param);
 
   return {
     cardType: "small",
@@ -388,10 +401,433 @@ export const GetPage3 = async () => {
   };
 };
 
-export const GetPage6 = async () => {
-  const data1_1 = await Page6_1();
-  const data1_2 = await Page6_2();
-  const data1_3 = await Page6_3();
+export const GetPage5 = async (param = "") => {
+  const data1_1 = await Page5_1(param);
+  const data1_2 = await Page5_2(param);
+  const data1_3 = await Page5_3(param);
+  const data1_4 = await Page5_4(param);
+  const data1_5 = await Page5_5(param);
+  const data1_6 = await Page5_6(param);
+  const data1_7 = await Page5_7(param);
+  const data1_8 = await Page5_8(param);
+  const data1_9 = await Page5_9(param);
+  const data1_10 = await Page5_10(param);
+  const data1_11 = await Page5_11(param);
+  const data1_12 = await Page5_12(param);
+  const data1_13 = await Page5_13(param);
+
+  return {
+    cardType: "big",
+    title: "Ахборот хавфсизлигини таъминлашдаги меъёрий тадбирлар",
+    cards: [
+      {
+        title:
+          "Ахборот хавфсизлиги талаблари тасдиқланганлиги ва ходимларни таништирилганлиги",
+        url: "approvedISecurityRequirement",
+        values: [
+          {
+            title: "Ахборот хавфсизлиги талаблари тасдиқланган буйруқ санаси",
+            url: "orderDate",
+            count: data1_1?.data?.content[0]?.orderDate,
+          },
+          {
+            title: "Ахборот хавфсизлиги талаблари тасдиқланган буйруқ рақами",
+            url: "orderNumber",
+            count: data1_1?.data?.content[0]?.orderNumber,
+          },
+          {
+            title: "Буйруқ файли",
+            url: "orderFileUrl",
+            count: data1_1?.data?.content[0]?.orderFileUrl,
+          },
+          {
+            title:
+              "Ходимларнинг ахборот хавфсизлиги талаблари билан танишганлигини қайд қилиш журналининг файли (скайнер вариантда)",
+            url: "staffJournalFileUrl",
+            count: data1_1?.data?.content[0]?.staffJournalFileUrl,
+          },
+        ],
+      },
+      {
+        title:
+          "Конфиденциал маълумотлар ҳажми ва рўйхати, ходимлар билан конфиденциаллик келишуви (низоми) мавжудлиги",
+        url: "confidentialDataStatute",
+        values: [
+          {
+            title:
+              "Конфиденциал маълумотларнинг ҳажми ва рўйхати тасдиқланган буйруқ санаси",
+            url: "orderApprovedDate",
+            count: data1_2?.data?.content[0]?.orderApprovedDate,
+          },
+          {
+            title:
+              "Конфиденциал маълумотларнинг ҳажми ва рўйхати тасдиқланган буйруқ рақами",
+            url: "orderNumber",
+            count: data1_2?.data?.content[0]?.orderNumber,
+          },
+          {
+            title: "Буйруқ файли",
+            url: "orderFileUrl",
+            count: data1_2?.data?.content[0]?.orderFileUrl,
+          },
+          {
+            title:
+              "Конфиденциал маълумотлардан фойдаланишга рухсат берилган ходимлар рўйхати тасдиқланган буйруқ санаси",
+            url: "staffListOrderDate",
+            count: data1_2?.data?.content[0]?.staffListOrderDate,
+          },
+          {
+            title:
+              "Конфиденциал маълумотлардан фойдаланишга рухсат берилган ходимлар рўйхати  тасдиқланган буйруқ рақами",
+            url: "staffListOrderNumber",
+            count: data1_2?.data?.content[0]?.staffListOrderNumber,
+          },
+          {
+            title:
+              "Конфиденциал маълумотлардан фойдаланишга рухсат берилган ходимлар рўйхати  тасдиқланган буйруқ файли",
+            url: "staffOrderFileUrl",
+            count: data1_2?.data?.content[0]?.staffOrderFileUrl,
+          },
+          {
+            title:
+              "Ходимлар билан конфиденциаллик келишуви бўйича низом тасдиқланган санаси",
+            url: "statuteDate",
+            count: data1_2?.data?.content[0]?.statuteDate,
+          },
+          {
+            title:
+              "Ходимлар билан конфиденциаллик келишуви бўйича низом рақами",
+            url: "statuteNumber",
+            count: data1_2?.data?.content[0]?.statuteNumber,
+          },
+          {
+            title: "Ходимлар билан конфиденциаллик келишуви бўйича низом файли",
+            url: "statuteFileUrl",
+            count: data1_2?.data?.content[0]?.statuteFileUrl,
+          },
+        ],
+      },
+      {
+        title:
+          "Ахборот хавфсизлиги масалалари бўйича масъул раҳбар ҳамда ходимнинг тайинланганлиги",
+        url: "iSecurityStaff",
+        values: [
+          {
+            title:
+              "Ахборот хавфсизлиги масалалари бўйича масъул раҳбарнинг Ф.И.Ш.",
+            url: "chiefFullName",
+            count: data1_3?.data?.content[0]?.chiefFullName,
+          },
+          {
+            title:
+              "Ахборот хавфсизлиги масалалари бўйича масъул раҳбарнинг лавозими",
+            url: "chiefRank",
+            count: data1_3?.data?.content[0]?.chiefRank,
+          },
+          {
+            title:
+              "Ахборот хавфсизлиги масалалари бўйича масъул раҳбарнинг телефон рақами",
+            url: "chiefPhone",
+            count: data1_3?.data?.content[0]?.chiefPhone,
+          },
+          {
+            title:
+              "Ахборот хавфсизлиги масалалари бўйича масъул раҳбарнинг электрон почта манзили",
+            url: "chiefEmail",
+            count: data1_3?.data?.content[0]?.chiefEmail,
+          },
+          {
+            title:
+              "Ахборот хавфсизлиги масалалари бўйича масъул ходимнинг Ф.И.Ш.",
+            url: "staffFullName",
+            count: data1_3?.data?.content[0]?.staffFullName,
+          },
+          {
+            title:
+              "Ахборот хавфсизлиги масалалари бўйича масъул ходимнинг лавозими",
+            url: "staffRank",
+            count: data1_3?.data?.content[0]?.staffRank,
+          },
+          {
+            title:
+              "Ахборот хавфсизлиги масалалари бўйича масъул ходимнинг телефон рақами",
+            url: "staffPhone",
+            count: data1_3?.data?.content[0]?.staffPhone,
+          },
+          {
+            title:
+              "Ахборот хавфсизлиги масалалари бўйича масъул ходимнинг электрон почта манзили",
+            url: "staffEmail",
+            count: data1_3?.data?.content[0]?.staffEmail,
+          },
+          {
+            title:
+              "Ахборот хавфсизлиги масалалари бўйича масъул раҳбар ҳамда ходимнинг тайинланганлиги тўғрисидаги тасдиқланган буйруқ файли",
+            url: "orderFileUrl",
+            count: data1_3?.data?.content[0]?.orderFile,
+          },
+        ],
+      },
+      {
+        title:
+          "Ахборот хавфсизлиги учун масъул ходимларнинг малака оширганлиги",
+        url: "iSecurityStaffRetraining",
+        values: [
+          {
+            title: "Масъул ходим малака оширган ўқув марказининг номи",
+            url: "educationalCenterName",
+            count: data1_4?.data?.content[0]?.educationalCenterName,
+          },
+          {
+            title: "Малака ошириш тури (онлайн/офлайн)",
+            url: "educationType",
+            count: data1_4?.data?.content[0]?.educationType,
+          },
+          {
+            title: "Малака ошириш курсининг мавзуси",
+            url: "retrainingTheme",
+            count: data1_4?.data?.content[0]?.retrainingTheme,
+          },
+          {
+            title: "Малака ошириш курси бошланган сана",
+            url: "retrainingInitialDate",
+            count: data1_4?.data?.content[0]?.retrainingInitialDate,
+          },
+          {
+            title: "Малака ошириш курси тугаган сана",
+            url: "retrainingFinishDate",
+            count: data1_4?.data?.content[0]?.retrainingFinishDate,
+          },
+          {
+            title: "Малака оширганлик тўғрисидаги сертификат файли",
+            url: "retrainingCertificateUrl",
+            count: data1_4?.data?.content[0]?.retrainingCertificate,
+          },
+        ],
+      },
+      {
+        title:
+          "Расмий веб-сайтнинг киберхавфсизлик талабларига кўра экспертизадан ўтказилганлиги (Камида 6 ойда бир марта экспертизадан ўтказиш талаб этилади)",
+        url: "websiteSecurityExpertise",
+        values: [
+          {
+            title:
+              "Расмий веб-сайтни экспертизадан ўтказиш бўйича тузилган шартнома рақами",
+            url: "contractNumber",
+            count: data1_5?.data?.content[0]?.contractNumber,
+          },
+          {
+            title:
+              "Расмий веб-сайтни экспертизадан ўтказиш бўйича тузилган шартнома санаси",
+            url: "contractDate",
+            count: data1_5?.data?.content[0]?.contractDate,
+          },
+          {
+            title:
+              "Расмий веб-сайтни экспертизадан ўтказиш бўйича тузилган шартнома файли",
+            url: "contractFileUrl",
+            count: data1_5?.data?.content[0]?.contractFile,
+          },
+          {
+            title: "Экспертиза хулосаси бўйича расмий хат рақами",
+            url: "expertiseConclusionNumber",
+            count: data1_5?.data?.content[0]?.expertiseConclusionNumber,
+          },
+          {
+            title: "Экспертиза хулосаси бўйича расмий хат санаси",
+            url: "expertiseConclusionDate",
+            count: data1_5?.data?.content[0]?.expertiseConclusionDate,
+          },
+          {
+            title: "Экспертиза хулосаси бўйича расмий хат файли",
+            url: "expertiseConclusionFileUrl",
+            count: data1_5?.data?.content[0]?.expertiseConclusionFile,
+          },
+          {
+            title: "Заифликлар бартараф этилганлиги бўйича изоҳ",
+            url: "commentForEliminatedWeakness",
+            count: data1_5?.data?.content[0]?.commentForEliminatedWeakness,
+          },
+        ],
+      },
+      {
+        title: "Расмий веб-сайт учун SSL сертификат мавжудлиги",
+        url: "websiteSSLCertificate",
+        values: [
+          {
+            title:
+              "Расмий веб-сайт учун SSL сертификати мавжудлиги (мавжуд, мавжуд эмас)",
+            url: "existSSLCertificate",
+            count: data1_6?.data?.content[0]?.existSSLCertificate
+              ? "Mavjud"
+              : "Mavjud emas",
+          },
+          {
+            title: "Исботловчи расмини юклаш ",
+            url: "sslCertificatePhotoUrl",
+            count: data1_6?.data?.content[0]?.sslCertificatePhoto,
+          },
+        ],
+      },
+      {
+        title:
+          "Ахборот тизимлари ҳамда ресурслари маълумотларининг захира нусхаланиши",
+        url: "iSystemAndResourceBackup",
+        values: [
+          {
+            title:
+              " Ахборот тизимлари ҳамда ресурслари маълумотларининг захира нусхаланиши режа-жадвалининг файли",
+            url: "dataBackupPeriodicity",
+            count: data1_7?.data?.content[0]?.dataBackupPeriodicity,
+          },
+          {
+            title: "Маълумотларни захиралаш даврийлиги",
+            url: "backupScheduleFileUrl",
+            count: data1_7?.data?.content[0]?.backupScheduleFile,
+          },
+        ],
+      },
+      {
+        title:
+          "Конфиденциал ахборотни ташувчи воситаларни ҳисобга олиш ва сақлаш бўйича ишларнинг ташкил қилинганлиги",
+        url: "storageConfidentialData",
+        values: [
+          {
+            title:
+              "Конфиденциал ахборотларни ташувчи воситаларни ҳисобга олиш журналининг файли (сканер варианти)",
+            url: "journalFileUrl",
+            count: data1_8?.data?.content[0]?.journalFile,
+          },
+        ],
+      },
+      {
+        title:
+          "Ишчи станциялар ва серверларда паролли ҳимоя воситаларини жорий қилинганлиги",
+        url: "serversPasswordProtectionToolsState",
+        values: [
+          {
+            title:
+              "Ишчи станциялар ва серверларда паролли ҳимоя воситаларини жорий қилинганлиги (файл ёки расм)",
+            url: "protectionToolsWithPasswordPhoto",
+            count: data1_9?.data?.content[0]?.protectionToolsWithPasswordPhoto,
+          },
+          {
+            title:
+              "Ишчи станцияларда паролларни автоматик ўзгартириш бўйича автоматик сўровлар ва талабларнинг жорий этилганлиги (файл ёки расм)",
+            url: "automaticPasswordChangePhoto",
+            count: data1_9?.data?.content[0]?.automaticPasswordChangePhoto,
+          },
+        ],
+      },
+      {
+        title:
+          "Сервер хоналарга (Ахборотлаштириш объектлари жойлаштирилган хоналарга) кириш учун рухсат берилган ходимлар тасдиқланганлиги",
+        url: "verificationStaffToAccessServerRoom",
+        values: [
+          {
+            title:
+              "Сервер хоналарга кириш учун рухсат берилган ходимлар рўйхати тасдиқланган буйруқ санаси ",
+            url: "orderApprovedDate",
+            count: data1_10?.data?.content[0]?.orderApprovedDate,
+          },
+          {
+            title:
+              "Сервер хоналарга кириш учун рухсат берилган ходимлар рўйхати тасдиқланган буйруқ рақами",
+            url: "orderNumber",
+            count: data1_10?.data?.content[0]?.orderNumber,
+          },
+          {
+            title:
+              "Сервер хоналарга кириш учун рухсат берилган ходимлар рўйхати тасдиқланган буйруқ файли",
+            url: "orderFileUrl",
+            count: data1_10?.data?.content[0]?.orderFileUrl,
+          },
+          {
+            title:
+              "Сервер хонага кириш/чиқишларни қайд қилиш журнали нусхаси (скайнер файл)",
+            url: "journalInputOutputToServerRoomUrl",
+            count:
+              data1_10?.data?.content[0]?.journalInputOutputToServerRoomUrl,
+          },
+        ],
+      },
+      {
+        title: "Тармоқлараро экран (Firewall) мавжудлиги ",
+        url: "firewall",
+        values: [
+          {
+            title: "Тармоқлараро экран қурилмаси/дастурий воситаси номи",
+            url: "firewallName",
+            count: data1_11?.data?.content[0]?.firewallName,
+          },
+          {
+            title: "Тармоқлараро экран қурилмаси/дастурий воситаси модели",
+            url: "firewallModel",
+            count: data1_11?.data?.content[0]?.firewallModel,
+          },
+          {
+            title: "Лицензия нусхаси (файли ёки расм)",
+            url: "licenceCopyUrl",
+            count: data1_11?.data?.content[0]?.licenceCopyUrl,
+          },
+        ],
+      },
+      {
+        title: "Зарарли дастурлардан ҳимоя воситаларини жорий этилганлиги",
+        url: "protectionToolsFromHarmfulProgram",
+        values: [
+          {
+            title: "Дастурий таъминот номи",
+            url: "softwareName",
+            count: data1_12?.data?.content[0]?.softwareName,
+          },
+          {
+            title: "Дастурий таъминот версияси",
+            url: "softwareVersion",
+            count: data1_12?.data?.content[0]?.softwareVersion,
+          },
+          {
+            title: "Лицензиялар сони",
+            url: "licenceCount",
+            count: data1_12?.data?.content[0]?.licenceCount,
+          },
+          {
+            title: "Лицензиянинг амал қилиш муддати",
+            url: "licenceValidityPeriod",
+            count: data1_12?.data?.content[0]?.licenceValidityPeriod,
+          },
+          {
+            title: "Лицензия нусхаси (файл)",
+            url: "licenceCopyUrl",
+            count: data1_12?.data?.content[0]?.licenceCopyUrl,
+          },
+        ],
+      },
+      {
+        title: "Видеоназорат тизими",
+        url: "videoSurveillanceSystem",
+        values: [
+          {
+            title:
+              "Видеоназорат тизими (мавжуд ва ишлайди, мавжуд лекин ишламайди, мавжуд эмас)",
+            url: "videoSurveillanceSystemState",
+            count: data1_13?.data?.content[0]?.videoSurveillanceSystemState,
+          },
+          {
+            title: "Исботловчи расмини юклаш",
+            url: "proofPhotoUrl",
+            count: data1_13?.data?.content[0]?.proofPhoto,
+          },
+        ],
+      },
+    ],
+  };
+};
+
+export const GetPage6 = async (param = "") => {
+  const data1_1 = await Page6_1(param);
+  const data1_2 = await Page6_2(param);
+  const data1_3 = await Page6_3(param);
 
   return {
     cardType: "small",

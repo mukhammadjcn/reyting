@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Button, DatePicker, Segmented } from "antd";
+import { Button, Segmented, Spin } from "antd";
 import { useSearchParams } from "react-router-dom";
 import { titles } from "src/static";
 import { EditOutlined } from "@ant-design/icons";
-import { GetPage1, GetPage2, GetPage3, GetPage6 } from "./apis";
+import { GetPage1, GetPage2, GetPage3, GetPage5, GetPage6 } from "./apis";
 
 function Tables() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -11,6 +11,7 @@ function Tables() {
   const quater = searchParams.get("quater") || 1;
   const year = searchParams.get("year") || new Date().getFullYear();
   const [data, setData] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(false);
   const handleMakeParams = (key: any, value: any) => {
     if (value) {
       if (searchParams.has(key)) searchParams.set(key, value);
@@ -20,10 +21,13 @@ function Tables() {
   };
 
   const GetData = async () => {
-    +page === 1 && setData(await GetPage1());
-    +page === 2 && setData(await GetPage2());
-    +page === 3 && setData(await GetPage3());
-    +page === 6 && setData(await GetPage6());
+    setLoading(true);
+    +page === 1 && setData(await GetPage1(`&quarterId=${quater}`));
+    +page === 2 && setData(await GetPage2(`&quarterId=${quater}`));
+    +page === 3 && setData(await GetPage3(`&quarterId=${quater}`));
+    +page === 5 && setData(await GetPage5(`&quarterId=${quater}`));
+    +page === 6 && setData(await GetPage6(`&quarterId=${quater}`));
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -52,44 +56,50 @@ function Tables() {
         </div>
       </div>
 
-      <div className="tables__cards">
-        {data?.cardType !== "big"
-          ? data?.cards?.map((card: any) => (
-              <div className="card" key={card?.title}>
-                <div className="card__header">
-                  <h2>{card?.title}</h2>
-                  <Button icon={<EditOutlined />} />
+      {loading ? (
+        <div className="loading">
+          <Spin tip="Yuklanmoqda" size="large"></Spin>
+        </div>
+      ) : (
+        <div className="tables__cards">
+          {data?.cardType !== "big"
+            ? data?.cards?.map((card: any) => (
+                <div className="card" key={card?.title}>
+                  <div className="card__header">
+                    <h2>{card?.title}</h2>
+                    <Button icon={<EditOutlined />} />
+                  </div>
+                  <div className="card__body">
+                    {card?.values?.map((section: any) => (
+                      <div className="flex" key={section?.title}>
+                        <h3>{section?.title}</h3>
+                        <b>
+                          {section?.count}{" "}
+                          {typeof section?.count === "number" && "та"}
+                        </b>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="card__body">
-                  {card?.values?.map((section: any) => (
-                    <div className="flex" key={section?.title}>
-                      <h3>{section?.title}</h3>
-                      <b>
-                        {section?.count}{" "}
-                        {typeof section?.count === "number" && "та"}
-                      </b>
-                    </div>
-                  ))}
+              ))
+            : data?.cards?.map((card: any) => (
+                <div className="card card__big" key={card?.title}>
+                  <div className="card__header">
+                    <h2>{card?.title}</h2>
+                    <Button icon={<EditOutlined />} />
+                  </div>
+                  <div className="card__body">
+                    {card?.values?.map((section: any) => (
+                      <div className="flex" key={section?.title}>
+                        <h3>{section?.title}</h3>
+                        <b>{section?.count}</b>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))
-          : data?.cards?.map((card: any) => (
-              <div className="card card__big" key={card?.title}>
-                <div className="card__header">
-                  <h2>{card?.title}</h2>
-                  <Button icon={<EditOutlined />} />
-                </div>
-                <div className="card__body">
-                  {card?.values?.map((section: any) => (
-                    <div className="flex" key={section?.title}>
-                      <h3>{section?.title}</h3>
-                      <b>{section?.count}</b>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-      </div>
+              ))}
+        </div>
+      )}
     </div>
   );
 }
