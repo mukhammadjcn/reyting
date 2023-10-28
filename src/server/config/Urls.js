@@ -1,4 +1,3 @@
-import { axiosInstanceNoAuth } from "../Host";
 import { GetFunc, EditFunc, CreateFunc, DeleteFunc } from "./Requests";
 
 // Login Configs ----------------------------------------------------------

@@ -266,6 +266,7 @@
   &__body {
     .flex {
       gap: 48px;
+      align-items: flex-start;
       &:not(:first-child) {
         margin-top: 8px;
       }
@@ -298,6 +299,9 @@
         margin-top: 16px;
       }
     }
+  }
+  &__full {
+    width: 100%;
   }
 }
 .loading {
