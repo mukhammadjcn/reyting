@@ -15,9 +15,24 @@ function CardItem({ card, cardType, setEditCard }: any) {
         {card?.values?.map((section: any) => (
           <div className="flex" key={section?.title}>
             <h3>{section?.title}</h3>
-            <b>
-              {section?.count} {typeof section?.count === "number" && "та"}
-            </b>
+
+            {String(section?.count)?.includes("https://") ? (
+              <a
+                href={section?.count}
+                target="_blank"
+                style={{ color: "blue" }}
+              >
+                Havolaga o'tish
+              </a>
+            ) : (
+              <b>
+                {typeof section?.count === "boolean" && section?.count
+                  ? `Bor`
+                  : typeof section?.count === "boolean" && !section?.count
+                  ? `Yo'q`
+                  : section?.count}
+              </b>
+            )}
           </div>
         ))}
       </div>

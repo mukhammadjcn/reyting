@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {
   Button,
+  DatePicker,
   Form,
   Input,
   Modal,
+  Radio,
   Segmented,
   Spin,
   Upload,
@@ -16,6 +18,8 @@ import CardItem from "./components/CardItem";
 import axios from "axios";
 import { headers, headersMultipart } from "src/server/Host";
 import { CopyOutlined, InboxOutlined } from "@ant-design/icons";
+import { BooleanFiels, DateFormat, DatesFields } from "src/utils/index";
+import dayjs from "dayjs";
 
 function Tables() {
   const [form] = Form.useForm();
@@ -159,7 +163,12 @@ function Tables() {
                 const editObj = editData?.values?.reduce(
                   (acc: Object, cur: any) => ({
                     ...acc,
-                    [cur.url]: cur.count !== "Mavjud emas" ? cur.count : "",
+                    [cur.url]:
+                      cur.count !== "Mavjud emas"
+                        ? DatesFields.includes(cur?.url)
+                          ? dayjs(cur.count, DateFormat)
+                          : cur.count
+                        : "",
                   }),
                   {}
                 );
@@ -199,7 +208,21 @@ function Tables() {
                 label={field?.title}
                 rules={[{ required: true, message: `${field?.title} !` }]}
               >
-                <Input />
+                {/* <Input /> */}
+                {DatesFields.includes(field?.url) ? (
+                  <DatePicker
+                    allowClear={false}
+                    format={DateFormat}
+                    style={{ width: "100%" }}
+                  />
+                ) : BooleanFiels.includes(field?.url) ? (
+                  <Radio.Group buttonStyle="solid">
+                    <Radio.Button value={true}>Bor</Radio.Button>
+                    <Radio.Button value={false}>Yo'q</Radio.Button>
+                  </Radio.Group>
+                ) : (
+                  <Input />
+                )}
               </Form.Item>
             ))}
 

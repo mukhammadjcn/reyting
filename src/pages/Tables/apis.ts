@@ -277,8 +277,8 @@ export const GetPage2 = async (param = "") => {
           {
             title:
               "АТга тегишли хужжатлар (эксперт хулосаси, гувоҳнома, патент, сертификат ва ҳ.к.)",
-            url: "documentUrl",
-            count: data1_2?.documentUrl || "Mavjud emas",
+            url: "document",
+            count: data1_2?.document || "Mavjud emas",
           },
         ],
       },
@@ -299,7 +299,7 @@ export const GetPage2 = async (param = "") => {
         values: [
           {
             title: "Электрон хизмат номи",
-            url: "electronService",
+            url: "electronServiceName",
             count: data1_5?.electronServiceName || "Mavjud emas",
           },
           {
@@ -320,15 +320,14 @@ export const GetPage2 = async (param = "") => {
           },
           {
             title: "Электрон хизматдан фойдаланганлар сони",
-            curl: "userCount",
+            url: "userCount",
             count: data1_5?.userCount || "Mavjud emas",
           },
           {
             title:
               "Электрон хизматга тегишли хужжатлар (эксперт хулосаси, гувоҳнома, патент, сертификат ва ҳ.к.)",
-            url: "documentRelatedToElectronicServiceUrl",
-            count:
-              data1_5?.documentRelatedToElectronicServiceUrl || "Mavjud emas",
+            url: "documentRelatedToElectronicService",
+            count: data1_5?.documentRelatedToElectronicService || "Mavjud emas",
           },
         ],
       },
@@ -394,9 +393,7 @@ export const GetPage3 = async (param = "") => {
           {
             title: "Берилган санаси",
             url: "issueDate",
-            count: data1_2?.issueDate
-              ? new Date(data1_2?.issueDate).toLocaleDateString()
-              : "Mavjud emas",
+            count: data1_2?.issueDate || "Mavjud emas",
           },
           {
             title: "Сертификат файли",
@@ -451,14 +448,14 @@ export const GetPage5 = async (param = "") => {
           },
           {
             title: "Буйруқ файли",
-            url: "orderFileUrl",
-            count: data1_1?.orderFileUrl || "Mavjud emas",
+            url: "orderFile",
+            count: data1_1?.orderFile || "Mavjud emas",
           },
           {
             title:
               "Ходимларнинг ахборот хавфсизлиги талаблари билан танишганлигини қайд қилиш журналининг файли (скайнер вариантда)",
-            url: "staffJournalFileUrl",
-            count: data1_1?.staffJournalFileUrl || "Mavjud emas",
+            url: "staffJournalFile",
+            count: data1_1?.staffJournalFile || "Mavjud emas",
           },
         ],
       },
@@ -482,8 +479,8 @@ export const GetPage5 = async (param = "") => {
           },
           {
             title: "Буйруқ файли",
-            url: "orderFileUrl",
-            count: data1_2?.orderFileUrl || "Mavjud emas",
+            url: "orderFile",
+            count: data1_2?.orderFile || "Mavjud emas",
           },
           {
             title:
@@ -500,8 +497,8 @@ export const GetPage5 = async (param = "") => {
           {
             title:
               "Конфиденциал маълумотлардан фойдаланишга рухсат берилган ходимлар рўйхати  тасдиқланган буйруқ файли",
-            url: "staffOrderFileUrl",
-            count: data1_2?.staffOrderFileUrl || "Mavjud emas",
+            url: "staffOrderFile",
+            count: data1_2?.staffOrderFile || "Mavjud emas",
           },
           {
             title:
@@ -517,8 +514,8 @@ export const GetPage5 = async (param = "") => {
           },
           {
             title: "Ходимлар билан конфиденциаллик келишуви бўйича низом файли",
-            url: "statuteFileUrl",
-            count: data1_2?.statuteFileUrl || "Mavjud emas",
+            url: "statuteFile",
+            count: data1_2?.statuteFile || "Mavjud emas",
           },
         ],
       },
@@ -579,7 +576,7 @@ export const GetPage5 = async (param = "") => {
           {
             title:
               "Ахборот хавфсизлиги масалалари бўйича масъул раҳбар ҳамда ходимнинг тайинланганлиги тўғрисидаги тасдиқланган буйруқ файли",
-            url: "orderFileUrl",
+            url: "orderFile",
             count: data1_3?.orderFile || "Mavjud emas",
           },
         ],
@@ -617,7 +614,7 @@ export const GetPage5 = async (param = "") => {
           },
           {
             title: "Малака оширганлик тўғрисидаги сертификат файли",
-            url: "retrainingCertificateUrl",
+            url: "retrainingCertificate",
             count: data1_4?.retrainingCertificate || "Mavjud emas",
           },
         ],
@@ -643,7 +640,7 @@ export const GetPage5 = async (param = "") => {
           {
             title:
               "Расмий веб-сайтни экспертизадан ўтказиш бўйича тузилган шартнома файли",
-            url: "contractFileUrl",
+            url: "contractFile",
             count: data1_5?.contractFile || "Mavjud emas",
           },
           {
@@ -658,7 +655,7 @@ export const GetPage5 = async (param = "") => {
           },
           {
             title: "Экспертиза хулосаси бўйича расмий хат файли",
-            url: "expertiseConclusionFileUrl",
+            url: "expertiseConclusionFile",
             count: data1_5?.expertiseConclusionFile || "Mavjud emas",
           },
           {
@@ -677,14 +674,11 @@ export const GetPage5 = async (param = "") => {
             title:
               "Расмий веб-сайт учун SSL сертификати мавжудлиги (мавжуд, мавжуд эмас)",
             url: "existSSLCertificate",
-            count:
-              data1_6?.existSSLCertificate || "Mavjud emas"
-                ? "Mavjud"
-                : "Mavjud emas",
+            count: data1_6?.existSSLCertificate,
           },
           {
             title: "Исботловчи расмини юклаш ",
-            url: "sslCertificatePhotoUrl",
+            url: "sslCertificatePhoto",
             count: data1_6?.sslCertificatePhoto || "Mavjud emas",
           },
         ],
@@ -696,14 +690,14 @@ export const GetPage5 = async (param = "") => {
         url: "iSystemAndResourceBackup",
         values: [
           {
-            title:
-              " Ахборот тизимлари ҳамда ресурслари маълумотларининг захира нусхаланиши режа-жадвалининг файли",
+            title: "Маълумотларни захиралаш даврийлиги",
             url: "dataBackupPeriodicity",
             count: data1_7?.dataBackupPeriodicity || "Mavjud emas",
           },
           {
-            title: "Маълумотларни захиралаш даврийлиги",
-            url: "backupScheduleFileUrl",
+            title:
+              "Ахборот тизимлари ҳамда ресурслари маълумотларининг захира нусхаланиши режа-жадвалининг файли",
+            url: "backupScheduleFile",
             count: data1_7?.backupScheduleFile || "Mavjud emas",
           },
         ],
@@ -717,7 +711,7 @@ export const GetPage5 = async (param = "") => {
           {
             title:
               "Конфиденциал ахборотларни ташувчи воситаларни ҳисобга олиш журналининг файли (сканер варианти)",
-            url: "journalFileUrl",
+            url: "journalFile",
             count: data1_8?.journalFile || "Mavjud emas",
           },
         ],
@@ -763,14 +757,14 @@ export const GetPage5 = async (param = "") => {
           {
             title:
               "Сервер хоналарга кириш учун рухсат берилган ходимлар рўйхати тасдиқланган буйруқ файли",
-            url: "orderFileUrl",
-            count: data1_10?.orderFileUrl || "Mavjud emas",
+            url: "orderFile",
+            count: data1_10?.orderFile || "Mavjud emas",
           },
           {
             title:
               "Сервер хонага кириш/чиқишларни қайд қилиш журнали нусхаси (скайнер файл)",
-            url: "journalInputOutputToServerRoomUrl",
-            count: data1_10?.journalInputOutputToServerRoomUrl || "Mavjud emas",
+            url: "journalInputOutputToServerRoom",
+            count: data1_10?.journalInputOutputToServerRoom || "Mavjud emas",
           },
         ],
       },
@@ -791,8 +785,8 @@ export const GetPage5 = async (param = "") => {
           },
           {
             title: "Лицензия нусхаси (файли ёки расм)",
-            url: "licenceCopyUrl",
-            count: data1_11?.licenceCopyUrl || "Mavjud emas",
+            url: "licenceCopy",
+            count: data1_11?.licenceCopy || "Mavjud emas",
           },
         ],
       },
@@ -823,8 +817,8 @@ export const GetPage5 = async (param = "") => {
           },
           {
             title: "Лицензия нусхаси (файл)",
-            url: "licenceCopyUrl",
-            count: data1_12?.licenceCopyUrl || "Mavjud emas",
+            url: "licenceCopy",
+            count: data1_12?.licenceCopy || "Mavjud emas",
           },
         ],
       },
@@ -841,7 +835,7 @@ export const GetPage5 = async (param = "") => {
           },
           {
             title: "Исботловчи расмини юклаш",
-            url: "proofPhotoUrl",
+            url: "proofPhoto",
             count: data1_13?.proofPhoto || "Mavjud emas",
           },
         ],
@@ -877,8 +871,8 @@ export const GetPage6 = async (param = "") => {
           },
           {
             title: "Чора-тадбир файли",
-            url: "measureFileUrl",
-            count: data1_1?.measureFileUrl || "Mavjud emas",
+            url: "measureFile",
+            count: data1_1?.measureFile || "Mavjud emas",
           },
           {
             title: "Ҳужжат линки (агар мавжуд бўлса)",
@@ -905,8 +899,8 @@ export const GetPage6 = async (param = "") => {
           },
           {
             title: "Ички буйруқ файли",
-            url: "orderFileUrl",
-            count: data1_2?.orderFileUrl || "Mavjud emas",
+            url: "orderFile",
+            count: data1_2?.orderFile || "Mavjud emas",
           },
           {
             title: "Ҳужжат линки (агар мавжуд бўлса)",
@@ -933,8 +927,8 @@ export const GetPage6 = async (param = "") => {
           },
           {
             title: "Шартнома файли",
-            url: "contractFileUrl",
-            count: data1_3?.contractFileUrl || "Mavjud emas",
+            url: "contractFile",
+            count: data1_3?.contractFile || "Mavjud emas",
           },
           {
             title: "Ҳужжат линки (агар мавжуд бўлса)",

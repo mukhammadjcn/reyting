@@ -102,6 +102,25 @@ export const PrettyPhone = (phone: string) => {
   return `998${phone.replace("(", "").replace(")", "").replaceAll(" ", "")}`;
 };
 
+export const DatesFields = [
+  `issueDate`,
+  `orderDate`,
+  `orderApprovedDate`,
+  `staffListOrderDate`,
+  `statuteDate`,
+  `retrainingInitialDate`,
+  `retrainingFinishDate`,
+  `contractDate`,
+  `expertiseConclusionDate`,
+  `orderApprovedDate`,
+  `measureApprovalDate`,
+  `approvalDate`,
+  `contractApprovalDate`,
+];
+export const BooleanFiels = [`existSSLCertificate`];
+
+export const DateFormat = `YYYY-MM-DD`;
+
 // const props: UploadProps = {
 //   name: "file",
 //   multiple: true,
