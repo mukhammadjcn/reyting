@@ -32,6 +32,12 @@ export let headersNoAuth = {
   "Content-Type": "application/json; charset=utf-8",
 };
 
+export let headersMultipart = {
+  "X-Requested-With": "XMLHttpRequest",
+  "Content-Type": "multipart/form-data",
+  Authorization: token ? `Bearer ${token}` : "",
+};
+
 // Axios instance
 export let axiosInstance = axios.create({
   headers,
