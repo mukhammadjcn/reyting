@@ -1,3 +1,4 @@
+import { message } from "antd";
 import axios from "axios";
 
 // Host URL
@@ -53,3 +54,21 @@ export let axiosInstanceNoAuth = axios.create({
 export const HttpRequestHub = (config = null) => {
   return axiosInstance(config);
 };
+
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response) {
+      let obj = error.response.data;
+      if (error.response.status === 401) {
+        removeLocal(ROLE);
+        removeLocal(ACCESS);
+        window.location.href = "/";
+      }
+      {
+        message.info(obj?.message);
+      }
+    }
+    throw error;
+  }
+);

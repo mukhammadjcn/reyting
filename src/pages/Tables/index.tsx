@@ -72,7 +72,7 @@ function Tables() {
           message.success(res.data?.message);
           GetData();
         })
-        .catch((error) => console.log("error", error));
+        .catch((error) => message.error(error?.response?.data?.message));
     } else {
       axios
         .put(
@@ -86,7 +86,7 @@ function Tables() {
           message.success(res.data?.message);
           GetData();
         })
-        .catch((error) => console.log("error", error));
+        .catch((error) => message.error(error?.response?.data?.message));
     }
     form.resetFields();
     setLoadingForm(false);
@@ -106,7 +106,8 @@ function Tables() {
       })
       .then((res) => {
         setFileLink(res.data?.url);
-      });
+      })
+      .catch((error) => message.error(error?.response?.data?.message));
 
     setLoadingFile(false);
   };
