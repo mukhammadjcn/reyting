@@ -1,5 +1,7 @@
 import { Button } from "antd";
 import { EditOutlined } from "@ant-design/icons";
+import { DateFormat, DatesFields } from "src/utils/index";
+import dayjs from "dayjs";
 
 function CardItem({ card, cardType, setEditCard }: any) {
   return (
@@ -22,7 +24,7 @@ function CardItem({ card, cardType, setEditCard }: any) {
                 target="_blank"
                 style={{ color: "blue" }}
               >
-                Havolaga o'tish
+                Ҳаволага ўтиш
               </a>
             ) : (
               <b>
@@ -30,6 +32,8 @@ function CardItem({ card, cardType, setEditCard }: any) {
                   ? `Bor`
                   : typeof section?.count === "boolean" && !section?.count
                   ? `Yo'q`
+                  : DatesFields.includes(section?.url)
+                  ? dayjs(section?.count, DateFormat)
                   : section?.count}
               </b>
             )}

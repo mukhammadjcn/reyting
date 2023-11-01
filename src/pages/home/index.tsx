@@ -9,9 +9,9 @@ const App = () => {
   const Logout = async () => {
     Modal.confirm({
       centered: true,
-      title: "Tizimdan chiqmoqchimisz ?",
-      okText: "Chiqish",
-      cancelText: "Bekor qilish",
+      title: "Тизимдан чиқмоқчимисз ?",
+      okText: "Чиқиш",
+      cancelText: "Бекор қилиш",
       onOk() {
         localStorage.clear();
         window.location.href = "/";
@@ -26,9 +26,11 @@ const App = () => {
       <div className="home__body">
         <div className="home__header">
           <h2>{univerName}</h2>
-          <Button type="primary" onClick={Logout} icon={<UserOutlined />}>
-            Profile
-          </Button>
+          <Button
+            type="primary"
+            onClick={Logout}
+            icon={<UserOutlined />}
+          ></Button>
         </div>
         <div className="home__content">
           <Tables />

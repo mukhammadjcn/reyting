@@ -128,11 +128,11 @@ function Tables() {
           <Segmented
             options={[
               {
-                label: "1-chorak",
+                label: "1-чорак",
                 value: 1,
               },
               {
-                label: "2-chorak",
+                label: "2-чорак",
                 value: 2,
               },
             ]}
@@ -144,7 +144,7 @@ function Tables() {
 
       {loading ? (
         <div className="loading">
-          <Spin tip="Yuklanmoqda" size="large"></Spin>
+          <Spin tip="Юкланмоқда" size="large"></Spin>
         </div>
       ) : (
         <div className="tables__cards">
@@ -164,7 +164,7 @@ function Tables() {
                   (acc: Object, cur: any) => ({
                     ...acc,
                     [cur.url]:
-                      cur.count !== "Mavjud emas"
+                      cur.count !== "Мавжуд емас"
                         ? DatesFields.includes(cur?.url)
                           ? dayjs(cur.count, DateFormat)
                           : cur.count
@@ -217,8 +217,8 @@ function Tables() {
                   />
                 ) : BooleanFiels.includes(field?.url) ? (
                   <Radio.Group buttonStyle="solid">
-                    <Radio.Button value={true}>Bor</Radio.Button>
-                    <Radio.Button value={false}>Yo'q</Radio.Button>
+                    <Radio.Button value={true}>Бор</Radio.Button>
+                    <Radio.Button value={false}>Йўқ</Radio.Button>
                   </Radio.Group>
                 ) : (
                   <Input />
@@ -235,12 +235,12 @@ function Tables() {
                   icon={<CopyOutlined />}
                   onClick={() => setOpenFileModal(true)}
                 >
-                  Fayl yuborib havola yaratish
+                  Файл юклаб ҳавола яратиш
                 </Button>
               </Form.Item>
               <Form.Item style={{ marginBottom: 0 }}>
                 <Button type="primary" htmlType="submit">
-                  Yuborish
+                  Юбориш
                 </Button>
               </Form.Item>
             </div>
@@ -253,7 +253,7 @@ function Tables() {
         width={600}
         footer={null}
         open={openFileModal}
-        title={"Fayl yuklab havola yaratish"}
+        title={"Файл юклаб ҳавола яратиш"}
         onCancel={() => {
           setOpenFileModal(false);
           formFile.resetFields();
@@ -289,20 +289,18 @@ function Tables() {
                   <InboxOutlined />
                 </p>
                 <p className="ant-upload-text">
-                  Faylni bu yerga tashlang yoki shu yerga bosing )
+                  Файлни бу йерга ташланг ёки шу йерга босинг )
                 </p>
               </Upload.Dragger>
             </Form.Item>
 
             {fileLink && (
               <div style={{ marginTop: 24 }}>
-                <h3>
-                  Havola linkini ustiga bosing va vaqtincha saqlab oling !
-                </h3>
+                <h3>Ҳавола линкини устига босинг ва вақтинча сақлаб олинг !</h3>
                 <a
                   onClick={() => {
                     navigator.clipboard.writeText(fileLink);
-                    message.success("Muvofaqqiyatli nusxa olindi");
+                    message.success("Мувофаққиятли нусха олинди");
                   }}
                 >
                   {fileLink}
@@ -321,11 +319,11 @@ function Tables() {
                     setFileLink("");
                   }}
                 >
-                  Modalni yopish
+                  Модални ёпиш
                 </Button>
               ) : (
                 <Button type="primary" htmlType="submit">
-                  Yuborish
+                  Юбориш
                 </Button>
               )}
             </Form.Item>
