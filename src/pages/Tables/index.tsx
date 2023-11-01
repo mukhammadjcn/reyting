@@ -164,10 +164,11 @@ function Tables() {
                   (acc: Object, cur: any) => ({
                     ...acc,
                     [cur.url]:
-                      cur.count !== "Мавжуд емас"
-                        ? DatesFields.includes(cur?.url)
-                          ? dayjs(cur.count, DateFormat)
-                          : cur.count
+                      cur.count !== "Мавжуд емас" &&
+                      DatesFields.includes(cur?.url)
+                        ? dayjs(cur?.count)
+                        : cur.count !== "Мавжуд емас"
+                        ? cur.count
                         : "",
                   }),
                   {}
@@ -214,6 +215,7 @@ function Tables() {
                     allowClear={false}
                     format={DateFormat}
                     style={{ width: "100%" }}
+                    placeholder="Санани танланг !"
                   />
                 ) : BooleanFiels.includes(field?.url) ? (
                   <Radio.Group buttonStyle="solid">

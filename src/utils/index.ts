@@ -107,7 +107,7 @@ export const DatesFields = [
   `orderDate`,
   `orderApprovedDate`,
   `staffListOrderDate`,
-  `statuteDate`,
+  `statuteApprovedDate`,
   `retrainingInitialDate`,
   `retrainingFinishDate`,
   `contractDate`,

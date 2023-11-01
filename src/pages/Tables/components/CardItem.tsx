@@ -29,11 +29,12 @@ function CardItem({ card, cardType, setEditCard }: any) {
             ) : (
               <b>
                 {typeof section?.count === "boolean" && section?.count
-                  ? `Bor`
+                  ? `Бор`
                   : typeof section?.count === "boolean" && !section?.count
-                  ? `Yo'q`
-                  : DatesFields.includes(section?.url)
-                  ? dayjs(section?.count, DateFormat)
+                  ? `Йўқ`
+                  : DatesFields.includes(section?.url) &&
+                    section?.count !== "Мавжуд емас"
+                  ? dayjs(section?.count).format(DateFormat)
                   : section?.count}
               </b>
             )}
