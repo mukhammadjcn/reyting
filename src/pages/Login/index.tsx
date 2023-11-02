@@ -9,12 +9,12 @@ const Login = () => {
         <div className="login_left_wrap">
           <Link to={"/login"} className="adminlogo">
             <img src={require("src/assets/images/logo.png")} alt="logo" />
-            <span>Reyting.edu.uz</span>
+            <span>Akt.e-edu.uz</span>
           </Link>
 
           <div className="login_left_content">
             <p>
-              Reyting.edu.uz tizimi uchun <span>boshqaruv</span> paneli
+              Akt.e-edu.uz tizimi uchun <span>boshqaruv</span> paneli
             </p>
           </div>
         </div>

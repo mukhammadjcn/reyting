@@ -7,6 +7,7 @@ import {
   Modal,
   Radio,
   Segmented,
+  Select,
   Spin,
   Upload,
   message,
@@ -125,6 +126,17 @@ function Tables() {
       <div className="flex">
         <h2 className="tables__title">{titles[`tab${String(page)}`]}</h2>
         <div className="flex">
+          <Select
+            style={{ marginRight: 16 }}
+            value={String(year)}
+            onChange={(val) => handleMakeParams("year", val)}
+            options={[
+              {
+                value: "2023",
+                label: "2023",
+              },
+            ]}
+          />
           <Segmented
             options={[
               {
@@ -219,8 +231,8 @@ function Tables() {
                   />
                 ) : BooleanFiels.includes(field?.url) ? (
                   <Radio.Group buttonStyle="solid">
-                    <Radio.Button value={true}>Бор</Radio.Button>
-                    <Radio.Button value={false}>Йўқ</Radio.Button>
+                    <Radio.Button value={true}>Мавжуд</Radio.Button>
+                    <Radio.Button value={false}>Мавжуд емас</Radio.Button>
                   </Radio.Group>
                 ) : (
                   <Input />

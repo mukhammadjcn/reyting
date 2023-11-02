@@ -64,7 +64,7 @@ function Sidebar() {
     <div className="sidebar">
       <Link to={"/"} className="adminlogo">
         <img src={require("../../assets/images/logo.png")} alt="logo" />
-        <span>Reyting.edu.uz</span>
+        <span>Akt.e-edu.uz</span>
       </Link>
 
       <ul className="sidebar__tabs">

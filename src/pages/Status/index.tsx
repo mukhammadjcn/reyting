@@ -14,6 +14,7 @@ const Status: React.FC = () => {
     const role = searchParam.get("role");
     const token = searchParam.get("token");
     const univer = searchParam.get("univer");
+    const fullname = searchParam.get("fullName");
 
     if (token && role === "ROLE_OTMADMIN") {
       try {
@@ -25,6 +26,9 @@ const Status: React.FC = () => {
 
         // Set univer name
         setLocal(UNIVERSITY, univer);
+
+        // Set univer name
+        setLocal("fullname", fullname);
 
         window.location.href = "/home?page=1&tab=1_1";
       } catch (error) {
