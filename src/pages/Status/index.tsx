@@ -30,7 +30,7 @@ const Status: React.FC = () => {
         // Set univer name
         setLocal("fullname", fullname);
 
-        window.location.href = "/home?page=1&tab=1_1";
+        window.location.href = "/home?page=1&tab=teacherEquipmentRate&quater=1";
       } catch (error) {
         navigate("/");
         CatchError(error);

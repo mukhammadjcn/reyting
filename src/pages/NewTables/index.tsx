@@ -66,10 +66,10 @@ function NewTables() {
     setSearchParams(searchParams);
   };
 
-  const GiveColumn = () => {
+  const GiveColumn = async () => {
     setLoading(true);
     let cols = [];
-    currentTab?.values?.map((item: any) => {
+    await currentTab?.values?.map((item: any) => {
       cols.push({
         key: item?.url,
         title: item?.title,
@@ -117,7 +117,6 @@ function NewTables() {
       align: "center",
     });
     setColumn(cols);
-
     setLoading(false);
   };
   const GetData = async () => {
@@ -133,8 +132,8 @@ function NewTables() {
             []
           )
         )
-      );
-    setLoading(false);
+      )
+      .finally(() => setLoading(false));
   };
   const SubmitData = async (val: any) => {
     setLoadingForm(true);
@@ -243,6 +242,7 @@ function NewTables() {
               label: `${page}.${index + 1}`,
             }))}
             onChange={(val) => {
+              setData({});
               handleMakeParams("tab", val);
               handleMakeParams("quater", 1);
             }}
