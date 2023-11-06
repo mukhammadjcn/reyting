@@ -242,6 +242,7 @@ function NewTables() {
               label: `${page}.${index + 1}`,
             }))}
             onChange={(val) => {
+              setData([]);
               handleMakeParams("tab", val);
               handleMakeParams("quater", 1);
             }}
