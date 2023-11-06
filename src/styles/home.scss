@@ -32,7 +32,8 @@
     padding: 24px;
     height: calc(100vh - 56px);
     overflow-y: scroll;
-    width: 100%;
+    // width: 100%;
+    width: calc(100vw - 280px);
   }
   &__body {
     width: 100%;
@@ -236,6 +237,11 @@
   }
   & > .flex {
     align-items: flex-start;
+  }
+  &__tabs {
+    padding: 0 8px;
+    background: white;
+    border-radius: 8px;
   }
   .ant-table-cell {
     vertical-align: top;

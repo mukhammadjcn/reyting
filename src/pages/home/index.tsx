@@ -3,6 +3,7 @@ import Sidebar from "src/components/home/Sidebar";
 import { UserOutlined } from "@ant-design/icons";
 import "src/styles/home.scss";
 import Tables from "src/pages/Tables";
+import NewTables from "src/pages/NewTables";
 
 const App = () => {
   const fullName = localStorage.getItem("fullname")?.split("_").join(" ");
@@ -10,9 +11,9 @@ const App = () => {
   const Logout = async () => {
     Modal.confirm({
       centered: true,
-      title: "Тизимдан чиқмоқчимисз ?",
-      okText: "Чиқиш",
-      cancelText: "Бекор қилиш",
+      title: "Tizimdan chiqmoqchimisz ?",
+      okText: "Chiqish",
+      cancelText: "Bekor qilish",
       onOk() {
         localStorage.clear();
         window.location.href = "/";
@@ -32,7 +33,8 @@ const App = () => {
           </Button>
         </div>
         <div className="home__content">
-          <Tables />
+          {/* <Tables /> */}
+          <NewTables />
         </div>
       </div>
     </div>

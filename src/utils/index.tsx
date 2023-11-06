@@ -1,4 +1,4 @@
-import { message } from "antd";
+import { message, Radio } from "antd";
 import { ACCESS, REFRESH, role, ROLE, setLocal } from "../server/Host";
 
 export const CatchError = async (error: any) => {
@@ -117,35 +117,52 @@ export const DatesFields = [
   `approvalDate`,
   `contractApprovalDate`,
 ];
-export const BooleanFiels = [`existSSLCertificate`];
+export const BooleanFiels = [
+  `existSSLCertificate`,
+  `educationType`,
+  `videoSurveillanceSystemState`,
+];
+export const GiveBooleanValue = (key: number, name: string) => {
+  if (name === `existSSLCertificate`) {
+    return key == 1 ? "Mavjud" : "Mavjud emas";
+  }
+  if (name === `educationType`) {
+    return key == 1 ? "Online" : "Offline";
+  }
+  if (name === `videoSurveillanceSystemState`) {
+    return key == 1
+      ? "Mavjud va ishlaydi"
+      : key == 2
+      ? "Mavjud lekin ishlamaydi"
+      : "Mavjud emas";
+  }
+};
+export const GiveBooleanRender = (name: string) => {
+  if (name === `existSSLCertificate`) {
+    return (
+      <Radio.Group buttonStyle="solid">
+        <Radio.Button value={true}>Mavjud</Radio.Button>
+        <Radio.Button value={false}>Mavjud emas</Radio.Button>
+      </Radio.Group>
+    );
+  }
+  if (name === `educationType`) {
+    return (
+      <Radio.Group buttonStyle="solid">
+        <Radio.Button value={"1"}>Online</Radio.Button>
+        <Radio.Button value={"2"}>Offline</Radio.Button>
+      </Radio.Group>
+    );
+  }
+  if (name === `videoSurveillanceSystemState`) {
+    return (
+      <Radio.Group buttonStyle="solid">
+        <Radio.Button value={"1"}>Mavjud va ishlaydi</Radio.Button>
+        <Radio.Button value={"2"}>Mavjud lekin ishlamaydi</Radio.Button>
+        <Radio.Button value={"3"}>Mavjud emas</Radio.Button>
+      </Radio.Group>
+    );
+  }
+};
 
 export const DateFormat = `YYYY-MM-DD`;
-
-// const props: UploadProps = {
-//   name: "file",
-//   multiple: true,
-//   fileList: fileList,
-//   beforeUpload() {
-//     return false;
-//   },
-//   async onChange(val) {
-//     console.log(val);
-//     setFileList([...val?.fileList]);
-
-//     await new Promise(() => {
-//       setTimeout(() => {
-//         setFileList([]);
-//         message.success("Muvofaqqiyatli yuborildi !");
-//       }, 5000);
-//     });
-//   },
-// };
-
-// <Upload.Dragger {...props} style={{ marginTop: 24 }}>
-//                   <p className="ant-upload-drag-icon">
-//                     <DownloadOutlined />
-//                   </p>
-//                   <p className="ant-upload-text">
-//                     Bu yerni bosing yoki kerakli fayllarni shu yerga tashlang :)
-//                   </p>
-//                 </Upload.Dragger>

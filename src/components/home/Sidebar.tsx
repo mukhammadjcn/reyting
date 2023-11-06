@@ -26,17 +26,17 @@ function Sidebar() {
     {
       key: 1,
       logo: <Tab1SVG />,
-      title: "АКТ инфратузилмаси ҳолати",
+      title: "AKT infratuzilmasi holati",
     },
     {
       key: 2,
       logo: <Tab2SVG />,
-      title: "ОТМ ахборот тизимлари, ахборот ресурслари ҳолати",
+      title: "OTM axborot tizimlari, axborot resurslari holati",
     },
     {
       key: 3,
       logo: <Tab3SVG />,
-      title: "ОТМ даги АКТ соҳасидаги инсон капитали ҳолати",
+      title: "OTM dagi AKT sohasidagi inson kapitali holati",
     },
     // {
     //   key: 4,
@@ -46,12 +46,12 @@ function Sidebar() {
     {
       key: 5,
       logo: <Tab5SVG />,
-      title: "Ахборот хавфсизлигини таъминлашдаги меъёрий тадбирлар",
+      title: "Axborot xavfsizligini ta'minlashda meyoriy tadbirlar",
     },
     {
       key: 6,
       logo: <Tab6SVG />,
-      title: "Ташкилий ишлар",
+      title: "Tashkiliy ishlar",
     },
     // {
     //   key: 7,
