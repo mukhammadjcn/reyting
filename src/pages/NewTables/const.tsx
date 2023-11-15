@@ -6,7 +6,8 @@ export const TabsData: any = {
         "Professor-o'qituvchi va xodimlarning kompyuter bilan ta'minlanganlik holati",
       values: [
         {
-          title: "Professor-o'qituvchi va xodimlar uchun",
+          title:
+            "- Professor-o'qituvchi va xodimlar uchun ajratilgan kompyuterlar soni",
           url: "computerCount",
         },
         {
@@ -84,7 +85,7 @@ export const TabsData: any = {
       title: "Simsiz internet qamrovi va sifati",
       values: [
         {
-          title: "Simsiz internet tarqatuvchi qurilmalar",
+          title: "Simsiz internet tarqatuvchi qurilmalar soni",
           url: "deviceCount",
         },
         {
@@ -103,15 +104,15 @@ export const TabsData: any = {
         "O'quv auditoriyalarining proyektor, interaktiv doska, katta diagonalli ekranlar bilan jihozlanganligi",
       values: [
         {
-          title: "O'quv auditoriyalaridagi proyektorlar soni",
+          title: "Proyektorlar soni",
           url: "projectorCount",
         },
         {
-          title: "O'quv auditoriyalaridagi",
+          title: "Interaktiv doskalar soni",
           url: "blackboardCount",
         },
         {
-          title: "O'quv auditoriyalaridagi katta diagonalli",
+          title: "Katta diagonalli ekranlar soni",
           url: "screenCount",
         },
         {
@@ -136,16 +137,20 @@ export const TabsData: any = {
           url: "isdomain",
         },
         {
-          title: "AT yoki modulning maqsad va vazifalari",
-          url: "isaid",
+          title: "ATga mas'ul shaxsning FISH",
+          url: "responsiblePersonFullName",
         },
         {
-          title: "Integratsiya qilingan axborot tizimlari ro'yxati",
-          url: "integratedIS",
+          title: "ATga mas'ul shaxsning JSHSHIR raqami",
+          url: "responsiblePersonPnfl",
         },
         {
-          title: "Avtomatlashtirilgan xizmatlar (funksiyalar)",
-          url: "automatedServices",
+          title: "ATga mas'ul shaxsning pasport seriya raqami",
+          url: "responsiblePersonPassportNumber",
+        },
+        {
+          title: "ATga mas'ul shaxsning pasport berilgan sanasi",
+          url: "responsiblePersonPassportIssuedDate",
         },
       ],
     },
@@ -155,20 +160,33 @@ export const TabsData: any = {
       url: "initiativeIS",
       values: [
         {
+          title: "AT turi",
+          url: "typeIS",
+        },
+        {
           title: "ATning to'liq nomlanishi",
           url: "fullNameIS",
         },
         {
-          title: "ATga havola (link)",
-          url: "linkIS",
+          title:
+            "Ishlab chiqish va joriy etish uchun sarflangan umumiy mablag'",
+          url: "totalSpentMoney",
         },
         {
           title: "ATning maqsad va vazifalari",
           url: "aidIS",
         },
         {
+          title: "Joriy etilgan sanasi",
+          url: "implementationDate",
+        },
+        {
           title: "Integratsiya qilingan axborot tizimlari ro'yxati",
           url: "integratedIS",
+        },
+        {
+          title: "AT pullikmi?",
+          url: "paidStateIS",
         },
         {
           title: "Avtomatlashtirilgan xizmatlar (funksiyalar)",
@@ -182,6 +200,26 @@ export const TabsData: any = {
           title:
             "ATga tegishli hujjatlar (ekspert xulosasi, guvohnoma, patent, sertifikat va h.k.)",
           url: "document",
+        },
+        {
+          title: "Joriy etilganligi buyrug'i (mavjud bo'lsa)",
+          url: "implementationOrderFile",
+        },
+        {
+          title: "ATga mas'ul shaxsning FISH",
+          url: "responsiblePersonFullName",
+        },
+        {
+          title: "ATga mas'ul shaxsning JSHSHIR raqami",
+          url: "responsiblePersonPnfl",
+        },
+        {
+          title: "ATga mas'ul shaxsning pasport seriya raqami",
+          url: "responsiblePersonPassportNumber",
+        },
+        {
+          title: "ATga mas'ul shaxsning pasport berilgan sanasi",
+          url: "responsiblePersonPassportIssuedDate",
         },
       ],
     },

@@ -5,7 +5,6 @@ import {
   Form,
   Input,
   Modal,
-  Radio,
   Segmented,
   Select,
   Spin,
@@ -25,10 +24,14 @@ import {
   DatesFields,
   GiveBooleanRender,
   GiveBooleanValue,
+  NotRequiredFiels,
+  TextAreaFiels,
 } from "src/utils/index";
 import dayjs from "dayjs";
 import { TabsData } from "./const";
 import { EditOutlined } from "@ant-design/icons";
+import EmptyText from "./components/EmptyText";
+import { FileSVG } from "src/components/svg";
 
 function NewTables() {
   const [form] = Form.useForm();
@@ -67,7 +70,6 @@ function NewTables() {
   };
 
   const GiveColumn = async () => {
-    setLoading(true);
     let cols = [];
     await currentTab?.values?.map((item: any) => {
       cols.push({
@@ -83,6 +85,17 @@ function NewTables() {
               "https://akt.e-edu.uz/api/public/download"
             ) ? (
             <a href={val} target="_blank">
+              <Button
+                type="dashed"
+                icon={<FileSVG />}
+                className="filelink"
+                style={{ display: "flex", alignItems: "center", gap: 8 }}
+              >
+                File ni ko'rish
+              </Button>
+            </a>
+          ) : String(val)?.includes("https:") ? (
+            <a href={val} target="_blank">
               Havolaga o'tish
             </a>
           ) : (
@@ -91,6 +104,14 @@ function NewTables() {
 
         width: 400,
       });
+    });
+    cols.push({
+      key: "createdDate",
+      title: "Ma'lumot kiritilgan vaqti",
+      dataIndex: "createdDate",
+      width: 100,
+      align: "center",
+      render: (val: any) => dayjs(val).format(DateFormat),
     });
     cols.push({
       key: "action",
@@ -117,7 +138,6 @@ function NewTables() {
       align: "center",
     });
     setColumn(cols);
-    setLoading(false);
   };
   const GetData = async () => {
     setLoading(true);
@@ -133,7 +153,16 @@ function NewTables() {
           )
         )
       )
-      .finally(() => setLoading(false));
+      .catch((error) => {
+        if (error?.response?.status === 401) {
+          localStorage.clear();
+          window.location.href = "/";
+        }
+      })
+      .finally(async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setLoading(false);
+      });
   };
   const SubmitData = async (val: any) => {
     setLoadingForm(true);
@@ -166,6 +195,20 @@ function NewTables() {
         })
         .catch((error) => message.error(error?.response?.data?.message));
     }
+    form.resetFields();
+    setLoadingForm(false);
+    setOpenEditModal(false);
+  };
+  const DeleteFunc = () => {
+    setLoadingForm(true);
+    axios
+      .delete(`https://akt.e-edu.uz/api/${tab}/${editData?.id}`, {
+        headers,
+      })
+      .then(() => {
+        message.success(`Muvaffaqiyatli o'chirildi !`);
+        GetData();
+      });
     form.resetFields();
     setLoadingForm(false);
     setOpenEditModal(false);
@@ -228,92 +271,60 @@ function NewTables() {
         </div>
       </div>
 
-      {loading ? (
+      {/* {loading ? (
         <div className="loading">
           <Spin tip="Yuklanmoqda" size="large"></Spin>
         </div>
       ) : (
-        <div className="tables__tabs">
-          <Tabs
-            type="card"
-            activeKey={tab}
-            items={tabs?.map((item: any, index: number) => ({
-              key: item?.url,
-              label: `${page}.${index + 1}`,
-            }))}
-            onChange={(val) => {
-              setData([]);
-              handleMakeParams("tab", val);
-              handleMakeParams("quater", 1);
-            }}
-          />
+        <></>
+      )} */}
 
-          <div
-            className="flex"
-            style={{ alignItems: "center", margin: "16px 0", gap: 24 }}
+      <div className="tables__tabs">
+        {/* Tabs */}
+        <Tabs
+          type="card"
+          activeKey={tab}
+          items={tabs?.map((item: any, index: number) => ({
+            key: item?.url,
+            label: `${page}.${index + 1}`,
+          }))}
+          onChange={(val) => {
+            setData([]);
+            handleMakeParams("tab", val);
+            handleMakeParams("quater", 1);
+          }}
+        />
+
+        {/* Title and actions */}
+        <div
+          className="flex"
+          style={{ alignItems: "center", margin: "16px 0", gap: 24 }}
+        >
+          <h3>{currentTab?.title}</h3>
+          <Button
+            type="primary"
+            onClick={() => {
+              setEditData({ id: 0 });
+              setOpenEditModal(true);
+            }}
           >
-            <h3>{currentTab?.title}</h3>
-            <Button
-              type="primary"
-              onClick={() => {
-                setEditData({ id: 0 });
-                setOpenEditModal(true);
-              }}
-            >
-              + Qoshish
-            </Button>
-          </div>
-
-          <Table
-            loading={loading}
-            scroll={{ x: 500 }}
-            dataSource={data}
-            columns={column}
-            locale={{
-              emptyText: (
-                <div
-                  className="ant-empty ant-empty-normal"
-                  style={{ margin: "64px 0" }}
-                >
-                  <div className="ant-empty-image">
-                    <svg
-                      width="64"
-                      height="41"
-                      viewBox="0 0 64 41"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g
-                        transform="translate(0 1)"
-                        fill="none"
-                        fillRule="evenodd"
-                      >
-                        <ellipse
-                          fill="#f5f5f5"
-                          cx="32"
-                          cy="33"
-                          rx="32"
-                          ry="7"
-                        ></ellipse>
-                        <g fillRule="nonzero" stroke="#d9d9d9">
-                          <path d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"></path>
-                          <path
-                            d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
-                            fill="#fafafa"
-                          ></path>
-                        </g>
-                      </g>
-                    </svg>
-                  </div>
-                  <div className="ant-empty-description">
-                    Ma'lumot topilmadi
-                  </div>
-                </div>
-              ),
-            }}
-          />
+            + Qoshish
+          </Button>
         </div>
-      )}
 
+        {/* Table */}
+        <Table
+          columns={column}
+          loading={loading}
+          dataSource={data}
+          scroll={{ x: 500 }}
+          locale={{
+            emptyText: <EmptyText />,
+          }}
+        />
+      </div>
+
+      {/* Edit, Create Modal */}
       <Modal
         centered
         width={600}
@@ -321,6 +332,7 @@ function NewTables() {
         open={openEditModal}
         title={editData?.title}
         onCancel={() => {
+          form.resetFields();
           setLoadingForm(false);
           setOpenEditModal(false);
         }}
@@ -337,7 +349,12 @@ function NewTables() {
                 key={field?.url}
                 name={field?.url}
                 label={field?.title}
-                rules={[{ required: true, message: `${field?.title} !` }]}
+                rules={[
+                  {
+                    required: !NotRequiredFiels.includes(field?.url),
+                    message: `${field?.title} !`,
+                  },
+                ]}
               >
                 {/* <Input /> */}
                 {DatesFields.includes(field?.url) ? (
@@ -349,6 +366,8 @@ function NewTables() {
                   />
                 ) : BooleanFiels.includes(field?.url) ? (
                   GiveBooleanRender(field?.url)
+                ) : TextAreaFiels.includes(field?.url) ? (
+                  <Input.TextArea rows={5} />
                 ) : (
                   <Input />
                 )}
@@ -359,17 +378,22 @@ function NewTables() {
               className="flex"
               style={{ justifyContent: "flex-end", gap: 16 }}
             >
-              <Form.Item style={{ marginBottom: 0 }}>
-                <Button
-                  icon={<CopyOutlined />}
-                  onClick={() => setOpenFileModal(true)}
-                >
-                  Fayl yuklab havola yaratish
+              <Button
+                icon={<CopyOutlined />}
+                onClick={() => setOpenFileModal(true)}
+              >
+                Fayl yuklab havola yaratish
+              </Button>
+
+              {/* {editData?.id !== 0 && (
+                <Button danger onClick={DeleteFunc}>
+                  Ma'lumotni o'chirish
                 </Button>
-              </Form.Item>
+              )} */}
+
               <Form.Item style={{ marginBottom: 0 }}>
                 <Button type="primary" htmlType="submit">
-                  Yuborish
+                  {editData?.id === 0 ? "Yuborish" : "Tahrirlash"}
                 </Button>
               </Form.Item>
             </div>
@@ -377,6 +401,7 @@ function NewTables() {
         </Spin>
       </Modal>
 
+      {/* Upload and make url btn */}
       <Modal
         centered
         width={600}
@@ -384,9 +409,9 @@ function NewTables() {
         open={openFileModal}
         title={"Fayl yuklab havola yaratish"}
         onCancel={() => {
-          setOpenFileModal(false);
-          formFile.resetFields();
           setFileLink("");
+          formFile.resetFields();
+          setOpenFileModal(false);
         }}
       >
         <Spin spinning={loadingFile}>

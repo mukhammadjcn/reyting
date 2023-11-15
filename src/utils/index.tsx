@@ -116,12 +116,27 @@ export const DatesFields = [
   `measureApprovalDate`,
   `approvalDate`,
   `contractApprovalDate`,
+  `implementationDate`,
 ];
 export const BooleanFiels = [
   `existSSLCertificate`,
   `educationType`,
   `videoSurveillanceSystemState`,
+  `typeIS`,
+  `paidStateIS`,
 ];
+export const TextAreaFiels = [
+  `isaid`,
+  `integratedIS`,
+  `automatedServices`,
+  `aidIS`,
+  `integratedIS`,
+  `automatedServices`,
+  `electronServiceAid`,
+  `integratedISToElectronService`,
+];
+export const NotRequiredFiels = [``];
+
 export const GiveBooleanValue = (key: number, name: string) => {
   if (name === `existSSLCertificate`) {
     return key == 1 ? "Mavjud" : "Mavjud emas";
@@ -160,6 +175,23 @@ export const GiveBooleanRender = (name: string) => {
         <Radio.Button value={"1"}>Mavjud va ishlaydi</Radio.Button>
         <Radio.Button value={"2"}>Mavjud lekin ishlamaydi</Radio.Button>
         <Radio.Button value={"3"}>Mavjud emas</Radio.Button>
+      </Radio.Group>
+    );
+  }
+  if (name === `typeIS`) {
+    return (
+      <Radio.Group buttonStyle="solid">
+        <Radio.Button value={"1"}>Veb-sayt</Radio.Button>
+        <Radio.Button value={"2"}>Portal</Radio.Button>
+        <Radio.Button value={"3"}>Axborot tizim</Radio.Button>
+      </Radio.Group>
+    );
+  }
+  if (name === `paidStateIS`) {
+    return (
+      <Radio.Group buttonStyle="solid">
+        <Radio.Button value={"1"}>Pullik</Radio.Button>
+        <Radio.Button value={"2"}>Bepul</Radio.Button>
       </Radio.Group>
     );
   }
