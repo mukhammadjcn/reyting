@@ -82,7 +82,7 @@ function NewTables() {
           ) : BooleanFiels?.includes(item?.url) ? (
             GiveBooleanValue(val, item?.url)
           ) : String(val)?.includes(
-              "https://akt.e-edu.uz/api/public/download"
+              "https://akt.edu.uz/api/public/download"
             ) ? (
             <a href={val} target="_blank">
               <Button
@@ -142,7 +142,7 @@ function NewTables() {
   const GetData = async () => {
     setLoading(true);
     axios
-      .get(`https://akt.e-edu.uz/api/${tab}?size=30&quarterId=${quater}`, {
+      .get(`https://akt.edu.uz/api/${tab}?size=30&quarterId=${quater}`, {
         headers,
       })
       .then((res) =>
@@ -153,12 +153,12 @@ function NewTables() {
           )
         )
       )
-      .catch((error) => {
-        if (error?.response?.status === 401) {
-          localStorage.clear();
-          window.location.href = "/";
-        }
-      })
+      // .catch((error) => {
+      //   if (error?.response?.status === 401) {
+      //     localStorage.clear();
+      //     window.location.href = "/";
+      //   }
+      // })
       .finally(async () => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         setLoading(false);
@@ -169,7 +169,7 @@ function NewTables() {
     if (editData?.id === 0) {
       axios
         .post(
-          `https://akt.e-edu.uz/api/${tab}`,
+          `https://akt.edu.uz/api/${tab}`,
           { ...val, quarterId: quater },
           {
             headers,
@@ -183,7 +183,7 @@ function NewTables() {
     } else {
       axios
         .put(
-          `https://akt.e-edu.uz/api/${tab}/${editData?.id}`,
+          `https://akt.edu.uz/api/${tab}/${editData?.id}`,
           { ...val, quarterId: quater },
           {
             headers,
@@ -202,7 +202,7 @@ function NewTables() {
   const DeleteFunc = () => {
     setLoadingForm(true);
     axios
-      .delete(`https://akt.e-edu.uz/api/${tab}/${editData?.id}`, {
+      .delete(`https://akt.edu.uz/api/${tab}/${editData?.id}`, {
         headers,
       })
       .then(() => {
@@ -222,7 +222,7 @@ function NewTables() {
     setLoadingFile(true);
 
     axios
-      .post(`https://akt.e-edu.uz/api/public/uploadFile?key=file`, formData, {
+      .post(`https://akt.edu.uz/api/public/uploadFile?key=file`, formData, {
         headers: headersMultipart,
       })
       .then((res) => {
@@ -385,11 +385,11 @@ function NewTables() {
                 Fayl yuklab havola yaratish
               </Button>
 
-              {/* {editData?.id !== 0 && (
+              {editData?.id !== 0 && (
                 <Button danger onClick={DeleteFunc}>
                   Ma'lumotni o'chirish
                 </Button>
-              )} */}
+              )}
 
               <Form.Item style={{ marginBottom: 0 }}>
                 <Button type="primary" htmlType="submit">

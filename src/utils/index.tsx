@@ -1,5 +1,5 @@
 import { message, Radio } from "antd";
-import { ACCESS, REFRESH, role, ROLE, setLocal } from "../server/Host";
+import { ACCESS, REFRESH, role, ROLE } from "../server/Host";
 
 export const CatchError = async (error: any) => {
   if (error.response) {
@@ -82,21 +82,6 @@ export const GiveLang = (key: number) => {
   return key == 1 ? `O'zbekcha` : key == 2 ? `Ruscha` : "Qoraqalpoqcha";
 };
 
-// Give edu type
-export const GiveType = (key: number) => {
-  return key == 1
-    ? `Kunduzgi`
-    : key == 2
-    ? `Dual texnikum`
-    : key == 3
-    ? `Sirtqi`
-    : "Kechki";
-};
-
-export const LastPage = () => {
-  setLocal("lastpage", window.location.pathname + window.location.search);
-};
-
 // Pretty phone
 export const PrettyPhone = (phone: string) => {
   return `998${phone.replace("(", "").replace(")", "").replaceAll(" ", "")}`;
@@ -137,6 +122,9 @@ export const TextAreaFiels = [
 ];
 export const NotRequiredFiels = [``];
 
+export const DateFormat = `YYYY-MM-DD`;
+
+// Rendering in tables
 export const GiveBooleanValue = (key: number, name: string) => {
   if (name === `existSSLCertificate`) {
     return key == 1 ? "Mavjud" : "Mavjud emas";
@@ -151,7 +139,15 @@ export const GiveBooleanValue = (key: number, name: string) => {
       ? "Mavjud lekin ishlamaydi"
       : "Mavjud emas";
   }
+  if (name === `typeIS`) {
+    return key == 1 ? "Veb-sayt" : key == 2 ? "Portal" : "Axborot tizim";
+  }
+  if (name === `paidStateIS`) {
+    return key == 1 ? "Pullik" : "Bepul";
+  }
 };
+
+// Rendering in modals
 export const GiveBooleanRender = (name: string) => {
   if (name === `existSSLCertificate`) {
     return (
@@ -196,5 +192,3 @@ export const GiveBooleanRender = (name: string) => {
     );
   }
 };
-
-export const DateFormat = `YYYY-MM-DD`;

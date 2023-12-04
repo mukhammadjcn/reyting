@@ -2,7 +2,7 @@ import { message } from "antd";
 import axios from "axios";
 
 // Host URL
-export let host = "https://akt.e-edu.uz/api/";
+export let host = "https://akt.edu.uz/api/";
 
 // Names for local usage
 export const ROLE = "role";

@@ -9,12 +9,12 @@ const Login = () => {
         <div className="login_left_wrap">
           <Link to={"/login"} className="adminlogo">
             <img src={require("src/assets/images/logo.png")} alt="logo" />
-            <span>Akt.e-edu.uz</span>
+            <span>Akt.edu.uz</span>
           </Link>
 
           <div className="login_left_content">
             <p>
-              Akt.e-edu.uz tizimi uchun <span>boshqaruv</span> paneli
+              Akt.edu.uz tizimi uchun <span>boshqaruv</span> paneli
             </p>
           </div>
         </div>
@@ -25,7 +25,7 @@ const Login = () => {
           <h2>Tizimga kirish</h2>
 
           <div className="login-admin__oneID">
-            <a href="https://akt.e-edu.uz/api/public/oneId">
+            <a href="https://akt.edu.uz/api/public/oneId">
               <div className="login-admin__title">ONE ID orqali kirish</div>
             </a>
             <div className="pulse-css">

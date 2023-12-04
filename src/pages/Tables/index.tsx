@@ -67,7 +67,7 @@ function Tables() {
     if (editData?.id === 0) {
       axios
         .post(
-          `https://akt.e-edu.uz/api/${editData?.url}`,
+          `https://akt.edu.uz/api/${editData?.url}`,
           { ...val, quarterId: quater },
           {
             headers,
@@ -81,7 +81,7 @@ function Tables() {
     } else {
       axios
         .put(
-          `https://akt.e-edu.uz/api/${editData?.url}/${editData?.id}`,
+          `https://akt.edu.uz/api/${editData?.url}/${editData?.id}`,
           { ...val, quarterId: quater },
           {
             headers,
@@ -106,7 +106,7 @@ function Tables() {
     setLoadingFile(true);
 
     axios
-      .post(`https://akt.e-edu.uz/api/public/uploadFile?key=file`, formData, {
+      .post(`https://akt.edu.uz/api/public/uploadFile?key=file`, formData, {
         headers: headersMultipart,
       })
       .then((res) => {
