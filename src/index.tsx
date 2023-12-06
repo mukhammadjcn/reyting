@@ -1,4 +1,4 @@
-import "./118n";
+// import "./118n";
 import App from "./App";
 import "./styles/App.scss";
 import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File

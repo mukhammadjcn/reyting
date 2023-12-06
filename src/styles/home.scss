@@ -316,3 +316,32 @@
   align-items: center;
   justify-content: center;
 }
+
+//------------------------------
+.customUpload {
+  gap: 6px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+
+  .ant-upload-list {
+    flex-grow: 0.7;
+  }
+}
+.customForm {
+  gap: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+
+  .ant-form-item {
+    flex-basis: calc(50% - 12px);
+  }
+  & > .flex {
+    flex-basis: 100%;
+    justify-content: end;
+    .ant-form-item {
+      flex-basis: auto;
+    }
+  }
+}

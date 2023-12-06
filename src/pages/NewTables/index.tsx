@@ -10,21 +10,22 @@ import {
   Spin,
   Table,
   Tabs,
-  Upload,
   message,
 } from "antd";
 import { useSearchParams } from "react-router-dom";
 import { titles } from "src/static";
 import axios from "axios";
 import { headers, headersMultipart } from "src/server/Host";
-import { CopyOutlined, InboxOutlined } from "@ant-design/icons";
 import {
   BooleanFiels,
   DateFormat,
   DatesFields,
+  DisabledFiels,
+  FileFiels,
   GiveBooleanRender,
   GiveBooleanValue,
   NotRequiredFiels,
+  NumberFiels,
   TextAreaFiels,
 } from "src/utils/index";
 import dayjs from "dayjs";
@@ -32,6 +33,8 @@ import { TabsData } from "./const";
 import { EditOutlined } from "@ant-design/icons";
 import EmptyText from "./components/EmptyText";
 import { FileSVG } from "src/components/svg";
+import UploadFileInput from "./components/UploadFileInput";
+import moment from "moment";
 
 function NewTables() {
   const [form] = Form.useForm();
@@ -153,14 +156,14 @@ function NewTables() {
           )
         )
       )
-      // .catch((error) => {
-      //   if (error?.response?.status === 401) {
-      //     localStorage.clear();
-      //     window.location.href = "/";
-      //   }
-      // })
+      .catch((error) => {
+        if (error?.response?.status === 401) {
+          localStorage.clear();
+          window.location.href = "/";
+        }
+      })
       .finally(async () => {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 300));
         setLoading(false);
       });
   };
@@ -271,14 +274,6 @@ function NewTables() {
         </div>
       </div>
 
-      {/* {loading ? (
-        <div className="loading">
-          <Spin tip="Yuklanmoqda" size="large"></Spin>
-        </div>
-      ) : (
-        <></>
-      )} */}
-
       <div className="tables__tabs">
         {/* Tabs */}
         <Tabs
@@ -327,7 +322,7 @@ function NewTables() {
       {/* Edit, Create Modal */}
       <Modal
         centered
-        width={600}
+        width={840}
         footer={null}
         open={openEditModal}
         title={editData?.title}
@@ -341,8 +336,9 @@ function NewTables() {
           <Form
             form={form}
             layout="vertical"
-            style={{ marginTop: 24 }}
             onFinish={SubmitData}
+            className="customForm"
+            style={{ marginTop: 24 }}
           >
             {currentTab?.values?.map((field: any) => (
               <Form.Item
@@ -352,24 +348,45 @@ function NewTables() {
                 rules={[
                   {
                     required: !NotRequiredFiels.includes(field?.url),
-                    message: `${field?.title} !`,
+                    // message: `${field?.title} !`,
+                    message: `Ma'lumotni kiriting !`,
                   },
                 ]}
               >
                 {/* <Input /> */}
                 {DatesFields.includes(field?.url) ? (
                   <DatePicker
+                    size="large"
+                    // showToday={false}
                     allowClear={false}
                     format={DateFormat}
                     style={{ width: "100%" }}
                     placeholder="Sanani tanlang !"
+                    disabledDate={(current) =>
+                      current && current > moment().startOf("day").add(1, "day")
+                    }
                   />
                 ) : BooleanFiels.includes(field?.url) ? (
                   GiveBooleanRender(field?.url)
                 ) : TextAreaFiels.includes(field?.url) ? (
-                  <Input.TextArea rows={5} />
+                  <Input.TextArea size="large" rows={3} />
+                ) : FileFiels.includes(field?.url) ? (
+                  <UploadFileInput
+                    defaultLink={form.getFieldValue(field?.url) || ""}
+                    setLink={(link: string) => {
+                      form.setFieldValue(field?.url, link);
+                      form.validateFields();
+                    }}
+                  />
                 ) : (
-                  <Input />
+                  <Input
+                    min={1}
+                    size="large"
+                    disabled={DisabledFiels.includes(field?.url)}
+                    type={
+                      NumberFiels.includes(field?.url) ? "number" : "string"
+                    }
+                  />
                 )}
               </Form.Item>
             ))}
@@ -378,12 +395,12 @@ function NewTables() {
               className="flex"
               style={{ justifyContent: "flex-end", gap: 16 }}
             >
-              <Button
+              {/* <Button
                 icon={<CopyOutlined />}
                 onClick={() => setOpenFileModal(true)}
               >
                 Fayl yuklab havola yaratish
-              </Button>
+              </Button> */}
 
               {editData?.id !== 0 && (
                 <Button danger onClick={DeleteFunc}>
@@ -393,7 +410,7 @@ function NewTables() {
 
               <Form.Item style={{ marginBottom: 0 }}>
                 <Button type="primary" htmlType="submit">
-                  {editData?.id === 0 ? "Yuborish" : "Tahrirlash"}
+                  {editData?.id === 0 ? "Saqlash" : "Tahrirlash"}
                 </Button>
               </Form.Item>
             </div>
@@ -402,7 +419,7 @@ function NewTables() {
       </Modal>
 
       {/* Upload and make url btn */}
-      <Modal
+      {/* <Modal
         centered
         width={600}
         footer={null}
@@ -485,7 +502,7 @@ function NewTables() {
             </Form.Item>
           </Form>
         </Spin>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }

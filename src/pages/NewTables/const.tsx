@@ -7,7 +7,7 @@ export const TabsData: any = {
       values: [
         {
           title:
-            "- Professor-o'qituvchi va xodimlar uchun ajratilgan kompyuterlar soni",
+            "Professor-o'qituvchi va xodimlar uchun ajratilgan kompyuterlar soni",
           url: "computerCount",
         },
         {
@@ -85,7 +85,7 @@ export const TabsData: any = {
       title: "Simsiz internet qamrovi va sifati",
       values: [
         {
-          title: "Simsiz internet tarqatuvchi qurilmalar soni",
+          title: "Simsiz internet tarqatuvchi qurilmalar (WiFi) soni",
           url: "deviceCount",
         },
         {
@@ -456,7 +456,7 @@ export const TabsData: any = {
       url: "iSecurityStaffRetraining",
       values: [
         {
-          title: "Mas'ul xodim malaka oshirgan o'quv markazining nomi",
+          title: "Mas'ul xodim malaka oshirgan tashkilot nomi",
           url: "educationalCenterName",
         },
         {

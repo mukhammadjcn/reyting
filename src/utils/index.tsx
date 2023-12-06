@@ -120,7 +120,46 @@ export const TextAreaFiels = [
   `electronServiceAid`,
   `integratedISToElectronService`,
 ];
-export const NotRequiredFiels = [``];
+export const NumberFiels = [
+  `userCount`,
+  `computerCount`,
+  `totalTeacherCount`,
+  `totalStudentCount`,
+  `educationalBuildingCount`,
+  `buildingCount`,
+  `dormitoryCount`,
+  `otherBuildingCount`,
+  `buildingWithOpticCount`,
+  `totalBuildingCount`,
+  `projectorCount`,
+  `blackboardCount`,
+  `screenCount`,
+  `classRoomCount`,
+  `userCount`,
+  `modernISCount`,
+  `totalSpecialityCount`,
+  `staffCount`,
+  `licenceCount`,
+];
+export const FileFiels = [
+  `certificateFile`,
+  `orderFile`,
+  `staffJournalFile`,
+  `statuteFile`,
+  `retrainingCertificate`,
+  `contractFile`,
+  `expertiseConclusionFile`,
+  `backupScheduleFile`,
+  `journalFile`,
+  `protectionToolsWithPasswordPhoto`,
+  `automaticPasswordChangePhoto`,
+  `journalInputOutputToServerRoom`,
+  `licenceCopy`,
+  `measureFile`,
+  `staffOrderFile`,
+];
+export const DisabledFiels = [`totalTeacherCount`, `totalStudentCount`];
+export const NotRequiredFiels = [`totalTeacherCount`, `totalStudentCount`];
 
 export const DateFormat = `YYYY-MM-DD`;
 
@@ -151,7 +190,7 @@ export const GiveBooleanValue = (key: number, name: string) => {
 export const GiveBooleanRender = (name: string) => {
   if (name === `existSSLCertificate`) {
     return (
-      <Radio.Group buttonStyle="solid">
+      <Radio.Group buttonStyle="solid" size="large">
         <Radio.Button value={true}>Mavjud</Radio.Button>
         <Radio.Button value={false}>Mavjud emas</Radio.Button>
       </Radio.Group>
@@ -159,7 +198,7 @@ export const GiveBooleanRender = (name: string) => {
   }
   if (name === `educationType`) {
     return (
-      <Radio.Group buttonStyle="solid">
+      <Radio.Group buttonStyle="solid" size="large">
         <Radio.Button value={"1"}>Online</Radio.Button>
         <Radio.Button value={"2"}>Offline</Radio.Button>
       </Radio.Group>
@@ -167,7 +206,7 @@ export const GiveBooleanRender = (name: string) => {
   }
   if (name === `videoSurveillanceSystemState`) {
     return (
-      <Radio.Group buttonStyle="solid">
+      <Radio.Group buttonStyle="solid" size="large">
         <Radio.Button value={"1"}>Mavjud va ishlaydi</Radio.Button>
         <Radio.Button value={"2"}>Mavjud lekin ishlamaydi</Radio.Button>
         <Radio.Button value={"3"}>Mavjud emas</Radio.Button>
@@ -176,7 +215,7 @@ export const GiveBooleanRender = (name: string) => {
   }
   if (name === `typeIS`) {
     return (
-      <Radio.Group buttonStyle="solid">
+      <Radio.Group buttonStyle="solid" size="large">
         <Radio.Button value={"1"}>Veb-sayt</Radio.Button>
         <Radio.Button value={"2"}>Portal</Radio.Button>
         <Radio.Button value={"3"}>Axborot tizim</Radio.Button>
@@ -185,7 +224,7 @@ export const GiveBooleanRender = (name: string) => {
   }
   if (name === `paidStateIS`) {
     return (
-      <Radio.Group buttonStyle="solid">
+      <Radio.Group buttonStyle="solid" size="large">
         <Radio.Button value={"1"}>Pullik</Radio.Button>
         <Radio.Button value={"2"}>Bepul</Radio.Button>
       </Radio.Group>
