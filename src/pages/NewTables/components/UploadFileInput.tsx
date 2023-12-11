@@ -5,9 +5,11 @@ import { headersMultipart } from "src/server/Host";
 import axios from "axios";
 
 function UploadFileInput({
+  disabled,
   setLink,
   defaultLink,
 }: {
+  disabled?: boolean;
   setLink: (link: string) => void;
   defaultLink: any;
 }) {
@@ -88,6 +90,7 @@ function UploadFileInput({
 
   return (
     <Upload
+      disabled={disabled}
       className="customUpload"
       onRemove={removeFile}
       customRequest={uploadFile}

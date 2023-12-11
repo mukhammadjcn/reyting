@@ -15,7 +15,7 @@ import {
 import { useSearchParams } from "react-router-dom";
 import { titles } from "src/static";
 import axios from "axios";
-import { headers, headersMultipart } from "src/server/Host";
+import { headers } from "src/server/Host";
 import {
   BooleanFiels,
   DateFormat,
@@ -38,7 +38,6 @@ import moment from "moment";
 
 function NewTables() {
   const [form] = Form.useForm();
-  const [formFile] = Form.useForm();
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get("page") || 1;
   const quater = searchParams.get("quater") || 1;
@@ -52,11 +51,8 @@ function NewTables() {
   const [data, setData] = useState<any>();
   const [editData, setEditData] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
-  const [fileLink, setFileLink] = useState<string>("");
   const [loadingFrom, setLoadingForm] = useState<boolean>(false);
-  const [loadingFile, setLoadingFile] = useState<boolean>(false);
   const [openEditModal, setOpenEditModal] = useState<boolean>(false);
-  const [openFileModal, setOpenFileModal] = useState<boolean>(false);
 
   const normFile = (e: any) => {
     if (Array.isArray(e)) {
@@ -215,25 +211,6 @@ function NewTables() {
     form.resetFields();
     setLoadingForm(false);
     setOpenEditModal(false);
-  };
-  const CreateResource = async (val: any) => {
-    const { file } = val;
-    let formData = new FormData();
-    formData.append("file", file?.originFileObj);
-
-    // Send file to api
-    setLoadingFile(true);
-
-    axios
-      .post(`https://akt.edu.uz/api/public/uploadFile?key=file`, formData, {
-        headers: headersMultipart,
-      })
-      .then((res) => {
-        setFileLink(res.data?.url);
-      })
-      .catch((error) => message.error(error?.response?.data?.message));
-
-    setLoadingFile(false);
   };
 
   useEffect(() => {
@@ -395,13 +372,6 @@ function NewTables() {
               className="flex"
               style={{ justifyContent: "flex-end", gap: 16 }}
             >
-              {/* <Button
-                icon={<CopyOutlined />}
-                onClick={() => setOpenFileModal(true)}
-              >
-                Fayl yuklab havola yaratish
-              </Button> */}
-
               {editData?.id !== 0 && (
                 <Button danger onClick={DeleteFunc}>
                   Ma'lumotni o'chirish
@@ -417,92 +387,6 @@ function NewTables() {
           </Form>
         </Spin>
       </Modal>
-
-      {/* Upload and make url btn */}
-      {/* <Modal
-        centered
-        width={600}
-        footer={null}
-        open={openFileModal}
-        title={"Fayl yuklab havola yaratish"}
-        onCancel={() => {
-          setFileLink("");
-          formFile.resetFields();
-          setOpenFileModal(false);
-        }}
-      >
-        <Spin spinning={loadingFile}>
-          <Form
-            form={formFile}
-            layout="vertical"
-            style={{ marginTop: 32 }}
-            onFinish={CreateResource}
-          >
-            <Form.Item
-              noStyle
-              name="file"
-              valuePropName="file"
-              rules={[
-                {
-                  required: true,
-                  message: "Faylni yuklang !",
-                },
-              ]}
-              getValueFromEvent={normFile}
-            >
-              <Upload.Dragger
-                maxCount={1}
-                multiple={false}
-                beforeUpload={() => false}
-                accept={"application/*"}
-              >
-                <p className="ant-upload-drag-icon">
-                  <InboxOutlined />
-                </p>
-                <p className="ant-upload-text">
-                  Faylni bu yerga tashlang yoki shu yerga bosing )
-                </p>
-              </Upload.Dragger>
-            </Form.Item>
-
-            {fileLink && (
-              <div style={{ marginTop: 24 }}>
-                <h3>
-                  Havola linkini ustiga bosing va vaqtincha saqlab oling !
-                </h3>
-                <a
-                  onClick={() => {
-                    navigator.clipboard.writeText(fileLink);
-                    message.success("Muvofaqqiyatli nusxa olindi");
-                  }}
-                >
-                  {fileLink}
-                </a>
-              </div>
-            )}
-
-            <Form.Item
-              style={{ marginBottom: 0, marginTop: 36, textAlign: "end" }}
-            >
-              {fileLink ? (
-                <Button
-                  onClick={() => {
-                    setOpenFileModal(false);
-                    formFile.resetFields();
-                    setFileLink("");
-                  }}
-                >
-                  Modalni yopish
-                </Button>
-              ) : (
-                <Button type="primary" htmlType="submit">
-                  Yuborish
-                </Button>
-              )}
-            </Form.Item>
-          </Form>
-        </Spin>
-      </Modal> */}
     </div>
   );
 }
