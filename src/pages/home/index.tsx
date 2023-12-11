@@ -1,9 +1,8 @@
 import { Button, Modal } from "antd";
+import { Outlet } from "react-router-dom";
 import Sidebar from "src/components/home/Sidebar";
 import { UserOutlined } from "@ant-design/icons";
 import "src/styles/home.scss";
-import Tables from "src/pages/Tables";
-import NewTables from "src/pages/NewTables";
 
 const App = () => {
   const fullName = localStorage.getItem("fullname")?.split("_").join(" ");
@@ -34,7 +33,8 @@ const App = () => {
         </div>
         <div className="home__content">
           {/* <Tables /> */}
-          <NewTables />
+          {/* <NewTables /> */}
+          <Outlet />
         </div>
       </div>
     </div>

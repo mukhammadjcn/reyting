@@ -9,20 +9,19 @@ import {
   Tab7SVG,
 } from "src/assets/icons";
 import React from "react";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 function Sidebar() {
-  const url = useLocation();
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = searchParams.get("page") || 1;
+  const page = searchParams.get("page") || 0;
 
   const sidebarUrls = [
+    {
+      key: 0,
+      logo: <Tab4SVG />,
+      title: "OTM passporti",
+      url: "/home/info",
+    },
     {
       key: 1,
       logo: <Tab1SVG />,
@@ -70,7 +69,7 @@ function Sidebar() {
       <ul className="sidebar__tabs">
         {sidebarUrls.map((tab) => (
           <Link
-            to={tab.key < 7 ? `/home?page=${tab.key}&quater=1` : "/gone"}
+            to={tab?.url ? tab?.url : `/home?page=${tab.key}&quater=1`}
             key={tab.key}
             className={`sidebar__tab sidebar__${tab.key} ${
               page == tab.key
