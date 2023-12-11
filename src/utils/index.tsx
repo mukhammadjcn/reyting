@@ -102,6 +102,7 @@ export const DatesFields = [
   `approvalDate`,
   `contractApprovalDate`,
   `implementationDate`,
+  `responsiblePersonPassportIssuedDate`,
 ];
 export const BooleanFiels = [
   `existSSLCertificate`,
@@ -135,11 +136,15 @@ export const NumberFiels = [
   `blackboardCount`,
   `screenCount`,
   `classRoomCount`,
-  `userCount`,
   `modernISCount`,
   `totalSpecialityCount`,
   `staffCount`,
   `licenceCount`,
+  `deviceCount`,
+  `responsiblePersonPnfl`,
+  `retrainingStaffCount`,
+  `chiefPhone`,
+  `staffPhone`,
 ];
 export const FileFiels = [
   `certificateFile`,
@@ -159,7 +164,13 @@ export const FileFiels = [
   `staffOrderFile`,
 ];
 export const DisabledFiels = [`totalTeacherCount`, `totalStudentCount`];
-export const NotRequiredFiels = [`totalTeacherCount`, `totalStudentCount`];
+export const NotRequiredFiels = [
+  `totalTeacherCount`,
+  `totalStudentCount`,
+  `measureDocumentLink`,
+  `documentLink`,
+  `contractDocumentLink`,
+];
 
 export const DateFormat = `YYYY-MM-DD`;
 

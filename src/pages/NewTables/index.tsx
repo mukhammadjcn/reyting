@@ -35,6 +35,8 @@ import EmptyText from "./components/EmptyText";
 import { FileSVG } from "src/components/svg";
 import UploadFileInput from "./components/UploadFileInput";
 import moment from "moment";
+import SSLForm from "./components/SSLForm";
+import VideoForm from "./components/VideoForm";
 
 function NewTables() {
   const [form] = Form.useForm();
@@ -54,12 +56,6 @@ function NewTables() {
   const [loadingFrom, setLoadingForm] = useState<boolean>(false);
   const [openEditModal, setOpenEditModal] = useState<boolean>(false);
 
-  const normFile = (e: any) => {
-    if (Array.isArray(e)) {
-      return e[0];
-    }
-    return e?.fileList[0];
-  };
   const handleMakeParams = (key: any, value: any) => {
     if (value) {
       if (searchParams.has(key)) searchParams.set(key, value);
@@ -310,81 +306,95 @@ function NewTables() {
         }}
       >
         <Spin spinning={loadingFrom}>
-          <Form
-            form={form}
-            layout="vertical"
-            onFinish={SubmitData}
-            className="customForm"
-            style={{ marginTop: 24 }}
-          >
-            {currentTab?.values?.map((field: any) => (
-              <Form.Item
-                key={field?.url}
-                name={field?.url}
-                label={field?.title}
-                rules={[
-                  {
-                    required: !NotRequiredFiels.includes(field?.url),
-                    // message: `${field?.title} !`,
-                    message: `Ma'lumotni kiriting !`,
-                  },
-                ]}
-              >
-                {/* <Input /> */}
-                {DatesFields.includes(field?.url) ? (
-                  <DatePicker
-                    size="large"
-                    // showToday={false}
-                    allowClear={false}
-                    format={DateFormat}
-                    style={{ width: "100%" }}
-                    placeholder="Sanani tanlang !"
-                    disabledDate={(current) =>
-                      current && current > moment().startOf("day").add(1, "day")
-                    }
-                  />
-                ) : BooleanFiels.includes(field?.url) ? (
-                  GiveBooleanRender(field?.url)
-                ) : TextAreaFiels.includes(field?.url) ? (
-                  <Input.TextArea size="large" rows={3} />
-                ) : FileFiels.includes(field?.url) ? (
-                  <UploadFileInput
-                    defaultLink={form.getFieldValue(field?.url) || ""}
-                    setLink={(link: string) => {
-                      form.setFieldValue(field?.url, link);
-                      form.validateFields();
-                    }}
-                  />
-                ) : (
-                  <Input
-                    min={1}
-                    size="large"
-                    disabled={DisabledFiels.includes(field?.url)}
-                    type={
-                      NumberFiels.includes(field?.url) ? "number" : "string"
-                    }
-                  />
-                )}
-              </Form.Item>
-            ))}
-
-            <div
-              className="flex"
-              style={{ justifyContent: "flex-end", gap: 16 }}
+          {tab === `websiteSSLCertificate` ? (
+            <SSLForm
+              form={form}
+              SubmitData={SubmitData}
+              editData={editData}
+              DeleteFunc={DeleteFunc}
+            />
+          ) : tab === `videoSurveillanceSystem` ? (
+            <VideoForm
+              form={form}
+              SubmitData={SubmitData}
+              editData={editData}
+              DeleteFunc={DeleteFunc}
+            />
+          ) : (
+            <Form
+              form={form}
+              layout="vertical"
+              onFinish={SubmitData}
+              className="customForm"
+              style={{ marginTop: 24 }}
             >
-              {editData?.id !== 0 && (
-                <Button danger onClick={DeleteFunc}>
-                  Ma'lumotni o'chirish
-                </Button>
-              )}
+              {currentTab?.values?.map((field: any) => (
+                <Form.Item
+                  key={field?.url}
+                  name={field?.url}
+                  label={field?.title}
+                  rules={[
+                    {
+                      required: !NotRequiredFiels.includes(field?.url),
+                      message: `Ma'lumotni kiriting !`,
+                    },
+                  ]}
+                >
+                  {DatesFields.includes(field?.url) ? (
+                    <DatePicker
+                      size="large"
+                      allowClear={false}
+                      format={DateFormat}
+                      style={{ width: "100%" }}
+                      placeholder="Sanani tanlang !"
+                      disabledDate={(current) =>
+                        current &&
+                        current > moment().startOf("day").add(1, "day")
+                      }
+                    />
+                  ) : BooleanFiels.includes(field?.url) ? (
+                    GiveBooleanRender(field?.url)
+                  ) : TextAreaFiels.includes(field?.url) ? (
+                    <Input.TextArea size="large" rows={3} />
+                  ) : FileFiels.includes(field?.url) ? (
+                    <UploadFileInput
+                      defaultLink={form.getFieldValue(field?.url) || ""}
+                      setLink={(link: string) => {
+                        form.setFieldValue(field?.url, link);
+                        form.validateFields();
+                      }}
+                    />
+                  ) : (
+                    <Input
+                      min={1}
+                      size="large"
+                      disabled={DisabledFiels.includes(field?.url)}
+                      type={
+                        NumberFiels.includes(field?.url) ? "number" : "string"
+                      }
+                    />
+                  )}
+                </Form.Item>
+              ))}
 
-              <Form.Item style={{ marginBottom: 0 }}>
-                <Button type="primary" htmlType="submit">
-                  {editData?.id === 0 ? "Saqlash" : "Tahrirlash"}
-                </Button>
-              </Form.Item>
-            </div>
-          </Form>
+              <div
+                className="flex"
+                style={{ justifyContent: "flex-end", gap: 16 }}
+              >
+                {editData?.id !== 0 && (
+                  <Button danger onClick={DeleteFunc}>
+                    Ma'lumotni o'chirish
+                  </Button>
+                )}
+
+                <Form.Item style={{ marginBottom: 0 }}>
+                  <Button type="primary" htmlType="submit">
+                    {editData?.id === 0 ? "Saqlash" : "Tahrirlash"}
+                  </Button>
+                </Form.Item>
+              </div>
+            </Form>
+          )}
         </Spin>
       </Modal>
     </div>
