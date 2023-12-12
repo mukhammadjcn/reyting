@@ -67,7 +67,7 @@ function Form2({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -98,7 +98,7 @@ function Form2({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -111,7 +111,7 @@ function Form2({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -124,7 +124,7 @@ function Form2({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"

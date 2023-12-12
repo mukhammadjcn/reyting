@@ -58,7 +58,7 @@ function Form4({
           },
         ]}
       >
-        <Input type="number" disabled={edit} />
+        <Input size="large" type="number" disabled={edit} />
       </Form.Item>
 
       <Form.Item
@@ -72,7 +72,7 @@ function Form4({
           },
         ]}
       >
-        <Input type="number" disabled={edit} />
+        <Input size="large" type="number" disabled={edit} />
       </Form.Item>
 
       <Form.Item
@@ -86,7 +86,7 @@ function Form4({
           },
         ]}
       >
-        <Input type="number" disabled={edit} />
+        <Input size="large" type="number" disabled={edit} />
       </Form.Item>
 
       <div className="flex" style={{ justifyContent: "end", width: "100%" }}>

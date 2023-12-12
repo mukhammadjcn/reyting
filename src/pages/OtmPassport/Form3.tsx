@@ -68,6 +68,7 @@ function Form3({
         ]}
       >
         <DatePicker
+          size="large"
           allowClear={false}
           disabled={edit}
           style={{ width: "100%" }}
@@ -87,7 +88,7 @@ function Form3({
           },
         ]}
       >
-        <Input type="number" disabled={edit} />
+        <Input size="large" type="number" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="col3"
@@ -100,7 +101,7 @@ function Form3({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="col3"
@@ -113,7 +114,7 @@ function Form3({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="col3"
@@ -126,7 +127,7 @@ function Form3({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -139,7 +140,7 @@ function Form3({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -152,7 +153,7 @@ function Form3({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -165,7 +166,7 @@ function Form3({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -178,7 +179,7 @@ function Form3({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"

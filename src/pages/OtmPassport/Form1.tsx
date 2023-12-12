@@ -65,7 +65,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -78,7 +78,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -91,7 +91,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -104,7 +104,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -117,7 +117,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -130,7 +130,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -143,7 +143,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
 
       <h2 className="title">OTM rahbari</h2>
@@ -159,6 +159,7 @@ function Form1({
         ]}
       >
         <DatePicker
+          size="large"
           allowClear={false}
           disabled={edit}
           style={{ width: "100%" }}
@@ -178,7 +179,7 @@ function Form1({
           },
         ]}
       >
-        <Input type="number" disabled={edit} />
+        <Input size="large" type="number" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="col3"
@@ -191,7 +192,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="col3"
@@ -204,7 +205,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="col3"
@@ -217,7 +218,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -230,7 +231,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -243,7 +244,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -256,7 +257,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
 
       <h2 className="title">Yuridik manzil</h2>
@@ -271,7 +272,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -284,7 +285,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="col3"
@@ -297,7 +298,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="col3"
@@ -310,7 +311,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="col3"
@@ -323,7 +324,7 @@ function Form1({
           },
         ]}
       >
-        <Input disabled={edit} />
+        <Input size="large" disabled={edit} />
       </Form.Item>
 
       <div className="flex" style={{ justifyContent: "end", width: "100%" }}>
