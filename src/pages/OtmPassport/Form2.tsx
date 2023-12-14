@@ -4,6 +4,7 @@ import axios from "axios";
 import { headers } from "src/server/Host";
 import React, { useEffect, useState } from "react";
 import UploadFileInput from "src/pages/NewTables/components/UploadFileInput";
+import moment from "moment";
 
 function Form2({
   isModal,
@@ -85,6 +86,9 @@ function Form2({
           disabled={edit}
           style={{ width: "100%" }}
           placeholder="Sanani belgilang"
+          disabledDate={(current) =>
+            current && current > moment().startOf("day").add(1, "day")
+          }
         />
       </Form.Item>
       <Form.Item

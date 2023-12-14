@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import axios from "axios";
 import { headers } from "src/server/Host";
 import React, { useEffect, useState } from "react";
-import UploadFileInput from "src/pages/NewTables/components/UploadFileInput";
+import moment from "moment";
 
 function Form1({
   isModal,
@@ -91,7 +91,7 @@ function Form1({
           },
         ]}
       >
-        <Input size="large" disabled={edit} />
+        <Input size="large" type="number" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -130,7 +130,7 @@ function Form1({
           },
         ]}
       >
-        <Input size="large" disabled={edit} />
+        <Input size="large" type="number" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -143,7 +143,7 @@ function Form1({
           },
         ]}
       >
-        <Input size="large" disabled={edit} />
+        <Input size="large" type="number" disabled={edit} />
       </Form.Item>
 
       <h2 className="title">OTM rahbari</h2>
@@ -164,11 +164,14 @@ function Form1({
           disabled={edit}
           style={{ width: "100%" }}
           placeholder="Sanani belgilang"
+          disabledDate={(current) =>
+            current && current > moment().startOf("day").add(1, "day")
+          }
         />
       </Form.Item>
       <Form.Item
         className="half"
-        label="JSHIR"
+        label="JSHSHIR"
         name="rectorPnfl"
         rules={[
           {
@@ -244,7 +247,7 @@ function Form1({
           },
         ]}
       >
-        <Input size="large" disabled={edit} />
+        <Input size="large" type="number" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"

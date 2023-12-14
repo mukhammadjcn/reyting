@@ -4,6 +4,7 @@ import axios from "axios";
 import { headers } from "src/server/Host";
 import React, { useEffect, useState } from "react";
 import UploadFileInput from "src/pages/NewTables/components/UploadFileInput";
+import moment from "moment";
 
 function Form3({
   isModal,
@@ -73,11 +74,14 @@ function Form3({
           disabled={edit}
           style={{ width: "100%" }}
           placeholder="Sanani belgilang"
+          disabledDate={(current) =>
+            current && current > moment().startOf("day").add(1, "day")
+          }
         />
       </Form.Item>
       <Form.Item
         className="half"
-        label="JSHIR"
+        label="JSHSHIR"
         name="pnfl"
         rules={[
           {
@@ -166,7 +170,7 @@ function Form3({
           },
         ]}
       >
-        <Input size="large" disabled={edit} />
+        <Input size="large" type="number" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"
@@ -179,7 +183,7 @@ function Form3({
           },
         ]}
       >
-        <Input size="large" disabled={edit} />
+        <Input size="large" type="number" disabled={edit} />
       </Form.Item>
       <Form.Item
         className="half"

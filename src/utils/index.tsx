@@ -163,13 +163,18 @@ export const FileFiels = [
   `measureFile`,
   `staffOrderFile`,
 ];
-export const DisabledFiels = [`totalTeacherCount`, `totalStudentCount`];
+export const DisabledFiels = [
+  `totalTeacherCount`,
+  `totalStudentCount`,
+  `staffCount`,
+];
 export const NotRequiredFiels = [
   `totalTeacherCount`,
   `totalStudentCount`,
   `measureDocumentLink`,
   `documentLink`,
   `contractDocumentLink`,
+  `linkForCertificate`,
 ];
 
 export const DateFormat = `YYYY-MM-DD`;
