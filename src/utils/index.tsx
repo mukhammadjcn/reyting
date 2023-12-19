@@ -145,6 +145,8 @@ export const NumberFiels = [
   `retrainingStaffCount`,
   `chiefPhone`,
   `staffPhone`,
+  `hemisTotalTeacherCount`,
+  `hemisTotalStudentCount`,
 ];
 export const FileFiels = [
   `certificateFile`,
@@ -162,19 +164,29 @@ export const FileFiels = [
   `licenceCopy`,
   `measureFile`,
   `staffOrderFile`,
+  `document`,
+  `implementationOrderFile`,
+  `documentRelatedToElectronicService`,
+];
+export const HemisList = [
+  `teacherEquipmentRate`,
+  `studentEquipmentRate`,
+  `internetSpeed`,
+  `wirelessInternetRate`,
+  `ITStaffRate`,
 ];
 export const DisabledFiels = [
-  // `totalTeacherCount`,
-  // `totalStudentCount`,
-  // `staffCount`,
+  `hemisTotalTeacherCount`,
+  `hemisTotalStudentCount`,
 ];
 export const NotRequiredFiels = [
-  // `totalTeacherCount`,
-  // `totalStudentCount`,
   `measureDocumentLink`,
   `documentLink`,
   `contractDocumentLink`,
   `linkForCertificate`,
+  `implementationOrderFile`,
+  `document`,
+  `documentRelatedToElectronicService`,
 ];
 
 export const DateFormat = `YYYY-MM-DD`;

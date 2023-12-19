@@ -21,9 +21,11 @@ import {
   BooleanFiels,
   DateFormat,
   DatesFields,
+  DisabledFiels,
   FileFiels,
   GiveBooleanRender,
   GiveBooleanValue,
+  HemisList,
   NotRequiredFiels,
   NumberFiels,
   TextAreaFiels,
@@ -51,6 +53,7 @@ function NewTables() {
   const [column, setColumn] = useState<any>([]);
 
   const [data, setData] = useState<any>();
+  const [dataHemis, setDataHemis] = useState<any>();
   const [editData, setEditData] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
   const [loadingFrom, setLoadingForm] = useState<boolean>(false);
@@ -136,6 +139,8 @@ function NewTables() {
   };
   const GetData = async () => {
     setLoading(true);
+
+    // Get tabs data from api
     axios
       .get(`https://akt.edu.uz/api/${tab}?size=30&quarterId=${quater}`, {
         headers,
@@ -148,6 +153,30 @@ function NewTables() {
           )
         )
       )
+
+      // If tab includes hemis data
+      .then(() => {
+        if (HemisList?.includes(tab)) {
+          axios
+            .get(
+              `https://akt.edu.uz/api/public/getStudentAndTeacherCountByUniversity`,
+              {
+                headers,
+              }
+            )
+            .then((res) => {
+              setDataHemis(res.data);
+              form.setFieldValue(
+                "hemisTotalTeacherCount",
+                res.data?.teacherCount
+              );
+              form.setFieldValue(
+                "hemisTotalStudentCount",
+                res.data?.studentCount
+              );
+            });
+        }
+      })
       .catch((error) => {
         if (error?.response?.status === 401) {
           localStorage.clear();
@@ -160,8 +189,6 @@ function NewTables() {
       });
   };
   const SubmitData = async (val: any) => {
-    console.log(val);
-
     setLoadingForm(true);
     if (editData?.id === 0) {
       axios
@@ -276,6 +303,14 @@ function NewTables() {
             onClick={() => {
               setEditData({ id: 0 });
               setOpenEditModal(true);
+              form.setFieldValue(
+                "hemisTotalTeacherCount",
+                dataHemis?.teacherCount
+              );
+              form.setFieldValue(
+                "hemisTotalStudentCount",
+                dataHemis?.studentCount
+              );
             }}
           >
             + Qoshish
@@ -372,6 +407,7 @@ function NewTables() {
                       size="large"
                       type="number"
                       style={{ width: "100%" }}
+                      disabled={DisabledFiels?.includes(field?.url)}
                     />
                   ) : (
                     <Input min={1} size="large" />

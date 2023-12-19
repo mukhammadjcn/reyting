@@ -14,6 +14,10 @@ export const TabsData: any = {
           title: "Professor-o'qituvchi va xodimlarning umumiy soni",
           url: "totalTeacherCount",
         },
+        {
+          title: "Professor-o'qituvchi va xodimlarning umumiy soni (HEMIS)",
+          url: "hemisTotalTeacherCount",
+        },
       ],
     },
     {
@@ -28,6 +32,10 @@ export const TabsData: any = {
           title: "Talabalarning umumiy soni",
           url: "totalStudentCount",
         },
+        {
+          title: "Talabalarning umumiy soni (HEMIS)",
+          url: "hemisTotalStudentCount",
+        },
       ],
     },
     {
@@ -35,23 +43,23 @@ export const TabsData: any = {
       title: "Internet ulangan o'quv, TTJ va boshqa binolar ulushi",
       values: [
         {
-          title: "Internet ulangan binolar soni",
+          title: "Internet ulangan binolarning umumiy soni",
           url: "educationalBuildingCount",
         },
         {
-          title: "O'quv binolari soni",
+          title: "Internet ulangan o'quv binolari soni",
           url: "buildingCount",
         },
         {
-          title: "TTJlar soni",
+          title: "Internet ulangan TTJlar soni",
           url: "dormitoryCount",
         },
         {
-          title: "Boshqa binolar soni",
+          title: "Internet ulangan boshqa binolar soni",
           url: "otherBuildingCount",
         },
         {
-          title: "Barcha binolar soni",
+          title: "OTMdagi barcha binolar soni",
           url: "totalBuildingCount",
         },
       ],
@@ -82,6 +90,10 @@ export const TabsData: any = {
           title: "Talabalarning umumiy soni",
           url: "totalStudentCount",
         },
+        {
+          title: "Talabalarning umumiy soni (HEMIS)",
+          url: "hemisTotalStudentCount",
+        },
       ],
     },
     {
@@ -99,6 +111,10 @@ export const TabsData: any = {
         {
           title: "Professor-o'qituvchi va xodimlarning umumiy soni",
           url: "totalTeacherCount",
+        },
+        {
+          title: "Professor-o'qituvchi va xodimlarning umumiy soni (HEMIS)",
+          url: "hemisTotalTeacherCount",
         },
       ],
     },
@@ -155,6 +171,10 @@ export const TabsData: any = {
         {
           title: "ATga mas'ul shaxsning pasport berilgan sanasi",
           url: "responsiblePersonPassportIssuedDate",
+        },
+        {
+          title: "ATga mas'ul shaxsning telefon raqami",
+          url: "responsiblePersonPhoneNumber",
         },
       ],
     },
@@ -224,6 +244,10 @@ export const TabsData: any = {
         {
           title: "ATga mas'ul shaxsning pasport berilgan sanasi",
           url: "responsiblePersonPassportIssuedDate",
+        },
+        {
+          title: "ATga mas'ul shaxsning telefon raqami",
+          url: "responsiblePersonPhoneNumber",
         },
       ],
     },
@@ -299,6 +323,10 @@ export const TabsData: any = {
         {
           title: "Professor-o'qituvchi va xodimlarning umumiy soni",
           url: "staffCount",
+        },
+        {
+          title: "Professor-o'qituvchi va xodimlarning umumiy soni (HEMIS)",
+          url: "hemisTotalTeacherCount",
         },
       ],
     },
