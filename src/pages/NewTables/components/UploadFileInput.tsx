@@ -101,7 +101,7 @@ function UploadFileInput({
         icon={<UploadOutlined />}
         disabled={defaultFileList?.length > 0}
       >
-        File ni yuklash
+        Faylni yuklash
       </Button>
     </Upload>
   );

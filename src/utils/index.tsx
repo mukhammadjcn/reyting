@@ -164,13 +164,13 @@ export const FileFiels = [
   `staffOrderFile`,
 ];
 export const DisabledFiels = [
-  `totalTeacherCount`,
-  `totalStudentCount`,
-  `staffCount`,
+  // `totalTeacherCount`,
+  // `totalStudentCount`,
+  // `staffCount`,
 ];
 export const NotRequiredFiels = [
-  `totalTeacherCount`,
-  `totalStudentCount`,
+  // `totalTeacherCount`,
+  // `totalStudentCount`,
   `measureDocumentLink`,
   `documentLink`,
   `contractDocumentLink`,

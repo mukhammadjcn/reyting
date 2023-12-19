@@ -1,4 +1,4 @@
-import { Button, DatePicker, Form, Input, message } from "antd";
+import { Button, DatePicker, Form, Input, Select, message } from "antd";
 import dayjs from "dayjs";
 import axios from "axios";
 import { headers } from "src/server/Host";
@@ -78,11 +78,20 @@ function Form1({
           },
         ]}
       >
-        <Input size="large" disabled={edit} />
+        <Select
+          size="large"
+          disabled={edit}
+          placeholder="Tanlang"
+          options={[
+            { value: "1", label: "Davlat" },
+            { value: "2", label: "Nodavlat" },
+            { value: "3", label: "Xorijiy" },
+          ]}
+        />
       </Form.Item>
       <Form.Item
         className="half"
-        label="INNSI"
+        label="INN"
         name="inn"
         rules={[
           {
@@ -186,7 +195,7 @@ function Form1({
       </Form.Item>
       <Form.Item
         className="col3"
-        label="Familya"
+        label="Familiya"
         name="rectorLastName"
         rules={[
           {

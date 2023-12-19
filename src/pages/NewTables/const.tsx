@@ -50,6 +50,10 @@ export const TabsData: any = {
           title: "Boshqa binolar soni",
           url: "otherBuildingCount",
         },
+        {
+          title: "Barcha binolar soni",
+          url: "totalBuildingCount",
+        },
       ],
     },
     {

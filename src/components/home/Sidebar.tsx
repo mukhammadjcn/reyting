@@ -19,7 +19,7 @@ function Sidebar() {
     {
       key: 0,
       logo: <Tab4SVG />,
-      title: "OTM passporti",
+      title: "OTM pasporti",
       url: "/home/info",
     },
     {

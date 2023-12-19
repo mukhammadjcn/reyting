@@ -21,7 +21,7 @@ function OTMPASSPORT() {
 
       <InfoCard
         url="https://akt.edu.uz/api/itResponsibleEmployee"
-        title="Rahbariyat tarkibidan iborat aktni joriy etish va rivojlantirish uchun
+        title="Rahbariyat tarkibidan iborat AKT ni joriy etish va rivojlantirish uchun
         ma’sul shaxsning mavjudligi"
         nodataInfo="Oliy ta’limning prorektori, RTT markazi direktori, axborot xavfsizligi
          bo‘yicha ma’sul xodimning ma’lumotlarini qo‘shing"

@@ -93,7 +93,7 @@ function InfoCard(props: any) {
           <h3>{props?.nodataTitle || `Ma’lumot qo‘shishni boshlang`}</h3>
           <p>
             {props?.nodataInfo ||
-              `Oliy ta’limning nomi, rahbari, yuridik manzili ma’lumotlarini qo‘shing`}
+              `Oliy ta’lim muassasasining nomi, rahbari, yuridik manzili ma’lumotlarini qo‘shing`}
           </p>
           <Button type="primary" onClick={() => setOpenModal(true)}>
             {props?.nodataBtn || `Ma’lumot qo‘shish`}

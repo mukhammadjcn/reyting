@@ -4,6 +4,7 @@ import {
   DatePicker,
   Form,
   Input,
+  InputNumber,
   Modal,
   Segmented,
   Select,
@@ -20,7 +21,6 @@ import {
   BooleanFiels,
   DateFormat,
   DatesFields,
-  DisabledFiels,
   FileFiels,
   GiveBooleanRender,
   GiveBooleanValue,
@@ -86,7 +86,7 @@ function NewTables() {
                 className="filelink"
                 style={{ display: "flex", alignItems: "center", gap: 8 }}
               >
-                File ni ko'rish
+                Faylni ko'rish
               </Button>
             </a>
           ) : String(val)?.includes("https:") ? (
@@ -160,6 +160,8 @@ function NewTables() {
       });
   };
   const SubmitData = async (val: any) => {
+    console.log(val);
+
     setLoadingForm(true);
     if (editData?.id === 0) {
       axios
@@ -364,15 +366,15 @@ function NewTables() {
                         form.validateFields();
                       }}
                     />
-                  ) : (
-                    <Input
+                  ) : NumberFiels.includes(field?.url) ? (
+                    <InputNumber
                       min={1}
                       size="large"
-                      disabled={DisabledFiels.includes(field?.url)}
-                      type={
-                        NumberFiels.includes(field?.url) ? "number" : "string"
-                      }
+                      type="number"
+                      style={{ width: "100%" }}
                     />
+                  ) : (
+                    <Input min={1} size="large" />
                   )}
                 </Form.Item>
               ))}

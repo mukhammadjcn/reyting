@@ -96,7 +96,7 @@ function Form3({
       </Form.Item>
       <Form.Item
         className="col3"
-        label="Familya"
+        label="Familiya"
         name="firstName"
         rules={[
           {
@@ -187,7 +187,7 @@ function Form3({
       </Form.Item>
       <Form.Item
         className="half"
-        label="Hujjat fayli"
+        label="Lavozimga tayinlangan buyruq fayli"
         name="orderFile"
         rules={[
           {
