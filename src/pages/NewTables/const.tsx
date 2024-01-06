@@ -157,21 +157,21 @@ export const TabsData: any = {
           url: "isdomain",
         },
         {
-          title: "ATga mas'ul shaxsning FISH",
-          url: "responsiblePersonFullName",
-        },
-        {
           title: "ATga mas'ul shaxsning JSHSHIR raqami",
           url: "responsiblePersonPnfl",
+        },
+        {
+          title: "ATga mas'ul shaxsning FISH",
+          url: "responsiblePersonFullName",
         },
         {
           title: "ATga mas'ul shaxsning pasport seriya raqami",
           url: "responsiblePersonPassportNumber",
         },
-        {
-          title: "ATga mas'ul shaxsning pasport berilgan sanasi",
-          url: "responsiblePersonPassportIssuedDate",
-        },
+        // {
+        //   title: "ATga mas'ul shaxsning pasport berilgan sanasi",
+        //   url: "responsiblePersonPassportIssuedDate",
+        // },
         {
           title: "ATga mas'ul shaxsning telefon raqami",
           url: "responsiblePersonPhoneNumber",
@@ -249,6 +249,14 @@ export const TabsData: any = {
           title: "ATga mas'ul shaxsning telefon raqami",
           url: "responsiblePersonPhoneNumber",
         },
+        {
+          title: "Elektron xizmat nomi",
+          url: "electronServiceName",
+        },
+        {
+          title: "Elektron xizmatga havola (link)",
+          url: "electronServiceLink",
+        },
       ],
     },
     //   {
@@ -261,54 +269,54 @@ export const TabsData: any = {
     //       " LMS тизимига киритилган ОТМдаги фанлар бўйича материаллар сони ва сифати",
     //     values: [],
     //   },
-    {
-      url: "electronService",
-      title: "Taqdim qilinayotgan elektron xizmatlar",
-      values: [
-        {
-          title: "Elektron xizmat nomi",
-          url: "electronServiceName",
-        },
-        {
-          title: "Elektron xizmatga havola (link)",
-          url: "electronServiceLink",
-        },
-        {
-          title: "Elektron xizmatning maqsad va vazifalari",
-          url: "electronServiceAid",
-        },
-        {
-          title:
-            "Elektron xizmatni ishga tushirishda integratsiya qilingan axborot tizimlari ro'yxati",
-          url: "integratedISToElectronService",
-        },
-        {
-          title: "Elektron xizmatdan foydalanganlar soni",
-          url: "userCount",
-        },
-        {
-          title:
-            "Elektron xizmatga tegishli hujjatlar (ekspert xulosasi, guvohnoma, patent, sertifikat va h.k.)",
-          url: "documentRelatedToElectronicService",
-        },
-      ],
-    },
-    {
-      url: "modernSpecializedEquipmentRate",
-      title:
-        "OTMdagi yo'nalish va mutaxassisliklar uchun yo'naltirilgan maxsus zamonaviy axborot tizimlaridan foydalanish darajasi",
-      values: [
-        {
-          title:
-            "OTM o'quv jarayonida foydalaniladigan zamonaviy axborot tizimlari soni",
-          url: "modernISCount",
-        },
-        {
-          title: "OTMdagi yo'nalish va mutaxassisliklarning umumiy soni",
-          url: "totalSpecialityCount",
-        },
-      ],
-    },
+    // {
+    //   url: "electronService",
+    //   title: "Taqdim qilinayotgan elektron xizmatlar",
+    //   values: [
+    //     {
+    //       title: "Elektron xizmat nomi",
+    //       url: "electronServiceName",
+    //     },
+    //     {
+    //       title: "Elektron xizmatga havola (link)",
+    //       url: "electronServiceLink",
+    //     },
+    //     {
+    //       title: "Elektron xizmatning maqsad va vazifalari",
+    //       url: "electronServiceAid",
+    //     },
+    //     {
+    //       title:
+    //         "Elektron xizmatni ishga tushirishda integratsiya qilingan axborot tizimlari ro'yxati",
+    //       url: "integratedISToElectronService",
+    //     },
+    //     {
+    //       title: "Elektron xizmatdan foydalanganlar soni",
+    //       url: "userCount",
+    //     },
+    //     {
+    //       title:
+    //         "Elektron xizmatga tegishli hujjatlar (ekspert xulosasi, guvohnoma, patent, sertifikat va h.k.)",
+    //       url: "documentRelatedToElectronicService",
+    //     },
+    //   ],
+    // },
+    // {
+    //   url: "modernSpecializedEquipmentRate",
+    //   title:
+    //     "OTMdagi yo'nalish va mutaxassisliklar uchun yo'naltirilgan maxsus zamonaviy axborot tizimlaridan foydalanish darajasi",
+    //   values: [
+    //     {
+    //       title:
+    //         "OTM o'quv jarayonida foydalaniladigan zamonaviy axborot tizimlari soni",
+    //       url: "modernISCount",
+    //     },
+    //     {
+    //       title: "OTMdagi yo'nalish va mutaxassisliklarning umumiy soni",
+    //       url: "totalSpecialityCount",
+    //     },
+    //   ],
+    // },
   ],
   3: [
     {

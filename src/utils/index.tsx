@@ -141,12 +141,13 @@ export const NumberFiels = [
   `staffCount`,
   `licenceCount`,
   `deviceCount`,
-  `responsiblePersonPnfl`,
+  // `responsiblePersonPnfl`,
   `retrainingStaffCount`,
   `chiefPhone`,
   `staffPhone`,
   `hemisTotalTeacherCount`,
   `hemisTotalStudentCount`,
+  `totalSpentMoney`,
 ];
 export const FileFiels = [
   `certificateFile`,
@@ -178,6 +179,9 @@ export const HemisList = [
 export const DisabledFiels = [
   `hemisTotalTeacherCount`,
   `hemisTotalStudentCount`,
+  `electronServiceLink`,
+  `responsiblePersonFullName`,
+  `responsiblePersonPassportNumber`,
 ];
 export const NotRequiredFiels = [
   `measureDocumentLink`,
@@ -188,6 +192,7 @@ export const NotRequiredFiels = [
   `document`,
   `documentRelatedToElectronicService`,
 ];
+export const SelectFiels = [`electronServiceName`];
 
 export const DateFormat = `YYYY-MM-DD`;
 

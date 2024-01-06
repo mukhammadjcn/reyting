@@ -33,6 +33,12 @@ function OTMPASSPORT() {
         nodataInfo="Oliy ta’limning prorektori, RTT markazi direktori, axborot xavfsizligi
          bo‘yicha ma’sul xodimning ma’lumotlarini qo‘shing"
       />
+
+      <InfoCard
+        url="https://akt.edu.uz/api/studentAndTeacherCount"
+        title="Statistik ma'lumotlar"
+        nodataInfo="Universitet o'qituvchi professorlar va talabalar haqida ma'lumot"
+      />
     </div>
   );
 }

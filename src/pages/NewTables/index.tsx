@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   Button,
+  ConfigProvider,
   DatePicker,
   Form,
   Input,
@@ -28,6 +29,7 @@ import {
   HemisList,
   NotRequiredFiels,
   NumberFiels,
+  SelectFiels,
   TextAreaFiels,
 } from "src/utils/index";
 import dayjs from "dayjs";
@@ -39,6 +41,7 @@ import UploadFileInput from "./components/UploadFileInput";
 import moment from "moment";
 import SSLForm from "./components/SSLForm";
 import VideoForm from "./components/VideoForm";
+import { CustomDropDown } from "src/assets/icons";
 
 function NewTables() {
   const [form] = Form.useForm();
@@ -54,6 +57,7 @@ function NewTables() {
 
   const [data, setData] = useState<any>();
   const [dataHemis, setDataHemis] = useState<any>();
+  const [dataUrls, setDataUrls] = useState<any>();
   const [editData, setEditData] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
   const [loadingFrom, setLoadingForm] = useState<boolean>(false);
@@ -69,7 +73,7 @@ function NewTables() {
 
   const GiveColumn = async () => {
     let cols = [];
-    await currentTab?.values?.map((item: any) => {
+    await currentTab?.values?.slice(0, 3)?.map((item: any) => {
       cols.push({
         key: item?.url,
         title: item?.title,
@@ -105,7 +109,7 @@ function NewTables() {
     });
     cols.push({
       key: "createdDate",
-      title: "Ma'lumot kiritilgan vaqti",
+      title: "Kiritilgan vaqti",
       dataIndex: "createdDate",
       width: 100,
       align: "center",
@@ -142,9 +146,12 @@ function NewTables() {
 
     // Get tabs data from api
     axios
-      .get(`https://akt.edu.uz/api/${tab}?size=30&quarterId=${quater}`, {
-        headers,
-      })
+      .get(
+        `https://akt.edu.uz/api/${tab}?size=30&quarterId=${quater}&year=${year}`,
+        {
+          headers,
+        }
+      )
       .then((res) =>
         setData(
           res.data?.content?.reduce(
@@ -187,6 +194,25 @@ function NewTables() {
         await new Promise((resolve) => setTimeout(resolve, 300));
         setLoading(false);
       });
+
+    if (tab === "initiativeIS") {
+      axios
+        .get(`https://akt.edu.uz/api/informationSystems`, { headers })
+        .then((res: any) => {
+          const newList = res.data?.reduce(
+            (all: any, cur: any) => [
+              ...all,
+              {
+                label: cur?.moduleName,
+                value: String(cur?.id),
+                link: cur?.link,
+              },
+            ],
+            []
+          );
+          setDataUrls(newList);
+        });
+    }
   };
   const SubmitData = async (val: any) => {
     setLoadingForm(true);
@@ -249,6 +275,8 @@ function NewTables() {
         <h2 className="tables__title">{titles[`tab${String(page)}`]}</h2>
         <div className="flex">
           <Select
+            className="customSelectItem"
+            suffixIcon={<CustomDropDown />}
             style={{ marginRight: 16 }}
             value={String(year)}
             onChange={(val) => handleMakeParams("year", val)}
@@ -257,9 +285,15 @@ function NewTables() {
                 value: "2023",
                 label: "2023",
               },
+              {
+                value: "2024",
+                label: "2024",
+              },
             ]}
           />
+
           <Segmented
+            className="customSegmented"
             options={[
               {
                 label: "1-chorak",
@@ -332,7 +366,7 @@ function NewTables() {
       {/* Edit, Create Modal */}
       <Modal
         centered
-        width={840}
+        width={1000}
         footer={null}
         open={openEditModal}
         title={editData?.title}
@@ -375,6 +409,13 @@ function NewTables() {
                       required: !NotRequiredFiels.includes(field?.url),
                       message: `Ma'lumotni kiriting !`,
                     },
+                    field?.url == `responsiblePersonPnfl`
+                      ? {
+                          min: 14,
+                          max: 14,
+                          message: `PINFL 14ta raqamdan iborat`,
+                        }
+                      : {},
                   ]}
                 >
                   {DatesFields.includes(field?.url) ? (
@@ -392,7 +433,10 @@ function NewTables() {
                   ) : BooleanFiels.includes(field?.url) ? (
                     GiveBooleanRender(field?.url)
                   ) : TextAreaFiels.includes(field?.url) ? (
-                    <Input.TextArea size="large" rows={3} />
+                    <Input.TextArea
+                      size="large"
+                      autoSize={{ minRows: 1, maxRows: 3 }}
+                    />
                   ) : FileFiels.includes(field?.url) ? (
                     <UploadFileInput
                       defaultLink={form.getFieldValue(field?.url) || ""}
@@ -409,8 +453,48 @@ function NewTables() {
                       style={{ width: "100%" }}
                       disabled={DisabledFiels?.includes(field?.url)}
                     />
+                  ) : SelectFiels.includes(field?.url) ? (
+                    <Select
+                      size="large"
+                      style={{ width: "100%" }}
+                      options={dataUrls}
+                      onSelect={(val) => {
+                        const link = dataUrls.find(
+                          (item: any) => item?.value == val
+                        )?.link;
+                        form.setFieldValue("electronServiceLink", link);
+                      }}
+                    />
+                  ) : field?.url == `responsiblePersonPnfl` ? (
+                    <Input.Search
+                      type="number"
+                      size="large"
+                      onSearch={(val) => {
+                        if (val.length == 14) {
+                          axios
+                            .get(
+                              `https://akt.edu.uz/api/employeeInfo?pinfl=${val}`,
+                              { headers }
+                            )
+                            .then((res) => {
+                              form.setFieldsValue({
+                                responsiblePersonFullName: `${res.data?.firstName} ${res.data?.lastName} ${res.data?.fatherName}`,
+                                responsiblePersonPassportNumber:
+                                  res.data?.serialNumber,
+                              });
+                            })
+                            .catch(() => message.error(`Ma'lumot topilmadi`));
+                        } else {
+                          message.error(`PINFL kamida 14ta raqam`);
+                        }
+                      }}
+                    />
                   ) : (
-                    <Input min={1} size="large" />
+                    <Input
+                      min={1}
+                      size="large"
+                      disabled={DisabledFiels?.includes(field?.url)}
+                    />
                   )}
                 </Form.Item>
               ))}

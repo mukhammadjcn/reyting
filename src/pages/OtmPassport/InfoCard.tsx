@@ -6,6 +6,7 @@ import { headers } from "src/server/Host";
 import Form2 from "./Form2";
 import Form3 from "./Form3";
 import Form4 from "./Form4";
+import Form5 from "./Form5";
 
 function InfoCard(props: any) {
   const [data, setData] = useState([]);
@@ -28,7 +29,7 @@ function InfoCard(props: any) {
           {props?.title || `OTM to‘g‘risida umumiy ma’lumotlar`}
         </h2>
 
-        {data.length > 0 && (
+        {(data.length > 0 || Object.keys(data).length > 0) && (
           <div className="passport__action">
             {edit ? (
               <div className="flex" style={{ gap: 16 }}>
@@ -38,7 +39,7 @@ function InfoCard(props: any) {
                 </Button>
               </div>
             ) : (
-              <Button onClick={() => setEdit(true)} type="primary">
+              <Button onClick={() => setEdit(true)}>
                 Ma’lumotlarni tahrirlash
               </Button>
             )}
@@ -46,7 +47,7 @@ function InfoCard(props: any) {
         )}
       </div>
 
-      {data.length > 0 ? (
+      {data.length > 0 || Object.keys(data).length > 0 ? (
         <div className="passport__info">
           {props?.url === `https://akt.edu.uz/api/aboutUniversity` ? (
             <Form1
@@ -84,6 +85,15 @@ function InfoCard(props: any) {
               setData={setData}
               countEdit={count}
             />
+          ) : props?.url === `https://akt.edu.uz/api/studentAndTeacherCount` ? (
+            <Form5
+              edit={!edit}
+              data={data}
+              url={props?.url}
+              setEdit={setEdit}
+              setData={setData}
+              countEdit={count}
+            />
           ) : (
             <div></div>
           )}
@@ -102,7 +112,7 @@ function InfoCard(props: any) {
       )}
 
       <Modal
-        width={840}
+        width={1000}
         footer={false}
         open={openModal}
         className="passport__modal"
@@ -134,6 +144,14 @@ function InfoCard(props: any) {
           />
         ) : props?.url === `https://akt.edu.uz/api/buildingRate` ? (
           <Form4
+            edit={false}
+            isModal={true}
+            url={props?.url}
+            setOpenModal={setOpenModal}
+            getData={() => GetData()}
+          />
+        ) : props?.url === `https://akt.edu.uz/api/studentAndTeacherCount` ? (
+          <Form5
             edit={false}
             isModal={true}
             url={props?.url}
