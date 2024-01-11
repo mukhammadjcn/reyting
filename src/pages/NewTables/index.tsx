@@ -175,11 +175,11 @@ function NewTables() {
               setDataHemis(res.data);
               form.setFieldValue(
                 "hemisTotalTeacherCount",
-                res.data?.teacherCount
+                +res.data?.teacherCount
               );
               form.setFieldValue(
                 "hemisTotalStudentCount",
-                res.data?.studentCount
+                +res.data?.studentCount
               );
             });
         }
@@ -407,15 +407,8 @@ function NewTables() {
                   rules={[
                     {
                       required: !NotRequiredFiels.includes(field?.url),
-                      message: `Ma'lumotni kiriting !`,
+                      message: `Ma'lumotni to'g'ri kiriting !`,
                     },
-                    field?.url == `responsiblePersonPnfl`
-                      ? {
-                          min: 14,
-                          max: 14,
-                          message: `PINFL 14ta raqamdan iborat`,
-                        }
-                      : {},
                   ]}
                 >
                   {DatesFields.includes(field?.url) ? (

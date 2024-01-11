@@ -32,8 +32,6 @@ const App = () => {
           </Button>
         </div>
         <div className="home__content">
-          {/* <Tables /> */}
-          {/* <NewTables /> */}
           <Outlet />
         </div>
       </div>
